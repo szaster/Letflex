@@ -7,7 +7,7 @@
 
 ## Description
 
-Our Netflix clone app will allow users to sign up in the app or login directly via their google account. The user will then have the option to search films, shows, etc. using the name or keywords. The app will then display relevant results. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watchlist. Our app will also have a rate and review feature, where the user can comment on a specific video and other users can view and comment on it, reactions will also be incorporated.
+Our Netflix clone app will allow users to sign up in the app or login directly via their google account. The user will then have the option to search films, shows, etc. using the name or keywords. The app will then display relevant results. It will also contain a filter option, where you can search content based on genre. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watch-list. Our app will also have a rate and review feature, where the user can comment on a specific video and other users can view and comment on it, reactions will also be incorporated.
 
 ## GIF/Image
 
