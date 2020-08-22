@@ -7,11 +7,7 @@
 
 ## Description
 
-As an investor you have a platform where you can choose a business idea from different bloggers all over the world. As a business partner/collaborator you may join in on an idea or add on by reaching out to the blogger. Our app will be a playground for developing and discussing business ideas.
-
-The user will be able to post, edit, and read business ideas and have the choice to make them public or private. Future investors or collaborators will be able to view publics posts and will be able to contact the blogger if they are interested in the business idea or would like to add on to the idea.
-
-As a web dev camp graduate who needs an additional coding experience and a brilliant portfolio, you can find a team willing to collaborate on the applications of your interest with other web dev graduates to sharpen your skills, gain experience and maybe, launch a startup!!!
+Our Netflix clone app will allow users to sign up in the app or login directly via their google account. The user will then have the option to search films, shows, etc. using the name or keywords. The app will then display relevant results. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watchlist. Our app will also have a rate and review feature, where the user can comment on a specific video and other users can view and comment on it, reactions will also be incorporated.
 
 ## GIF/Image
 
