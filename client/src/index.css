@@ -16,8 +16,8 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   line-height: 1.5;
-  color: #24292e;
-  background-color: #fff;
+  color: white;
+  background-color: black;
 }
 
 .app {
