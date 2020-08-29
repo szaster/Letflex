@@ -44,7 +44,7 @@ function LandingPage() {
 
 			{/* Body */}
 			<div style={{ width: "85%", margin: "1rem auto" }}>
-				<Title level={2}>Movies by latest</Title>
+				<Title level={2} style={{ color: '#ffff'}}>Movies by latest</Title>
 				<hr />
 
 				{/* Grid Cards */}
