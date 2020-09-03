@@ -1,7 +1,9 @@
 import React from 'react';
 import { Menu } from 'antd';
+import { Segment } from 'semantic-ui-react'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+
 
 function LeftMenu(props) {
   return (
