@@ -8,6 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
+import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetailPage from "./views/MovieDetailPage/MovieDetailPage";
 
 //null   Anyone Can go inside
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/about" component={Auth(AboutPage, false)} />
+          <Route exact path="/blog" component={Auth(BlogPage, false)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
         </Switch>
       </div>
