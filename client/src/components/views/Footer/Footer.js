@@ -1,24 +1,16 @@
-import React from "react";
-import { Menu } from "semantic-ui-react";
+import React from 'react'
+import {Icon} from 'antd';
 
 function Footer() {
-  return (
-    <div>
-      <Menu
-        size="large"
-        className="footer"
-        fixed={"bottom"}
-        style={{
-          backgroundColor: "black",
-          color: "white",
-          padding: "1rem",
-          justifyContent: "center",
-        }}
-      >
-        &copy; Paschal, Carina, Svitlana, Elizabeth
-      </Menu>
-    </div>
-  );
+    return (
+        <div style={{
+            height: '80px', display: 'flex',
+            flexDirection: 'column', alignItems: 'center',
+            justifyContent: 'center', fontSize:'1rem'
+        }}>
+           <p> Happy Coding  <Icon type="smile" /></p>
+        </div>
+    )
 }
 
-export default Footer;
+export default Footer
