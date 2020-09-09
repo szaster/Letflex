@@ -1,8 +1,3 @@
-import 'react-app-polyfill/ie9';
-import 'react-app-polyfill/ie11';
-import 'core-js';
-import 'semantic-ui-css/semantic.min.css';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -15,6 +10,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
+import 'semantic-ui-css/semantic.min.css'
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 

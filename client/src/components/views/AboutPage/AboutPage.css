@@ -1,0 +1,25 @@
+.mainAbout {
+  padding: 2rem;
+}
+.bgAbout {
+  background: #8e0e00;
+  background: -webkit-linear-gradient(to right, #8e0e00, #1f1c18);
+  background: linear-gradient(to right, #8e0e00, #1f1c18);
+}
+
+.imageAbout {
+  border: 8px solid transparent;
+  -moz-border-image: -moz-linear-gradient(right, #8e0e00 0%, #1f1c18 100%);
+  -webkit-border-image: -webkit-linear-gradient(
+    right,
+    #8e0e00 0%,
+    #1f1c18 100%
+  );
+  border-image: linear-gradient(to bottom, #8e0e00 15%, #1f1c18 100%);
+  border-image-slice: 1;
+}
+
+.socialAbout,
+.ratingAbout {
+  font-family: "'Raleway', sans-serif";
+}
