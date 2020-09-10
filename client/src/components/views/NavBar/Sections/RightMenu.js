@@ -32,6 +32,14 @@ function RightMenu(props) {
         <Menu.Item>
           <a href="/about">About Us</a>
         </Menu.Item>
+        <Menu.Item>
+          <a href="/auth/google">
+            {" "}
+            Sign in with Google
+            {/* <GoogleButton /> */}
+            {/* <img src={googleButton} alt="sign into Google Button" /> */}
+          </a>
+        </Menu.Item>
       </Menu>
     );
   } else {
