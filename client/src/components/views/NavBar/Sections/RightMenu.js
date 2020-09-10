@@ -22,17 +22,19 @@ function RightMenu(props) {
 
   if (user.userData && !user.userData.isAuth) {
     return (
-      <Menu mode={props.mode}>
-        <Menu.Item key="mail">
-          <a href="/login">Signin</a>
-        </Menu.Item>
-        <Menu.Item key="app">
-          <a href="/register">Signup</a>
-        </Menu.Item>
-        <Menu.Item>
-          <a href="/about">About Us</a>
-        </Menu.Item>
-      </Menu>
+      <Segment style={{ backgroundColor: "black" }}>
+        <Menu inverted secondary mode={props.mode}>
+          <Menu.Item key="mail" as="a" href="/login">
+            Signin
+          </Menu.Item>
+          <Menu.Item key="app" as="a" href="register">
+            Signup
+          </Menu.Item>
+          <Menu.Item as="a" href="/about">
+            About Us
+          </Menu.Item>
+        </Menu>
+      </Segment>
     );
   } else {
     return (

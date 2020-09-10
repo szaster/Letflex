@@ -1,29 +1,26 @@
 import React from "react";
-import { Menu } from "antd";
-import { Segment } from "semantic-ui-react";
+import { Input, Segment, Menu } from "semantic-ui-react";
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 function LeftMenu(props) {
   return (
-    <Menu mode={props.mode}>
-      <Menu.Item key="mail">
-        <a href="/">Home</a>
-      </Menu.Item>
-      <SubMenu title={<span>Blogs</span>}>
-        <MenuItemGroup title="Item 1">
-          <Menu.Item key="setting:1">
-            {" "}
-            <a href="/blog">Blog</a>
-          </Menu.Item>
-          <Menu.Item key="setting:2">Option 2</Menu.Item>
-        </MenuItemGroup>
-        <MenuItemGroup title="Item 2">
-          <Menu.Item key="setting:3">Option 3</Menu.Item>
-          <Menu.Item key="setting:4">Option 4</Menu.Item>
-        </MenuItemGroup>
-      </SubMenu>
-    </Menu>
+    <Segment style={{ backgroundColor: "black" }}>
+      <Menu inverted secondary mode={props.mode}>
+        <Menu.Item key="mail" as="a" href="/">
+          Home
+        </Menu.Item>
+        <Menu.Item key="mail" as="a" href="/blogs">
+          Blogs
+        </Menu.Item>
+        <Menu.Item key="mail" as="a" href="/mylist">
+          My List
+        </Menu.Item>
+        <Menu.Item>
+          <Input className="icon" icon="search" placeholder="Search..." />
+        </Menu.Item>
+      </Menu>
+    </Segment>
   );
 }
 
