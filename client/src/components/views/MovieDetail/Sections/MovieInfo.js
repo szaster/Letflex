@@ -6,7 +6,7 @@ function MovieInfo(props) {
     const { movie } = props;
     
     return (
-        <Descriptions title="Movie Info" bordered>
+        <Descriptions title="Movie Info" bordered style={{ background: "white" }}>
         <Descriptions.Item label="Title">{movie.original_title}</Descriptions.Item>
         <Descriptions.Item label="release_date">{movie.release_date}</Descriptions.Item>
         <Descriptions.Item label="revenue">{movie.revenue}</Descriptions.Item>

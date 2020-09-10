@@ -7,7 +7,18 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
+
 import Footer from "./views/Footer/Footer";
+
+
+
+import BlogPage from "./views/BlogPage/BlogPage";
+
+//null   Anyone Can go inside
+//true   only logged in user can go inside
+//false  logged in user can't go inside
+
+
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 
@@ -21,7 +32,14 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/about" component={Auth(AboutPage, false)} />
+
           {/* <Route exact path="/google" component={Auth(GoogleAuth, false)} /> */}
+
+
+          <Route exact path="/blogs" component={Auth(BlogPage, false)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+
+
           <Route
             exact
             path="/movie/:movieId"
