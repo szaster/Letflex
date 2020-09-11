@@ -28,9 +28,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // will call the deserializeUser
 
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist"
-);
+mongoose.connect(process.env.MONGODB_URI) ||
+  "mongodb://localhost/reactreadinglist";
 
 // Start the API server
 app.listen(PORT, function () {
