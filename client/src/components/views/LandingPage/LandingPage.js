@@ -13,7 +13,8 @@ function LandingPage() {
     const [CurrentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        const endpoint = `${API_URL}discover/tv?api_key=${API_KEY}&language=en-US&`;
+       
         fetchMovies(endpoint)
     }, [])
 
@@ -75,7 +76,7 @@ function LandingPage() {
 
             <div style={{ width: '85%', margin: '1rem auto' }}>
 
-                <Title level={2} > Movies by latest </Title>
+                <Title level={2} style={{ color: 'white' }}> Netflix Original </Title>
                 <hr />
                 <Row gutter={[16, 16]}>
                     {Movies && Movies.map((movie, index) => (
