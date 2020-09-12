@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { List, Avatar, Row, Col, Button } from 'antd';
 import axios from 'axios';
+import { Grid, Image } from 'semantic-ui-react'
 
 import Comments from './Sections/Comments'
 import LikeDislikes from './Sections/LikeDislikes';
@@ -129,6 +130,24 @@ function MovieDetailPage(props) {
 
             </div>
 
+        
+          <Grid doubling columns={5}>
+          <Grid.Column>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+          </Grid.Column>
+        </Grid>
         </div>
     )
 }
