@@ -1,24 +1,45 @@
-import React from 'react'
-import { Descriptions, Badge } from 'antd';
+import React from "react";
+import { Segment, Label, Item, Divider, Icon } from "semantic-ui-react";
+import Favorite from "./Favorite";
 
 function MovieInfo(props) {
+  const { movie } = props;
 
-    const { movie } = props;
-    
-    return (
-        <Descriptions title="Movie Info" bordered style={{ background: "white" }}>
-        <Descriptions.Item label="Title">{movie.original_title}</Descriptions.Item>
-        <Descriptions.Item label="release_date">{movie.release_date}</Descriptions.Item>
-        <Descriptions.Item label="revenue">{movie.revenue}</Descriptions.Item>
-        <Descriptions.Item label="runtime">{movie.runtime}</Descriptions.Item>
-        <Descriptions.Item label="vote_average" span={2}>
-        {movie.vote_average}
-        </Descriptions.Item>
-        <Descriptions.Item label="vote_count">{movie.vote_count}</Descriptions.Item>
-        <Descriptions.Item label="status">{movie.status}</Descriptions.Item>
-        <Descriptions.Item label="popularity">{movie.popularity}</Descriptions.Item>
-      </Descriptions>
-    )
+  return (
+    <Segment inverted>
+      <div>
+        <Favorite />
+      </div>
+      <Item>
+        <Item.Content>
+          <Item.Header as="h3" style={{ color: "white" }}>
+            More Details..
+          </Item.Header>
+          <Item.Description as="h4" style={{ color: "white" }}>
+            Title: {movie.title}
+          </Item.Description>
+          <Divider />
+          <Item.Description as="h4" style={{ color: "white" }}>
+            Actors:
+          </Item.Description>
+          <Divider />
+          <Item.Description as="h4" style={{ color: "white" }}>
+            Crew:
+          </Item.Description>
+          <Divider />
+          <Item.Extra>
+            <Label color="grey">Release Date: {movie.release_date}</Label>
+            <Label color="grey">Revenue: {movie.revenue}</Label>
+            <Label color="grey">Runtime: {movie.runtime}</Label>
+            <Label color="grey">Vote Average: {movie.vote_average}</Label>
+            <Label color="grey">Vote Count: {movie.vote_count}</Label>
+            <Label color="grey">Status: {movie.status}</Label>
+            <Label color="grey">Popularity: {movie.popularity}</Label>
+          </Item.Extra>
+        </Item.Content>
+      </Item>
+    </Segment>
+  );
 }
 
-export default MovieInfo
+export default MovieInfo;
