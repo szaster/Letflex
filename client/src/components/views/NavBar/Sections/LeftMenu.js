@@ -1,9 +1,24 @@
 import React from "react";
 import { Input, Segment, Menu } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 function LeftMenu(props) {
+  let history = useHistory();
+
+  var handleSearchSubmit = (e) => {
+    if (e.keyCode == 13) {
+      // if the key was the "enter" key
+      console.log("value", e.target.value);
+      let path = `/search?q=${e.target.value}`;
+      // history.push(path);
+      history.push("/empty");
+      history.replace(path);
+    }
+  };
+
   return (
     <Segment style={{ backgroundColor: "black" }}>
       <Menu inverted secondary mode={props.mode}>
@@ -17,7 +32,12 @@ function LeftMenu(props) {
           My List
         </Menu.Item>
         <Menu.Item>
-          <Input className="icon" icon="search" placeholder="Search..." />
+          <Input
+            className="icon"
+            icon="search"
+            placeholder="Search..."
+            onKeyDown={handleSearchSubmit}
+          />
         </Menu.Item>
       </Menu>
     </Segment>
