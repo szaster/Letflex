@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { Typography, Row, Button } from "antd";
 import {
   API_URL,
@@ -10,9 +11,13 @@ import {
 
 import GridCard from "../../commons/GridCards";
 const { Title } = Typography;
+
 function SearchPage() {
   const buttonRef = useRef(null);
+  const location = useLocation();
+  let q = new URLSearchParams(location.search).get("q");
 
+  const [Query, setQuery] = useState(q);
   const [Movies, setMovies] = useState([]);
   const [MainMovieImage, setMainMovieImage] = useState(null);
   const [Loading, setLoading] = useState(true);
@@ -20,7 +25,7 @@ function SearchPage() {
 
   useEffect(() => {
     // https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
-    const endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page=1&query=jack+reacher`;
+    const endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${Query}`;
     fetchMovies(endpoint);
   }, []);
 
