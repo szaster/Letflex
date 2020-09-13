@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import {
-  API_URL,
-  API_KEY,
-  IMAGE_BASE_URL,
-  IMAGE_SIZE,
-  POSTER_SIZE,
-} from "../../Config";
+import './Row.css';
+// import {
+//   IMAGE_BASE_URL,
+//   POSTER_SIZE,
+// } from "../Config";
 //import { Grid, Image } from "semantic-ui-react";
 
+const base_url = "https://image.tmdb.org/t/p/original/";
 function Row({ title, fetchUrl }) {
   const [movies, setMovies] = useState([]);
 
@@ -31,6 +30,7 @@ function Row({ title, fetchUrl }) {
         {/* several row_poster(s) */}
         {movies.map((movie) => (
           <img
+            className="row_poster"
             src={`${base_url}${movie.poster_path}`}
             alt={movie.name}
           />
