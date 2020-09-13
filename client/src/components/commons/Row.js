@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import './Row.css';
+import "./Row.css";
 // import {
 //   IMAGE_BASE_URL,
 //   POSTER_SIZE,
@@ -30,6 +30,8 @@ function Row({ title, fetchUrl }) {
         {/* several row_poster(s) */}
         {movies.map((movie) => (
           <img
+            // giving each movie an ID
+            key={movie.id}
             className="row_poster"
             src={`${base_url}${movie.poster_path}`}
             alt={movie.name}
