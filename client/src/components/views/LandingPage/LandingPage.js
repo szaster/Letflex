@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import './LandingPage.css';
 import Row from '../../commons/Row'
 import { Typography } from "antd";
 import {
@@ -32,16 +33,51 @@ function LandingPage() {
         )}
         <div style={{ width: "85%", margin: "1rem auto", color: "white" }}>
           <Row
+            className="row"
             title="NETFLIX ORIGINALS"
-            fetchUrl={requests.fetchNetflixOriginals}
+                      fetchUrl={requests.fetchNetflixOriginals}
+                      isLargeRow
           />
-          <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-          <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-          <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-          <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-          <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-          <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-          <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+          <Row
+            className="row"
+            title="Trending Now"
+            fetchUrl={requests.fetchTrending}
+          />
+          <Row
+            className="row"
+            title="Top Rated"
+            fetchUrl={requests.fetchTopRated}
+          />
+          <Row
+            className="row"
+            title="Popular TV Shows"
+            fetchUrl={requests.fetchTopRatedTVShows}
+          />
+          <Row
+            className="row"
+            title="Action Movies"
+            fetchUrl={requests.fetchActionMovies}
+          />
+          <Row
+            className="row"
+            title="Comedy Movies"
+            fetchUrl={requests.fetchComedyMovies}
+          />
+          <Row
+            className="row"
+            title="Horror Movies"
+            fetchUrl={requests.fetchHorrorMovies}
+          />
+          <Row
+            className="row"
+            title="Romance Movies"
+            fetchUrl={requests.fetchRomanceMovies}
+          />
+          <Row
+            className="row"
+            title="Documentaries"
+            fetchUrl={requests.fetchDocumentaries}
+          />
         </div>
       </div>
     </div>
