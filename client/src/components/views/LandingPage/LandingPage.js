@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Row from '../'
 import { Typography, Row } from "antd";
 import {
   API_URL,
@@ -47,14 +48,15 @@ function LandingPage() {
       .catch((error) => console.error("Error:", error));
   };
 
-  // const loadMoreItems = () => {
-  //     let endpoint = '';
-  //     setLoading(true)
-  //     console.log('CurrentPage', CurrentPage)
-  //     endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
-  //     fetchMovies(endpoint);
-
-  // }
+  const loadMoreItems = () => {
+    let endpoint = "";
+    setLoading(true);
+    console.log("CurrentPage", CurrentPage);
+    endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${
+      CurrentPage + 1
+    }`;
+    fetchMovies(endpoint);
+  };
 
   const handleScroll = () => {
     const windowHeight =
@@ -89,12 +91,13 @@ function LandingPage() {
           />
         )}
         <div style={{ width: "85%", margin: "1rem auto", color: "white" }}>
+          <h1 style={{ color: "white" }}>Hello</h1>
           <Row
             title="NETFLIX ORIGINALS"
             fetchUrl={requests.fetchNetflixOriginals}
             style={{ color: "white" }}
           />
-          <h1 style={{ color: "white" }}>Hello</h1>
+
           <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
         </div>
         <div style={{ width: "85%", margin: "1rem auto" }}>
