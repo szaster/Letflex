@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Typography, Row, Button } from 'antd';
-import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } from '../../Config'
+import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE, requests } from '../../Config'
 import MainImage from './Sections/MainImage'
 import GridCard from '../../commons/GridCards'
 const { Title } = Typography;
@@ -13,7 +13,9 @@ function LandingPage() {
     const [CurrentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-        const endpoint = `${API_URL}discover/tv?api_key=${API_KEY}&language=en-US&`;
+        //const endpoint = `${API_URL}discover/tv?api_key=${API_KEY}&language=en-US&`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&`;
+        //https://api.themoviedb.org/3/movie/latest?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
        
         fetchMovies(endpoint)
     }, [])
@@ -73,6 +75,12 @@ function LandingPage() {
                 />
 
             }
+
+            <div>
+                <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} />
+                <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+            </div>
+
 
             <div style={{ width: '85%', margin: '1rem auto' }}>
 

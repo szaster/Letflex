@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { List, Avatar, Row, Col, Button } from 'antd';
 import axios from 'axios';
-import { Grid, Image } from 'semantic-ui-react'
 
 import Comments from './Sections/Comments'
 import LikeDislikes from './Sections/LikeDislikes';
-import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE } from '../../Config'
+import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, requests } from '../../Config'
 import GridCards from '../../commons/GridCards';
 import MainImage from '../../views/LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import Favorite from './Sections/Favorite';
+
 function MovieDetailPage(props) {
 
     const movieId = props.match.params.movieId
@@ -54,7 +54,8 @@ function MovieDetailPage(props) {
                 setMovie(result)
                 setLoadingForMovie(false)
 
-                let endpointForCasts = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+                let endpointForCasts = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`;
+                
                 fetch(endpointForCasts)
                     .then(result => result.json())
                     .then(result => {
@@ -129,25 +130,10 @@ function MovieDetailPage(props) {
                 <Comments movieTitle={Movie.original_title} CommentLists={CommentLists} postId={movieId} refreshFunction={updateComment} />
 
             </div>
-
-        
-          <Grid doubling columns={5}>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-          <Grid.Column>
-            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
-          </Grid.Column>
-        </Grid>
+            <div>
+                <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} />
+                <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+            </div>
         </div>
     )
 }
