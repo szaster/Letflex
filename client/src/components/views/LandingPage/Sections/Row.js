@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Image } from "semantic-ui-react";
 
-function Row() {
+function Row({title}) {
     const [movies, setMovies] = useState([]);
 
 
