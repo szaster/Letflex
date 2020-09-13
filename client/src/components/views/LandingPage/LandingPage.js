@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import Row from '../'
-import { Typography, Row } from "antd";
+import Row from '../../commons/Row'
+import { Typography } from "antd";
 import {
   API_URL,
   API_KEY,
