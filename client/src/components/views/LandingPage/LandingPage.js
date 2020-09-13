@@ -91,7 +91,6 @@ function LandingPage() {
           />
         )}
         <div style={{ width: "85%", margin: "1rem auto", color: "white" }}>
-          <h1 style={{ color: "white" }}>Hello</h1>
           <Row
             title="NETFLIX ORIGINALS"
             fetchUrl={requests.fetchNetflixOriginals}
