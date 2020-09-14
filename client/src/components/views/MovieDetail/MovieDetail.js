@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { List, Avatar, Row, Col, Button } from "antd";
-import axios from "axios";
-import { Grid, Image } from "semantic-ui-react";
+import React, { useEffect, useState } from 'react'
+import { List, Avatar, Row, Col, Button } from 'antd';
+import axios from 'axios';
 
-import Comments from "./Sections/Comments";
-import LikeDislikes from "./Sections/LikeDislikes";
-import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE } from "../../Config";
-import GridCards from "../../commons/GridCards";
-import MainImage from "../../views/LandingPage/Sections/MainImage";
-import MovieInfo from "./Sections/MovieInfo";
-import Favorite from "./Sections/Favorite";
+import Comments from './Sections/Comments'
+import LikeDislikes from './Sections/LikeDislikes';
+import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, requests } from '../../Config'
+import GridCards from '../../commons/GridCards';
+import MainImage from '../../views/LandingPage/Sections/MainImage';
+import MovieInfo from './Sections/MovieInfo';
+import Favorite from './Sections/Favorite';
+
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);

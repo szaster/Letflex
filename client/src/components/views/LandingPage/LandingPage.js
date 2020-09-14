@@ -1,108 +1,46 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { Typography, Row, Button } from 'antd';
-import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } from '../../Config'
-import MainImage from './Sections/MainImage'
-import GridCard from '../../commons/GridCards'
+import React, { useEffect, useState, useRef } from "react";
+import './LandingPage.css';
+import Row from '../../commons/Row'
+import Banner from "../../commons/Banner";
+import { Typography } from "antd";
+import {
+  requests,
+} from "../../Config";
+//import { Row } from "semantic-ui-react";
+
 const { Title } = Typography;
 function LandingPage() {
-    const buttonRef = useRef(null);
-
-    const [Movies, setMovies] = useState([])
-    const [MainMovieImage, setMainMovieImage] = useState(null)
-    const [Loading, setLoading] = useState(true)
-    const [CurrentPage, setCurrentPage] = useState(0)
-
-    useEffect(() => {
-        const endpoint = `${API_URL}discover/tv?api_key=${API_KEY}&language=en-US&`;
-       
-        fetchMovies(endpoint)
-    }, [])
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-    }, [])
 
 
-    const fetchMovies = (endpoint) => {
 
-        fetch(endpoint)
-            .then(result => result.json())
-            .then(result => {
-                // console.log(result)
-                // console.log('Movies',...Movies)
-                // console.log('result',...result.results)
-                setMovies([...Movies, ...result.results])
-                setMainMovieImage(MainMovieImage || result.results[0])
-                setCurrentPage(result.page)
-            }, setLoading(false))
-            .catch(error => console.error('Error:', error)
-            )
-    }
+  const [MainMovieImage, setMainMovieImage] = useState(null);
 
-    const loadMoreItems = () => {
-        let endpoint = '';
-        setLoading(true)
-        console.log('CurrentPage', CurrentPage)
-        endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
-        fetchMovies(endpoint);
 
-    }
-
-    const handleScroll = () => {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-        const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight - 1) {
-
-            // loadMoreItems()
-            console.log('clicked')
-            buttonRef.current.click();
-
-        }
-    }
-
-    return (
-        <div style={{ width: '100%', margin: '0' }}>
-            {MainMovieImage &&
-                <MainImage
-                    image={`${IMAGE_BASE_URL}${IMAGE_SIZE}${MainMovieImage.backdrop_path}`}
-                    title={MainMovieImage.original_title}
-                    text={MainMovieImage.overview}
-                />
-
-            }
-
-            <div style={{ width: '85%', margin: '1rem auto' }}>
-
-                <Title level={2} style={{ color: 'white' }}> Netflix Original </Title>
-                <hr />
-                <Row gutter={[16, 16]}>
-                    {Movies && Movies.map((movie, index) => (
-                        <React.Fragment key={index}>
-                            <GridCard
-                                image={movie.poster_path ?
-                                    `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-                                    : null}
-                                movieId={movie.id}
-                                movieName={movie.original_title}
-                            />
-                        </React.Fragment>
-                    ))}
-                </Row>
-
-                {Loading &&
-                    <div>Loading...</div>}
-
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button ref={buttonRef} className="loadMore" onClick={loadMoreItems}>Load More</button>
-                </div>
-            </div>
-
-        </div>
-    )
+  return (
+    <div className="row">
+      <div>
+        {/* Nav */}
+        <Banner />
+        <Row
+          className="row"
+          title="NETFLIX ORIGINALS"
+          fetchUrl={requests.fetchNetflixOriginals}
+          isLargeRow
+        />
+        <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+        <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
+        <Row
+          title="Popular TV Shows"
+          fetchUrl={requests.fetchTopRatedTVShows}
+        />
+        <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+        <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+        <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+        <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      </div>
+    </div>
+  );
 }
 
-export default LandingPage
+export default LandingPage;
