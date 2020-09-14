@@ -1,12 +1,10 @@
 const express = require("express");
-const session = require("express-session");
-
+const passport = require("passport");
 const mongoose = require("mongoose");
-const routes = require("./routes");
-const passport = require("./passport");
-const dbConnection = require("./db"); // loads our connection to the mongo database
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const routes = require("./routes");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +19,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // Add routes, both API and view
-app.use(routes);
+app.use(routes.user);
+app.use(routes.favorite);
 
 // ===== Passport ====
 app.use(passport.initialize());

@@ -1,44 +1,46 @@
-const { User } = require("../../models/user");
-const user = require("../../models/user");
-module.export = (app) =>  {
-app.post("/api/account/signup", (req, res, next) => {
-	const { body } = req;
-	const { firstName, lastName, email, password, image } = body;
+const { User } = require("../../models/User");
+const user = require("../../models/User");
+module.export = (app) => {
+  app.post("/api/account/signup", (req, res, next) => {
+    const { body } = req;
+    const { firstName, lastName, email, password, image } = body;
 
-	if (!firstName) {
-		return res.end({
-			success: false,
-			message: "Error: First name cannot be blank.",
-		});
-	}
-	if (!lastName) {
-		return res.end({
-			success: false,
-			message: "Error: Last name cannot be blank.",
-		});
-	}
-	if (!email) {
-		return res.end({
-			success: false,
-			message: "Error: email cannot be blank.",
-		});
-	}
-	if (!password) {
-		return res.end({
-			success: false,
-			message: "Error: Password cannot be blank.",
-		});
+    if (!firstName) {
+      return res.end({
+        success: false,
+        message: "Error: First name cannot be blank.",
+      });
     }
-    
+    if (!lastName) {
+      return res.end({
+        success: false,
+        message: "Error: Last name cannot be blank.",
+      });
+    }
+    if (!email) {
+      return res.end({
+        success: false,
+        message: "Error: email cannot be blank.",
+      });
+    }
+    if (!password) {
+      return res.end({
+        success: false,
+        message: "Error: Password cannot be blank.",
+      });
+    }
+
     email = email.toLowerCase();
 
-    User.find({
-        email: email
-    }, (err, previousUsers) => {
+    User.find(
+      {
+        email: email,
+      },
+      (err, previousUsers) => {
         if (err) {
-            res.end('Error: Server error');
+          res.end("Error: Server error");
         } else if (previousUsers.length > 0) {
-            res.end('Error: Account already exist.')
+          res.end("Error: Account already exist.");
         }
 
         const newUser = new User();
@@ -48,18 +50,18 @@ app.post("/api/account/signup", (req, res, next) => {
         newUser.lastName = lastName;
         newUser.password = newUser.generateHash(password);
         newUser.save((err, user) => {
-            if (err) {
+          if (err) {
             return res.end({
-                    success: false,
-                    message: "Error: Server error.",
-                });
-            }
-            return res.end({
-                success: true,
-                message: "Signed up.",
+              success: false,
+              message: "Error: Server error.",
             });
-        })
-
-    })
-});
-}
+          }
+          return res.end({
+            success: true,
+            message: "Signed up.",
+          });
+        });
+      }
+    );
+  });
+};
