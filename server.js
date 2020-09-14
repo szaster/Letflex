@@ -33,8 +33,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // Add routes, both API and view
-app.use(routes.user);
-app.use(routes.favorite);
+app.use("/auth", routes.auth);
+app.use("/user", routes.user);
+app.use("/favorite", routes.favorite);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex");
