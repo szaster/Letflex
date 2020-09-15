@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../axios";
 import { requests } from "../Config";
-import { Button } from "semantic-ui-react";
+//import { Button, Segment } from "semantic-ui-react";
 import "./Banner.css";
 
 const base_url = "https://image.tmdb.org/t/p/original/"
@@ -12,7 +12,7 @@ function Banner() {
   useEffect(() => {
     async function fetchData() {
       // pick random movie for
-      const request = await axios.get(requests.fetchActionMovies);
+      const request = await axios.get(requests.fetchTrending);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
@@ -22,6 +22,10 @@ function Banner() {
     }
     fetchData();
   }, []);
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+  }
   return (
     <header
       className="banner"
@@ -33,12 +37,13 @@ function Banner() {
       }}
     >
       <div className="banner_contents">
-        <h1 style={{color: "white",}}>{movie?.title || movie?.name || movie?.original_name}</h1>
+        <h1 className='banner_title'>{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className="banner_buttons">
-          <Button className="banner_button">Play</Button>
-          <Button className="banner_button">My List</Button>
+          <button className="banner_button">Play</button>
+          <button className="banner_button">My List</button>
         </div>
-        <h1 style={{color: "white"}} className="banner_description">{movie?.overview}</h1>
+        <h1 style={{color: "white"}} className="banner_description">{truncate(movie?.overview, 150)}</h1>
+        <div className='banner-fadeBottom' />
       </div>
     </header>
   );
