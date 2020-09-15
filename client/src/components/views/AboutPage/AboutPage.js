@@ -7,6 +7,9 @@ import {
   Rating,
   Transition,
   Segment,
+  Divider,
+  Header,
+  Container,
 } from "semantic-ui-react";
 import "./AboutPage.css";
 
@@ -14,26 +17,46 @@ function About() {
   return (
     <div className="mainAbout">
       <Grid centered style={{ padding: "1rem" }} className="bgAbout">
+        <Header size="large" style={{ color: "white", margin: "auto" }}>
+          Watch & Relax with
+          <Image src="../logo.png" style={{ width: "auto", height: "4rem" }} />
+        </Header>
         <Grid.Row>
-          <Segment inverted size="medium" padded>
-            Our Netflix clone app will allow users to sign up in the app or
-            login directly via their google account. The user will then have the
-            option to search films, shows, etc. using the name or keywords. The
-            app will then display relevant results. It will also contain a
-            filter option, where you can search content based on genre. The user
-            will also be able to manage their profile and watch-list, they can
-            update their name/picture or remove/add content from their
-            watch-list. Our app will also have a rate and review feature, where
-            the user can comment on a specific video and other users can view
-            and comment on it, reactions will also be incorporated.
+          <Segment inverted padded compact style={{ width: "70%" }}>
+            <p>
+              Our Netflix clone app will allow users to sign up in the app or
+              login directly via their google account plus features!
+            </p>
+            <Divider />
+            <p>
+              The user will have the option to search films, shows, etc. using
+              the name or keywords on our search bar.The app will then display
+              relevant results. It will also contain a filter option, where you
+              can search content based on genre.
+            </p>
+            <Divider />
+            <p>
+              The user will also be able to manage their profile and watch-list,
+              they can update their name/picture or remove/add content from
+              their watch-list. Our app will come with a rate and review
+              feature, where the user can comment on a specific video and other
+              users can view and comment on it, reactions will also be
+              incorporated.
+            </p>
+            <p>
+              What are you waiting for? Sign up! and start your relaxation and
+              binge watching journey with us! <Icon name="tv" />
+              <Icon name="film" />
+            </p>
           </Segment>
         </Grid.Row>
+        <Divider inverted />
         <Grid.Row>
           <Card.Group>
             <Card
               className="our-team"
               style={{
-                backgroundColor: "black",
+                backgroundColor: "rgb(34, 34, 34,0.856)",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -43,8 +66,9 @@ function About() {
                 as="h2"
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  color: "#E50914",
+                  // color: "#E50914",
                   fontWeight: "bold",
+                  color: "white",
                   fontSize: "1.5rem",
                 }}
               >
@@ -78,7 +102,7 @@ function About() {
             <Card
               fluid
               style={{
-                backgroundColor: "black",
+                backgroundColor: "rgb(34, 34, 34,0.856)",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -88,7 +112,7 @@ function About() {
                 as="h2"
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  color: "#E50914",
+                  color: "white",
                   fontWeight: "bold",
                 }}
               >
@@ -121,7 +145,7 @@ function About() {
             </Card>
             <Card
               style={{
-                backgroundColor: "black",
+                backgroundColor: "rgb(34, 34, 34,0.856)",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -131,7 +155,7 @@ function About() {
                 as="h2"
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  color: "#E50914",
+                  color: "white",
                   fontWeight: "bold",
                 }}
               >
@@ -165,7 +189,7 @@ function About() {
             <Card
               className="our-team"
               style={{
-                backgroundColor: "black",
+                backgroundColor: "rgb(34, 34, 34,0.856)",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -175,7 +199,7 @@ function About() {
                 as="h2"
                 style={{
                   fontFamily: "'Cinzel', serif",
-                  color: "#E50914",
+                  color: "white",
                   fontWeight: "bold",
                 }}
               >
