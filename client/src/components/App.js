@@ -8,6 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import SearchPage from "./views/SearchPage/SearchPage.js";
+import './App.css';
 
 import Footer from "./views/Footer/Footer";
 
