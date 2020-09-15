@@ -1,14 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import './LandingPage.css';
 import Row from '../../commons/Row'
 import Banner from "../../commons/Banner";
-import { Typography } from "antd";
-import {
-  requests,
-} from "../../Config";
+import { requests, } from "../../Config";
 //import { Row } from "semantic-ui-react";
 
-const { Title } = Typography;
 function LandingPage() {
 
 
@@ -23,7 +18,7 @@ function LandingPage() {
         <Banner />
         <Row
           className="row"
-          title="NETFLIX ORIGINALS"
+          title="Netflix Originals"
           fetchUrl={requests.fetchNetflixOriginals}
           isLargeRow
         />
