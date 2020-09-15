@@ -16,21 +16,29 @@ function SearchPage() {
   const buttonRef = useRef(null);
   const location = useLocation();
   let q = new URLSearchParams(location.search).get("q");
-
   const [Query, setQuery] = useState(q);
   const [Movies, setMovies] = useState([]);
   const [MainMovieImage, setMainMovieImage] = useState(null);
   const [Loading, setLoading] = useState(true);
   const [CurrentPage, setCurrentPage] = useState(0);
 
+  if (Query !== q) {
+    setQuery(q);
+    setMovies([]);
+    setCurrentPage(0);
+  }
+
   useEffect(() => {
     // https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
     const endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${Query}`;
     fetchMovies(endpoint);
-  }, []);
+  }, [Query]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    return function cleanupListener() {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const fetchMovies = (endpoint) => {
@@ -51,9 +59,9 @@ function SearchPage() {
     let endpoint = "";
     setLoading(true);
     console.log("CurrentPage", CurrentPage);
-    endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${
+    endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${
       CurrentPage + 1
-    }`;
+    }&query=${Query}`;
     fetchMovies(endpoint);
   };
 
