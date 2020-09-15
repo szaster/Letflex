@@ -25,8 +25,8 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
+      {/* <NavBar /> */}
       <Nav />
-      <NavBar />
       <div className="appBackground">
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
