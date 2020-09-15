@@ -32,6 +32,7 @@ mongoose.connect(process.env.MONGODB_URI) ||
   "mongodb://localhost/reactreadinglist";
 
 // Start the API server
-app.listen(PORT, function () {
+app.listen(PORT, function (err) {
+  if (err) throw err;
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
