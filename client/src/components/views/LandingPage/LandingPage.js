@@ -12,7 +12,7 @@ function LandingPage() {
 
 
   return (
-    <div className="row">
+    <div className="">
       <div>
         {/* Nav */}
         <Banner />
