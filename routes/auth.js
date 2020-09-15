@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const passport = require("passport");
+const router = express.Router();
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 const User = require("../models/UserGoogle");
@@ -44,10 +45,9 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-const router = express.Router();
-
 router.get(
-  "/login",
+  //   "/login",
+  "/google",
   passport.authenticate(
     "google",
     {
@@ -71,7 +71,7 @@ router.get(
   }),
   function (req, res) {
     req.session.user = req.user;
-    res.redirect("/in");
+    res.redirect("/");
   }
 );
 
