@@ -7,7 +7,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
-import Nav from './commons/Nav.js';
+// import Nav from './commons/Nav.js';
 import SearchPage from "./views/SearchPage/SearchPage.js";
 import "./App.css";
 
@@ -25,8 +25,8 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {/* <NavBar /> */}
-      <Nav />
+      <NavBar />
+      {/* <Nav /> */}
       <div className="appBackground">
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
