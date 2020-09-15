@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { List, Avatar, Row, Col, Button } from 'antd';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { List, Avatar, Row, Col, Button } from "antd";
+import axios from "axios";
 
-import Comments from './Sections/Comments'
-import LikeDislikes from './Sections/LikeDislikes';
-import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, requests } from '../../Config'
-import GridCards from '../../commons/GridCards';
-import MainImage from '../../views/LandingPage/Sections/MainImage';
-import MovieInfo from './Sections/MovieInfo';
-import Favorite from './Sections/Favorite';
+import Comments from "./Sections/Comments";
+import LikeDislikes from "./Sections/LikeDislikes";
+import {
+  API_URL,
+  API_KEY,
+  IMAGE_BASE_URL,
+  IMAGE_SIZE,
+  requests,
+} from "../../Config";
+import GridCards from "../../commons/GridCards";
+import MainImage from "../../views/LandingPage/Sections/MainImage";
+import MovieInfo from "./Sections/MovieInfo";
+import Favorite from "./Sections/Favorite";
+import { Grid } from "semantic-ui-react";
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
@@ -80,38 +87,49 @@ function MovieDetailPage(props) {
       )}
 
       {/* Body */}
-      <div style={{ width: "85%", margin: "1rem auto" }}>
-        {/* Movie Info */}
-        {!LoadingForMovie ? <MovieInfo movie={Movie} /> : <div>loading...</div>}
+      <div style={{ margin: "1rem 4rem" }}>
+        <Grid divided="vertically" stackable>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              {/* Movie Info */}
+              {!LoadingForMovie ? (
+                <MovieInfo movie={Movie} />
+              ) : (
+                <div>loading...</div>
+              )}
 
-        <br />
-        {/* Actors Grid*/}
-
-        <div
-          style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
-        >
-          <Button onClick={toggleActorView}>Toggle Actor View </Button>
-        </div>
-
-        {ActorToggle && (
-          <Row gutter={[16, 16]}>
-            {!LoadingForCasts ? (
-              Casts.map(
-                (cast, index) =>
-                  cast.profile_path && (
-                    <GridCards
-                      actor
-                      image={cast.profile_path}
-                      characterName={cast.characterName}
-                    />
-                  )
-              )
-            ) : (
-              <div>loading...</div>
-            )}
-          </Row>
-        )}
-        <br />
+              {/* Actors Grid*/}
+              <Button onClick={toggleActorView}>Toggle Actor View </Button>
+              {ActorToggle && (
+                <Row gutter={[16, 16]}>
+                  {!LoadingForCasts ? (
+                    Casts.map(
+                      (cast, index) =>
+                        cast.profile_path && (
+                          <GridCards
+                            actor
+                            image={cast.profile_path}
+                            characterName={cast.characterName}
+                          />
+                        )
+                    )
+                  ) : (
+                    <div>loading...</div>
+                  )}
+                </Row>
+              )}
+            </Grid.Column>
+            <Grid.Column>
+              {/* Comments */}
+              <Comments
+                movieTitle={Movie.original_title}
+                CommentLists={CommentLists}
+                postId={movieId}
+                refreshFunction={updateComment}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <LikeDislikes
@@ -120,14 +138,6 @@ function MovieDetailPage(props) {
             userId={localStorage.getItem("userId")}
           />
         </div>
-
-        {/* Comments */}
-        <Comments
-          movieTitle={Movie.original_title}
-          CommentLists={CommentLists}
-          postId={movieId}
-          refreshFunction={updateComment}
-        />
       </div>
     </div>
   );

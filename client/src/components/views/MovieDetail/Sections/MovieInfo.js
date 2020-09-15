@@ -1,6 +1,7 @@
 import React from "react";
 import { Segment, Label, Item, Divider, Icon } from "semantic-ui-react";
 import Favorite from "./Favorite";
+import LikeDislikes from "./LikeDislikes";
 
 function MovieInfo(props) {
   const { movie } = props;
@@ -9,6 +10,10 @@ function MovieInfo(props) {
     <Segment inverted>
       <div>
         <Favorite />
+      </div>
+      <br />
+      <div>
+        <LikeDislikes />
       </div>
       <Item>
         <Item.Content>

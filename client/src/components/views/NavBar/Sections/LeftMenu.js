@@ -31,6 +31,9 @@ function LeftMenu(props) {
         <Menu.Item key="mail" as="a" href="/mylist">
           My List
         </Menu.Item>
+        <Menu.Item key="mail" as="a" href="/moviedetails">
+          Movie Details
+        </Menu.Item>
         <Menu.Item>
           <Input
             className="icon"
