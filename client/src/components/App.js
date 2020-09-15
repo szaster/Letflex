@@ -8,7 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import SearchPage from "./views/SearchPage/SearchPage.js";
-import './App.css';
+import "./App.css";
 
 import Footer from "./views/Footer/Footer";
 
@@ -35,6 +35,11 @@ function App() {
           {/* <Route exact path="/google" component={Auth(GoogleAuth, false)} /> */}
 
           <Route exact path="/blogs" component={Auth(BlogPage, false)} />
+          <Route
+            exact
+            path="/moviedetails"
+            component={Auth(MovieDetail, false)}
+          />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/search" component={Auth(SearchPage, false)} />
 
