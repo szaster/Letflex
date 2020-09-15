@@ -8,7 +8,7 @@ function LandingPage() {
   const [MainMovieImage, setMainMovieImage] = useState(null);
 
   return (
-    <div className="row">
+    <div className="">
       <div>
         {/* Nav */}
         <Banner />

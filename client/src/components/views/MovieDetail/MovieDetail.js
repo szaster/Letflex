@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { List, Avatar, Row, Col, Button } from "antd";
 import axios from "axios";
+
+
+
 import Banner from "../../commons/Banner";
 import Comments from "./Sections/Comments";
 import LikeDislikes from "./Sections/LikeDislikes";
@@ -84,10 +87,13 @@ function MovieDetailPage(props) {
         />
       ) : (
         <div>loading...</div>
+
+      )}
       )} */}
 
       {/* Header */}
       <Banner />
+
 
       {/* Body */}
       <div style={{ margin: "1rem 4rem" }}>
