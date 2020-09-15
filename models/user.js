@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
-const saltRounds = 10;
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const saltRounds = 10;
 
 const userSchema = new mongoose.Schema({
   firstName: {

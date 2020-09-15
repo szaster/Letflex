@@ -6,6 +6,7 @@ import axios from "axios";
 import { USER_SERVER } from "../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
+import GoogleAuth from "../../GoogleAuth";
 
 function RightMenu(props) {
   const user = useSelector((state) => state.user);
@@ -22,7 +23,6 @@ function RightMenu(props) {
 
   if (user.userData && !user.userData.isAuth) {
     return (
-
       <Segment style={{ backgroundColor: "black" }}>
         <Menu inverted secondary mode={props.mode}>
           <Menu.Item key="mail" as="a" href="/login">
@@ -34,17 +34,11 @@ function RightMenu(props) {
           <Menu.Item as="a" href="/about">
             About Us
           </Menu.Item>
-       <Menu.Item>
-          <a href="/auth/google">
-            {" "}
-            Sign in with Google
-            {/* <GoogleButton /> */}
-            {/* <img src={googleButton} alt="sign into Google Button" /> */}
-          </a>
-        </Menu.Item>
+          <Menu.Item>
+            <GoogleAuth />
+          </Menu.Item>
         </Menu>
       </Segment>
-
     );
   } else {
     return (
