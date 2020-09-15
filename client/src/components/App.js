@@ -32,6 +32,14 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/about" component={Auth(AboutPage, false)} />
           <Route exact path="/blogs" component={Auth(BlogPage, false)} />
+
+          <Route
+            exact
+            path="/moviedetails"
+            component={Auth(MovieDetail, false)}
+          />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+
           <Route exact path="/search" component={Auth(SearchPage, false)} />
           <Route
             exact

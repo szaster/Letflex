@@ -9,7 +9,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
+    "install:client": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
@@ -24,6 +24,7 @@
     "antd": "^4.6.3",
     "axios": "^0.18.0",
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "ckeditor4-react": "^1.2.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -31,10 +32,12 @@
     "express-session": "^1.17.1",
     "i": "^0.3.6",
     "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.4",
     "npm": "^6.14.8",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.1"
   }

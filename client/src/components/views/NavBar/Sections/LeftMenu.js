@@ -7,13 +7,14 @@ const MenuItemGroup = Menu.ItemGroup;
 
 function LeftMenu(props) {
   let history = useHistory();
+  console.log(useHistory);
 
   var handleSearchSubmit = (e) => {
     if (e.keyCode == 13) {
       // if the key was the "enter" key
       console.log("value", e.target.value);
       let path = `/search?q=${e.target.value}`;
-      // history.push(path);
+      history.push(path);
       history.push("/empty");
       history.replace(path);
     }
@@ -30,6 +31,9 @@ function LeftMenu(props) {
         </Menu.Item>
         <Menu.Item key="mail" as="a" href="/mylist">
           My List
+        </Menu.Item>
+        <Menu.Item key="mail" as="a" href="/moviedetails">
+          Movie Details
         </Menu.Item>
         <Menu.Item>
           <Input

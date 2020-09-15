@@ -1,20 +1,25 @@
 import React from "react";
 import { Segment, Label, Item, Divider, Icon } from "semantic-ui-react";
 import Favorite from "./Favorite";
+import LikeDislikes from "./LikeDislikes";
 
 function MovieInfo(props) {
   const { movie } = props;
 
   return (
     <Segment inverted>
-      <div>
-        <Favorite />
-      </div>
       <Item>
         <Item.Content>
           <Item.Header as="h3" style={{ color: "white" }}>
             More Details..
           </Item.Header>
+          <div>
+            <Favorite />
+          </div>
+          <br />
+          <div>
+            <LikeDislikes />
+          </div>
           <Item.Description as="h4" style={{ color: "white" }}>
             Title: {movie.title}
           </Item.Description>
