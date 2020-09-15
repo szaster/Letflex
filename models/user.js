@@ -1,58 +1,54 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
 const saltRounds = 10;
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        maxlength:50
-    },
-    email: {
-        type: String,
-        trim:true,
-        unique: 1 
-    },
-    password: {
-        type: String,
-        minglength: 5
-    },
-    lastName: {
-        type: String,
-        maxlength: 50
-    },
-    role : {
-        type: Number,
-        default: 0 
-    },
-    image: String,
-    token : {
-        type: String,
-    },
-    tokenExp :{
-        type: Number
-    }
+  firstName: {
+    type: String,
+    maxlength: 50,
+  },
+  email: {
+    type: String,
+    trim: true,
+    unique: 1,
+  },
+  password: {
+    type: String,
+    minglength: 5,
+  },
+  lastName: {
+    type: String,
+    maxlength: 50,
+  },
+  role: {
+    type: Number,
+    default: 0,
+  },
+  image: String,
+  token: {
+    type: String,
+  },
+  tokenExp: {
+    type: Number,
+  },
 });
 
+userSchema.pre("save", function (next) {
+  var user = this;
 
-userSchema.pre('save', function( next ) {
-    var user = this;
-    
-    if(user.isModified('password')){    
+  if (user.isModified("password")) {
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      if (err) return next(err);
 
-        bcrypt.genSalt(saltRounds, function(err, salt){
-            if(err) return next(err);
-    
-            bcrypt.hash(user.password, salt, function(err, hash){
-                if(err) return next(err);
-                user.password = hash 
-                next()
-            })
-        })
-    } else {
-        next()
-    }
+      bcrypt.hash(user.password, salt, function (err, hash) {
+        if (err) return next(err);
+        user.password = hash;
+        next();
+      });
+    });
+  } else {
+    next();
+  }
 });
 
 // userSchema.methods.comparePassword = function(plainPassword,cb){
@@ -84,13 +80,13 @@ userSchema.pre('save', function( next ) {
 //     })
 // }
 
-userSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-}
+userSchema.methods.generateHash = function (password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
-userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-}
-const User = mongoose.model('User', userSchema);
+userSchema.methods.validPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
+};
+const User = mongoose.model("User", userSchema);
 
-module.exports = { User }
+module.exports = { User };
