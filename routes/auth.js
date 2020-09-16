@@ -46,7 +46,6 @@ passport.deserializeUser(async (id, done) => {
 });
 
 router.get(
-  //   "/login",
   "/google",
   passport.authenticate(
     "google",
