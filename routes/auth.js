@@ -3,6 +3,7 @@ require("dotenv").config();
 const passport = require("passport");
 const router = express.Router();
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+const ensureAuth = require("../middleware/passport");
 
 const User = require("../models/UserGoogle");
 
@@ -35,7 +36,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    let user = await UserController.findOne({ id });
+    let user = await User.findOne({ id });
     if (!user) {
       return done(new Error("User not found"));
     }
@@ -74,7 +75,7 @@ router.get(
   }
 );
 
-router.get("/current_user", (req, res) => {
+router.get("/user", ensureAuth, (req, res) => {
   res.send(req.user);
 });
 
