@@ -29,7 +29,7 @@ app.use(express.static("client/build"));
 
 // Add routes, both API and view
 app.use("/api/auth", routes.auth);
-app.use("/api/user", routes.user);
+// app.use("/api/user", routes.user);
 app.use("/api/favorite", routes.favorite);
 
 // index.html for all page routes    html or routing and naviagtion
