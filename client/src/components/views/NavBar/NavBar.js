@@ -28,7 +28,7 @@ function NavBar() {
     >
       <div className="menu__logo">
         <a href="/">
-          <img class="ui small image" src="../logo.png" alt="logo"></img>
+          <img className="ui small image" src="../logo.png" alt="logo"></img>
         </a>
       </div>
       <div className="menu__container">

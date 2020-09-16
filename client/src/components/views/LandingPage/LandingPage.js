@@ -7,6 +7,9 @@ import { requests } from "../../Config";
 function LandingPage() {
   const [MainMovieImage, setMainMovieImage] = useState(null);
 
+  {
+    /* <h2 className="display-5 mb-4">Welcome, {user.name}</h2> */
+  }
   return (
     <div className="row">
       <div>
