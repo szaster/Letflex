@@ -79,6 +79,7 @@ function MovieDetailPage(props) {
       {/* Header */}  
     <Banner />
 
+
       {/* Body */}
       <div style={{ margin: "1rem 4rem" }}>
         <Grid divided="vertically" stackable>
