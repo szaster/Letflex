@@ -1,12 +1,12 @@
 const express = require("express");
-const passport = require("passport");
 const mongoose = require("mongoose");
+const routes = require("./routes");
+const passport = require("./passportAuth/passport");
+//const dbConnection = require("./db"); // loads our connection to the mongo database
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-const routes = require("./routes");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: false }));
@@ -42,6 +42,7 @@ app.get("*", (req, res) => {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex");
 
 // Start the API server
-app.listen(PORT, function () {
+app.listen(PORT, function (err) {
+  if (err) throw err;
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

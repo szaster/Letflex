@@ -1,15 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import Row from '../../commons/Row'
+import Row from "../../commons/Row";
 import Banner from "../../commons/Banner";
-import { requests, } from "../../Config";
+import { requests } from "../../Config";
 //import { Row } from "semantic-ui-react";
 
 function LandingPage() {
-
-
-
   const [MainMovieImage, setMainMovieImage] = useState(null);
-
 
   return (
     <div className="row">
