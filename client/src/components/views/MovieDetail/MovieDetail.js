@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { List, Avatar, Row, Col, Button } from "antd";
 import axios from "axios";
 import Banner from '../../commons/Banner';
-
+import Row from "../../commons/Row";
+import "../../commons/Row.css";
 import Comments from "./Sections/Comments";
 import LikeDislikes from "./Sections/LikeDislikes";
 import {
@@ -16,9 +16,25 @@ import GridCards from "../../commons/GridCards";
 import MainImage from "../../views/LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
 import Favorite from "./Sections/Favorite";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
+
+const base_url = "https://image.tmdb.org/t/p/original/";
 
 function MovieDetailPage(props) {
+
+  useEffect(() => {
+    async function fetchData() {
+      // pick random movie for
+      const request = await axios.get(requests.fetchTrending);
+      setMovie(
+        request.data.results[
+          Math.floor(Math.random() * request.data.results.length - 1)
+        ]
+      );
+      //return request;
+    }
+    fetchData();
+  }, []);
   const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -35,7 +51,7 @@ function MovieDetailPage(props) {
     fetchDetailInfo(endpointForMovieInfo);
 
     axios.post("/api/comment/getComments", movieVariable).then((response) => {
-      console.log(response);
+      setMovie(response);
       if (response.data.success) {
         console.log("response.data.comments", response.data.comments);
         setCommentLists(response.data.comments);
@@ -77,7 +93,26 @@ function MovieDetailPage(props) {
   return (
     <div>
       {/* Header */}  
-    <Banner />
+      <header
+      className="banner"
+      style={{
+        color: 'white',
+        backgroundSize: "cover",
+        backgroundImage: `url("${base_url}${Movie?.backdrop_path}")`,
+        backgroundPosition: "center center",
+      }}
+    >
+      <div className="banner_contents">
+        <h1 className='banner_title'>{Movie?.title || Movie?.name || Movie?.original_name}</h1>
+        <div className="banner_buttons">
+          <button className="banner_button">Play</button>
+          <button className="banner_button">My List</button>
+        </div>
+        <h1 style={{color: "white"}} className="banner_descriptionD">{Movie?.overview}</h1>
+      </div>
+      <div className='banner-fadeBottom' />
+      
+    </header>
 
 
       {/* Body */}
@@ -133,6 +168,7 @@ function MovieDetailPage(props) {
           />
         </div>
       </div>
+      <Row title="Similar Movies" fetchUrl={requests.similarMovies} />
     </div>
   );
 }

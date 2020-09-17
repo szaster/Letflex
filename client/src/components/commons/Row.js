@@ -23,21 +23,17 @@ function Row({ title, fetchUrl, isLargeRow }) {
     fetchData();
   }, [fetchUrl]);
 
-const shoot = () =>{
-
-}
-
   return (
     <div>
       <h2 className="row">{title}</h2>
       <div className="row_posters">
       
         {/* several row_poster(s) */}
-        {movies && movies.map((movie) => (
-           <Link to={`/movie/${movie.movieId}`}>
+        {movies && movies.map((movie, index) => (
+           <Link to={`/movie/${movie.id}`}>
           <img
             // giving each movie an ID
-            key={movie.movieId}
+            key={index}
             className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
             src={`${base_url}${ movie.poster_path }`}
             alt={movie.name}
