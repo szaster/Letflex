@@ -35,56 +35,61 @@ function MovieDetailPage(props) {
     }
     fetchData();
   }, []);
-  const movieId = props.match.params.movieId;
-  const [Movie, setMovie] = useState([]);
-  const [Casts, setCasts] = useState([]);
-  const [CommentLists, setCommentLists] = useState([]);
-  const [LoadingForMovie, setLoadingForMovie] = useState(true);
-  const [LoadingForCasts, setLoadingForCasts] = useState(true);
-  const [ActorToggle, setActorToggle] = useState(false);
-  const movieVariable = {
-    movieId: movieId,
-  };
+  const movieId = props.match.params.movieId
+    const [Movie, setMovie] = useState([])
+    const [Casts, setCasts] = useState([])
+    const [CommentLists, setCommentLists] = useState([])
+    const [LoadingForMovie, setLoadingForMovie] = useState(true)
+    const [LoadingForCasts, setLoadingForCasts] = useState(true)
+    const [ActorToggle, setActorToggle] = useState(false)
+    const movieVariable = {
+        movieId: movieId
+    }
 
-  useEffect(() => {
-    let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-    fetchDetailInfo(endpointForMovieInfo);
+    useEffect(() => {
 
-    axios.post("/api/comment/getComments", movieVariable).then((response) => {
-      setMovie(response);
-      if (response.data.success) {
-        console.log("response.data.comments", response.data.comments);
-        setCommentLists(response.data.comments);
-      } else {
-        alert("Failed to get comments Info");
-      }
-    });
-  }, []);
+        let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+        fetchDetailInfo(endpointForMovieInfo)
 
-  const toggleActorView = () => {
-    setActorToggle(!ActorToggle);
-  };
+        axios.post('/api/comment/getComments', movieVariable)
+            .then(response => {
+                console.log(response)
+                if (response.data.success) {
+                    console.log('response.data.comments', response.data.comments)
+                    setCommentLists(response.data.comments)
+                } else {
+                    alert('Failed to get comments Info')
+                }
+            })
 
-  const fetchDetailInfo = (endpoint) => {
-    fetch(endpoint)
-      .then((result) => result.json())
-      .then((result) => {
-        console.log(result);
-        setMovie(result);
-        setLoadingForMovie(false);
+    }, [])
 
-        let endpointForCasts = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
-        fetch(endpointForCasts)
-          .then((result) => result.json())
-          .then((result) => {
-            console.log(result);
-            setCasts(result.cast);
-          });
+    const toggleActorView = () => {
+        setActorToggle(!ActorToggle)
+    }
 
-        setLoadingForCasts(false);
-      })
-      .catch((error) => console.error("Error:", error));
-  };
+    const fetchDetailInfo = (endpoint) => {
+
+        fetch(endpoint)
+            .then(result => result.json())
+            .then(result => {
+                console.log(result)
+                setMovie(result)
+                setLoadingForMovie(false)
+
+                let endpointForCasts = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+                fetch(endpointForCasts)
+                    .then(result => result.json())
+                    .then(result => {
+                        console.log(result)
+                        setCasts(result.cast)
+                    })
+
+                setLoadingForCasts(false)
+            })
+            .catch(error => console.error('Error:', error)
+            )
+    }
 
   const updateComment = (newComment) => {
     setCommentLists(CommentLists.concat(newComment));
@@ -168,7 +173,7 @@ function MovieDetailPage(props) {
           />
         </div>
       </div>
-      <Row title="Similar Movies" fetchUrl={requests.similarMovies} />
+      <Row title="Similar Movies" fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`} />
     </div>
   );
 }

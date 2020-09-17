@@ -26,7 +26,7 @@ export const requests = {
     fetchHorrorMovies: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
     fetchRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
     fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
-    similarMovies: `/movie/{movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
+    //similarMovies: `/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
 }
 
 //https://api.themoviedb.org/3/movie/696374?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
