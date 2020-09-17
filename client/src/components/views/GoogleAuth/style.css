@@ -1,4 +1,4 @@
-.google-btn {
+/* .google-btn {
   width: 184px;
   height: 42px;
   background-color: #4285f4;
@@ -14,20 +14,20 @@
   height: 40px;
   border-radius: 2px;
   background-color: #fff;
-}
-.google-btn .google-icon {
+} */
+/* .google-btn .google-icon {
   margin-top: 11px;
   width: 18px;
   height: 18px;
+} */
+.googleBtn {
+  justify-content: center;
 }
-.google-btn .btn-text {
-  float: right;
-  margin: 11px 11px 0 0;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+.googleBtnWrapper {
+  margin-top: 20rem !important;
+  /* margin: 20rem 43rem !important; */
 }
-.google-btn:hover {
+/* .google-btn:hover {
   box-shadow: 0 0 6px #4285f4;
 }
 .google-btn:active {
@@ -38,4 +38,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
