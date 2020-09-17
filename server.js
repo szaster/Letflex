@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const passport = require("./passportAuth/passport");
+// const passport = require("./middleware/passport");
 //const dbConnection = require("./db"); // loads our connection to the mongo database
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
