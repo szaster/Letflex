@@ -1,13 +1,7 @@
-.mainAbout {
-  padding: 2rem;
+.bgAbout {
+  padding-top: 2rem !important;
+  padding-bottom: 5rem !important;
 }
-/* .bgAbout {
-  background: #8e0e00;
-  background: -webkit-linear-gradient(to right, #1f0d0bcb, #1f1c18);
-  background: linear-gradient(to right, #1d0e0b, #1f1c18);
-  background-size: cover;
-} */
-
 .imageAbout {
   border: 8px solid transparent;
   -moz-border-image: -moz-linear-gradient(right, #8e0e00 0%, #1f1c18 100%);

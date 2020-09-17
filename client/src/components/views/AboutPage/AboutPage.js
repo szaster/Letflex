@@ -9,20 +9,21 @@ import {
   Segment,
   Divider,
   Header,
-  Container,
 } from "semantic-ui-react";
 import "./AboutPage.css";
+import RightMenu from "../NavBar/Sections/RightMenu";
 
 function About() {
   return (
-    <div className="mainAbout">
-      <Grid centered style={{ padding: "1rem" }} className="bgAbout">
+    <div>
+      <RightMenu />
+      <Grid centered className="bgAbout" padded>
         <Header size="large" style={{ color: "white", margin: "auto" }}>
           Watch & Relax with
           <Image src="../logo.png" style={{ width: "auto", height: "4rem" }} />
         </Header>
         <Grid.Row>
-          <Segment inverted padded compact style={{ width: "70%" }}>
+          <Segment inverted padded style={{ width: "70%" }} size="large">
             <p>
               Our Netflix clone app will allow users to sign up in the app or
               login directly via their google account plus features!
