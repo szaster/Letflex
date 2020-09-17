@@ -1,18 +1,18 @@
 import React from "react";
-import { Menu } from "antd";
+import { Menu } from "semantic-ui-react";
 
 function Footer() {
   return (
     <div>
       <Menu
         size="large"
-        className="footer"
         fixed={"bottom"}
+        className="footer"
         style={{
           backgroundColor: "black",
           color: "white",
           padding: "1rem",
-          textAlign: "center",
+          justifyContent: "center",
         }}
       >
         &copy; Paschal, Carina, Svitlana, Elizabeth
