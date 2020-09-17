@@ -42,4 +42,10 @@ class GoogleAuth extends React.Component {
   }
 }
 
-export default GoogleAuth;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps, GoogleAuth);
