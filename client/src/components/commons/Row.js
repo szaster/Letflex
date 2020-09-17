@@ -5,7 +5,9 @@ import {
   API_KEY,
   API_URL,
 } from "../Config";
-//import { Grid, Image } from "semantic-ui-react";
+import { Card, Grid, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+//import ReactStars from "react-rating-stars-component";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 function Row({ title, fetchUrl, isLargeRow }) {
@@ -26,21 +28,25 @@ const shoot = () =>{
 }
 
   return (
-    <div className="row">
+    <div>
       <h2 className="row">{title}</h2>
-
       <div className="row_posters">
+      
         {/* several row_poster(s) */}
         {movies && movies.map((movie) => (
-          <img onClick={shoot}
+           <Link to={`/movie/${movie.movieId}`}>
+          <img
             // giving each movie an ID
-            key={movie.id}
+            key={movie.movieId}
             className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
             src={`${base_url}${ movie.poster_path }`}
             alt={movie.name}
             
           />
+          </Link>
+          
         ))}
+        
       </div>
     </div>
   );
