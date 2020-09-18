@@ -42,13 +42,4 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-function ensureAuth(req, res, next) {
-  const user = req.session.user;
-  if (user) {
-    return next();
-  } else {
-    res.redirect("/");
-  }
-}
-
-module.exports = ensureAuth;
+module.exports = passport;

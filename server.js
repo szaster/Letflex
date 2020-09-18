@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const passport = require("passport");
+const passport = require("./config/passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const path = require("path");
+const configureAuthentication = require("./config/passport");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,6 +22,7 @@ app.use(
     cookie: { secure: true },
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
