@@ -3,7 +3,7 @@ require("dotenv").config();
 const passport = require("passport");
 const router = express.Router();
 
-const ensureAuth = require("../middleware/passport");
+const ensureAuth = require("../middleware");
 
 router.get(
   "/google",
