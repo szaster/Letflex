@@ -3,13 +3,13 @@ import "./style.css";
 
 import { connect } from "react-redux";
 
-import { setCurrentUser } from "../../../_actions/authActions";
+import { setUser } from "../../../_actions/authActions";
 
 class GoogleAuth extends React.Component {
-  // async componentDidMount() {
-  //   await this.props.setCurrentUser();
-  //   console.log(this.props.setCurrentUser());
-  // }
+  componentDidMount() {
+    console.log(this.props);
+    this.props.setUser();
+  }
 
   render() {
     // const { isAuthenticated, user } = this.props.auth;
@@ -48,4 +48,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, GoogleAuth);
+function mapDispatchToProps(dispatch) {
+  return {
+    setUser: () => dispatch(setUser),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleAuth);

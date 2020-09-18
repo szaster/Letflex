@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
-import Auth from "../hoc/auth";
 // pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
@@ -29,26 +28,18 @@ function App() {
       {/* <Nav /> */}
       <div className="appBackground">
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/about" component={Auth(AboutPage, false)} />
-          <Route exact path="/blogs" component={Auth(BlogPage, false)} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/about" component={AboutPage} />
+          <Route exact path="/blogs" component={BlogPage} />
 
-          <Route
-            exact
-            path="/moviedetails"
-            component={Auth(MovieDetail, false)}
-          />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/moviedetails" component={MovieDetail} />
+          <Route exact path="/login" component={LoginPage} />
 
-          <Route exact path="/search" component={Auth(SearchPage, false)} />
-          <Route
-            exact
-            path="/movie/:movieId"
-            component={Auth(MovieDetail, null)}
-          />
-          <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
+          <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/movie/:movieId" component={MovieDetail} />
+          <Route exact path="/favorite" component={FavoritePage} />
         </Switch>
       </div>
       <Footer />
