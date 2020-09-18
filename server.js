@@ -1,11 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const passport = require("./passportAuth/passport");
-// const passport = require("./middleware/passport");
-//const dbConnection = require("./db"); // loads our connection to the mongo database
+const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -28,7 +27,6 @@ app.use(passport.session());
 // if (process.env.NODE_ENV === "production") {
 app.use(express.static("client/build"));
 
-// Add routes, both API and view
 app.use("/api/auth", routes.auth);
 // app.use("/api/user", routes.user);
 // app.use("/api/favorite", routes.favorite);
