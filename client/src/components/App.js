@@ -7,11 +7,12 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
+import HomePage from "./views/HomePage/HomePage.js";
 // import Nav from './commons/Nav.js';
 import SearchPage from "./views/SearchPage/SearchPage.js";
 import HomePage from "./views/HomePage/HomePage";
 import "./App.css";
-
+import RightMenu from "../components/views/NavBar/Sections/RightMenu";
 import Footer from "./views/Footer/Footer";
 
 import BlogPage from "./views/BlogPage/BlogPage";
@@ -23,6 +24,7 @@ import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 
+
 import { fetchUser } from "../_actions/authActions";
 
 class App extends React.Component {
@@ -32,8 +34,52 @@ class App extends React.Component {
     }
   }
 
-  render() {
-    return (
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchUser: () => dispatch(fetchUser()),
+  };
+
+function App() {
+  return (
+//     <Suspense fallback={<div>Loading...</div>}>
+//       {/* <Nav /> */}
+//       <div className="appBackground">
+//         <Switch>
+//           <Route exact path="/" component={Auth(HomePage, null)} />
+//           <Route exact path="/about" component={Auth(AboutPage, false)} />
+//           {/* <NavBar /> */}
+//           <Route exact path="/landing" component={Auth(LandingPage, null)} />
+//           <Route exact path="/login" component={Auth(LoginPage, false)} />
+//           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+
+//           <Route exact path="/blogs" component={Auth(BlogPage, false)} />
+
+//           <Route
+//             exact
+//             path="/moviedetails"
+//             component={Auth(MovieDetail, false)}
+//           />
+//           <Route exact path="/login" component={Auth(LoginPage, false)} />
+
+//           <Route exact path="/search" component={Auth(SearchPage, false)} />
+//           <Route
+//             exact
+//             path="/movie/:movieId"
+//             component={Auth(MovieDetail, null)}
+//           />
+//           <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
+//         </Switch>
+//       </div>
+//       <Footer />
+//     </Suspense>
+      render() {
+
       <Suspense fallback={<div>Loading...</div>}>
         <NavBar />
         <div className="appBackground">
@@ -60,17 +106,8 @@ class App extends React.Component {
     );
   }
 }
+  );
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchUser: () => dispatch(fetchUser()),
-  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

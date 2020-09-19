@@ -2,30 +2,35 @@ import React, { useEffect, useState } from "react";
 import Row from "../../commons/Row";
 import Banner from "../../commons/Banner";
 import { requests } from "../../Config";
+import NavBar from "../NavBar/NavBar";
 //import { Row } from "semantic-ui-react";
 
 function LandingPage() {
+
 	return (
 		<div className=''>
-			<div>
+    <NavBar />
+			<div style={{ paddingBottom: "5rem", paddingTop: "3rem" }}>
 				{/* Nav */}
 				<Banner />
 				<Row
 					title='Netflix Originals'
-					fetchUrl={requests.fetchNetflixOriginals}
+					fetchUrl={requests.fetchUpComing}
 					isLargeRow
 				/>
 				<Row title='Trending Now' fetchUrl={requests.fetchTrending} />
 				<Row title='Top Rated' fetchUrl={requests.fetchTopRated} />
 				<Row
-					title='Popular TV Shows'
-					fetchUrl={
-						"https://api.themoviedb.org/3/tv/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US"
-					}
+					title='Popular Movies'
+					fetchUrl={requests.fetchPopularMovies}
 				/>
 				<Row
-					title='Action Movies'
-					fetchUrl={requests.fetchActionMovies}
+					title='Popular TV Shows'
+					fetchUrl={requests.fetchPopularTVShows}
+				/>
+				<Row
+					title='TV Shows'
+					fetchUrl={requests.fetchTVShows}
 				/>
 				<Row
 					title='Comedy Movies'
@@ -46,6 +51,7 @@ function LandingPage() {
 			</div>
 		</div>
 	);
+
 }
 
 export default LandingPage;
