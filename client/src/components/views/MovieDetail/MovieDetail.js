@@ -17,6 +17,7 @@ import MainImage from "../../views/LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
 import Favorite from "./Sections/Favorite";
 import { Grid, Button } from "semantic-ui-react";
+// import ReactPlayer from "react-player";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -97,6 +98,7 @@ function MovieDetailPage(props) {
 
   return (
     <div>
+       {/* <VideoPlayer /> */}
       {/* Header */}  
       <header
       className="banner"
@@ -111,7 +113,7 @@ function MovieDetailPage(props) {
         <h1 className='banner_title'>{Movie?.title || Movie?.name || Movie?.original_name}</h1>
         <div className="banner_buttons">
           <button className="banner_button">Play</button>
-          <button className="banner_button">My List</button>
+          <button className="banner_button">Watch Trailer</button>
         </div>
         <h1 style={{color: "white"}} className="banner_descriptionD">{Movie?.overview}</h1>
       </div>
