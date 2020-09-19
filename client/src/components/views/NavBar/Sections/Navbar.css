@@ -6,17 +6,11 @@
   overflow: auto !important;
   box-shadow: 0 0 30px #f3f1f1 !important;
   /* background-color: white !important; */
-}
 
 .menu__logo {
   width: 150px;
   float: left;
-}
-
-.menu__logo a {
-  display: inline-block;
-  font-size: 20px;
-  padding: 19px 20px;
+  padding-top: 10px;
 }
 
 .menu__container .ant-menu-item {

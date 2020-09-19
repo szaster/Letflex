@@ -17,14 +17,24 @@ export const IMAGE_SIZE = 'w1280'
 export const POSTER_SIZE = 'w500'
 
 export const requests = {
-    fetchTrending: `trending/all/week?api_key=${API_KEY}&language=en-US`,
-    fetchNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
+    fetchUpComing: `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`,
+    fetchTrending: `trending/all/day?api_key=${API_KEY}&language=en-US`,
     fetchTopRated: `/movie/top_rated?api_key=${API_KEY}&language=en-US`,
-    fetchPopularTVShows: `tv/popular?api_key=${API_KEY}&language=en-US&page=1`,
+    fetchPopularTVShows: `/tv/popular?api_key=${API_KEY}&language=en-US`,
+    fetchTVShows: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
+    fetchPopularMovies: `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`,
     fetchActionMovies: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
     fetchComedyMovies: `/discover/movie?api_key=${API_KEY}&with_genres=35`,
     fetchHorrorMovies: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
     fetchRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
     fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
+    fetchMovieVideos: ``
+    //similarMovies: `/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
 }
 
+
+//https://api.themoviedb.org/3/movie/696374/videos?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
+//https://api.themoviedb.org/3/movie/696374?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
+//https://api.themoviedb.org/3/trending/all/day?api_key=844dba0bfd8f3a4f3799f6130ef9e335
+//https://api.themoviedb.org/3/tv/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
+//https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US

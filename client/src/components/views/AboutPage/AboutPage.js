@@ -20,7 +20,6 @@ function About() {
       <Grid centered className="bgAbout" padded>
         <Header size="large" style={{ color: "white", margin: "auto" }}>
           Watch & Relax with
-          <Image src="../logo.png" style={{ width: "auto", height: "4rem" }} />
         </Header>
         <Grid.Row>
           <Segment inverted padded style={{ width: "70%" }} size="large">
