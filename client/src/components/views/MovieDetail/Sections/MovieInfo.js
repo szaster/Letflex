@@ -8,16 +8,6 @@ function MovieInfo(props) {
 
   return (
     <Segment inverted>
-
-      <div>
-        <Favorite />
-      </div>
-      <br />
-      <div>
-        <LikeDislikes />
-      </div>
-
-
       <Item>
         <Item.Content>
           <Item.Header as="h3" style={{ color: "white" }}>
