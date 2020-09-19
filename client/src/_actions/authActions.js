@@ -9,7 +9,7 @@ export function setUser(user) {
 export const fetchUser = () => async (dispatch) => {
   try {
     const user = await axios.get("/api/user");
-    dispatch(setUser(user));
+    dispatch(setUser(user.data));
   } catch (e) {
     console.log(e);
   }

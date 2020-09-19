@@ -5,8 +5,11 @@ const router = express.Router();
 // const { User } = require("../models/User");
 
 router.get("/", [ensureAuth], (req, res) => {
+  const { id, displayName } = req.user;
+  console.log({ id, displayName });
   res.status(200).json({
-    user: req.user,
+    id,
+    displayName,
   });
 });
 
