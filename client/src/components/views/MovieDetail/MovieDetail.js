@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Row, Button } from "antd";
 import axios from "axios";
-import Banner from '../../commons/Banner';
 import Row from "../../commons/Row";
 import "../../commons/Row.css";
 import Comments from "./Sections/Comments";
@@ -9,8 +8,6 @@ import LikeDislikes from "./Sections/LikeDislikes";
 import {
   API_URL,
   API_KEY,
-  IMAGE_BASE_URL,
-  IMAGE_SIZE,
   requests,
 } from "../../Config";
 import GridCards from "../../commons/GridCards";
@@ -21,6 +18,7 @@ import { Grid, Button } from "semantic-ui-react";
 // import ReactPlayer from "react-player";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
+const youtubeUrl = "https://www.youtube.com/watch?v=";
 
 function MovieDetailPage(props) {
 
@@ -100,7 +98,28 @@ function MovieDetailPage(props) {
   return (
     <div style={{ padding: "3rem" }}>
      <NavBar />
-       {/* <VideoPlayer /> */}
+     <Embed
+				id='O6Xo21L0ybE'
+				source='youtube'>
+				<Modal
+					size='lg'
+					aria-labelledby='contained-modal-title-vcenter'
+					centered>
+					<Modal.Header closeButton>
+						<Modal.Title
+							id='contained-modal-title-vcenter'
+							style={{ color: "#000000", fontWeight: "bolder" }}>
+						</Modal.Title>
+					</Modal.Header>
+					<Modal.Body style={{ backgroundColor: "#000000" }}>
+						<ReactPlayer
+							className='container-fluid'
+							playing
+							width='100%'>
+              </ReactPlayer>
+					</Modal.Body>
+				</Modal>
+			</Embed>
       {/* Header */}  
       <header
       className="banner"
