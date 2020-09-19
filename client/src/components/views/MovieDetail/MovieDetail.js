@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { List, Avatar, Row, Col, Button } from "antd";
+import { Row, Button } from "antd";
 import axios from "axios";
-
-
 
 import Banner from "../../commons/Banner";
 import Comments from "./Sections/Comments";
@@ -15,10 +13,9 @@ import {
   requests,
 } from "../../Config";
 import GridCards from "../../commons/GridCards";
-import MainImage from "../../views/LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
-import Favorite from "./Sections/Favorite";
 import { Grid } from "semantic-ui-react";
+import NavBar from "../NavBar/NavBar";
 
 function MovieDetailPage(props) {
   const movieId = props.match.params.movieId;
@@ -77,7 +74,7 @@ function MovieDetailPage(props) {
   };
 
   return (
-    <div>
+    <div style={{ padding: "3rem" }}>
       {/* OLD Header */}
       {/* {!LoadingForMovie ? (
         <MainImage
@@ -92,8 +89,8 @@ function MovieDetailPage(props) {
       )} */}
 
       {/* Header */}
+      <NavBar />
       <Banner />
-
 
       {/* Body */}
       <div style={{ margin: "1rem 4rem" }}>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Input, Segment, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
-
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -22,8 +21,16 @@ function LeftMenu(props) {
 
   return (
     <Segment style={{ backgroundColor: "black" }}>
-      <Menu inverted secondary mode={props.mode}>
-        <Menu.Item key="mail" as="a" href="/">
+      <Menu
+        inverted
+        fixed={"top"}
+        style={{ backgroundColor: "black" }}
+        mode={props.mode}
+      >
+        <Menu.Item as="a" href="/">
+          <img class="ui small image" src="../logo.png" alt="logo"></img>
+        </Menu.Item>
+        <Menu.Item key="mail" as="a" href="/landing">
           Home
         </Menu.Item>
         <Menu.Item key="mail" as="a" href="/blogs">
