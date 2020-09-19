@@ -13,8 +13,8 @@ import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import NavBar from "../NavBar/NavBar";
 import Favorite from "./Sections/Favorite";
-import { Grid, Button } from "semantic-ui-react";
-// import ReactPlayer from "react-player";
+import { Grid, Button, Modal, Embed } from "semantic-ui-react";
+//import ReactPlayer from "react-player";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 const youtubeUrl = "https://www.youtube.com/watch?v=";
@@ -91,7 +91,7 @@ function MovieDetailPage(props) {
   return (
     <div style={{ padding: "3rem" }}>
      <NavBar />
-     <Embed
+     {/* <Embed
 				id='O6Xo21L0ybE'
 				source='youtube'>
 				<Modal
@@ -112,7 +112,7 @@ function MovieDetailPage(props) {
               </ReactPlayer>
 					</Modal.Body>
 				</Modal>
-			</Embed>
+			</Embed> */}
       {/* Header */}  
       <header
         className="banner"
