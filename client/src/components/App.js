@@ -23,12 +23,12 @@ import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 
-import { setUser } from "../_actions/authActions";
+import { fetchUser } from "../_actions/authActions";
 
 class App extends React.Component {
   componentDidMount() {
     if (!this.props.auth.isAuthenticated) {
-      this.props.setUser();
+      this.props.fetchUser();
     }
   }
 
@@ -69,7 +69,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUser: () => dispatch(setUser),
+    fetchUser: () => dispatch(fetchUser()),
   };
 }
 
