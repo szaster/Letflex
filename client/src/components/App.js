@@ -37,9 +37,12 @@ class App extends React.Component {
       <Suspense fallback={<div>Loading...</div>}>
         {/* <NavBar /> */}
         <div className="appBackground">
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>
           {this.props.auth.isAuthenticated ? (
             <Switch>
-              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/landing" component={LandingPage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
               <Route exact path="/about" component={AboutPage} />
