@@ -28,11 +28,9 @@ function NavBar() {
 				width: "100%",
 				backgroundColor: "black",
 			}}>
-			<div className="menu__logo">
         <a href="/">
-          <img class="ui small image" src="../logo.png" alt="logo"></img>
+          <img className="menu__logo" src="../logo.png" alt="logo"></img>
         </a>
-      </div>
 			<div className='menu__container'>
 				<div className='menu_left'>
 					<LeftMenu mode='horizontal' />

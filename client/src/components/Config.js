@@ -32,3 +32,4 @@ export const requests = {
 //https://api.themoviedb.org/3/movie/696374?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
 //https://api.themoviedb.org/3/trending/all/day?api_key=844dba0bfd8f3a4f3799f6130ef9e335
 //https://api.themoviedb.org/3/tv/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
+//https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
