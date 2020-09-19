@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import Row from "../../commons/Row";
 import Banner from "../../commons/Banner";
 import { requests } from "../../Config";
+import NavBar from "../NavBar/NavBar";
 //import { Row } from "semantic-ui-react";
 
 function LandingPage() {
+
 	return (
 		<div className=''>
-			<div>
+    <NavBar />
+			<div style={{ paddingBottom: "5rem", paddingTop: "3rem" }}>
 				{/* Nav */}
 				<Banner />
 				<Row
@@ -48,6 +51,7 @@ function LandingPage() {
 			</div>
 		</div>
 	);
+
 }
 
 export default LandingPage;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Row, Button } from "antd";
 import axios from "axios";
 import Banner from '../../commons/Banner';
 import Row from "../../commons/Row";
@@ -13,8 +14,8 @@ import {
   requests,
 } from "../../Config";
 import GridCards from "../../commons/GridCards";
-import MainImage from "../../views/LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
+import NavBar from "../NavBar/NavBar";
 import Favorite from "./Sections/Favorite";
 import { Grid, Button } from "semantic-ui-react";
 // import ReactPlayer from "react-player";
@@ -97,7 +98,8 @@ function MovieDetailPage(props) {
   };
 
   return (
-    <div>
+    <div style={{ padding: "3rem" }}>
+     <NavBar />
        {/* <VideoPlayer /> */}
       {/* Header */}  
       <header
@@ -120,7 +122,6 @@ function MovieDetailPage(props) {
       <div className='banner-fadeBottom' />
       
     </header>
-
 
       {/* Body */}
       <div style={{ margin: "1rem 4rem" }}>
