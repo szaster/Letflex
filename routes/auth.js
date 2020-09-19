@@ -20,6 +20,9 @@ router.get("/google/callback", passport.authenticate("google"), function (
   res
 ) {
   req.session.user = req.user;
+  if (process.env.NODE_ENV === "development") {
+    res.redirect("http://localhost:3000");
+  }
   res.redirect("/");
 });
 
