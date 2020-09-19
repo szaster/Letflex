@@ -2,16 +2,7 @@ import React from "react";
 import "./style.css";
 import { Button, Icon, Segment, Grid } from "semantic-ui-react";
 
-import { connect } from "react-redux";
-
-import { setUser } from "../../../_actions/authActions";
-
 class GoogleAuth extends React.Component {
-  componentDidMount() {
-    console.log(this.props);
-    this.props.setUser();
-  }
-
   render() {
     // const { isAuthenticated, user } = this.props.auth;
     return (
@@ -36,16 +27,4 @@ class GoogleAuth extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    setUser: () => dispatch(setUser),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GoogleAuth);
+export default GoogleAuth;

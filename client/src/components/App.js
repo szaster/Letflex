@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 // pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
@@ -8,6 +9,7 @@ import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
 // import Nav from './commons/Nav.js';
 import SearchPage from "./views/SearchPage/SearchPage.js";
+import HomePage from "./views/HomePage/HomePage";
 import "./App.css";
 
 import Footer from "./views/Footer/Footer";
@@ -21,30 +23,54 @@ import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 
-function App() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NavBar />
-      {/* <Nav /> */}
-      <div className="appBackground">
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={RegisterPage} />
-          <Route exact path="/about" component={AboutPage} />
-          <Route exact path="/blogs" component={BlogPage} />
+import { setUser } from "../_actions/authActions";
 
-          <Route exact path="/moviedetails" component={MovieDetail} />
-          <Route exact path="/login" component={LoginPage} />
+class App extends React.Component {
+  componentDidMount() {
+    if (!this.props.auth.isAuthenticated) {
+      this.props.setUser();
+    }
+  }
 
-          <Route exact path="/search" component={SearchPage} />
-          <Route exact path="/movie/:movieId" component={MovieDetail} />
-          <Route exact path="/favorite" component={FavoritePage} />
-        </Switch>
-      </div>
-      <Footer />
-    </Suspense>
-  );
+  render() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <NavBar />
+        <div className="appBackground">
+          {this.props.auth.isAuthenticated ? (
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/register" component={RegisterPage} />
+              <Route exact path="/about" component={AboutPage} />
+              <Route exact path="/blogs" component={BlogPage} />
+              <Route exact path="/moviedetails" component={MovieDetail} />
+              <Route exact path="/search" component={SearchPage} />
+              <Route exact path="/movie/:movieId" component={MovieDetail} />
+              <Route exact path="/favorite" component={FavoritePage} />
+            </Switch>
+          ) : (
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+            </Switch>
+          )}
+        </div>
+        <Footer />
+      </Suspense>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setUser: () => dispatch(setUser),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
