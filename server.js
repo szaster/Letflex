@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const passport = require("./passportAuth/passport");
+// const passport = require("./passportAuth/passport");
 //const dbConnection = require("./db"); // loads our connection to the mongo database
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -20,8 +20,8 @@ app.use(
     cookie: { secure: true },
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
@@ -31,6 +31,7 @@ app.use(express.static("client/build"));
 app.use("/api/auth", routes.auth);
 // app.use("/api/user", routes.user);
 app.use("/api/favorite", routes.favorite);
+app.use("/api/blogPost", routes.blogPost);
 
 // index.html for all page routes    html or routing and naviagtion
 app.get("*", (req, res) => {

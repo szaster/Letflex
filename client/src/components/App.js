@@ -9,6 +9,7 @@ import AboutPage from "./views/AboutPage/AboutPage.js";
 import NavBar from "./views/NavBar/NavBar";
 // import Nav from './commons/Nav.js';
 import SearchPage from "./views/SearchPage/SearchPage.js";
+import BlogPostPage from "./views/BlogPostPage/BlogPostPage.js";
 import "./App.css";
 
 import Footer from "./views/Footer/Footer";
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/about" component={Auth(AboutPage, false)} />
           <Route exact path="/blogs" component={Auth(BlogPage, false)} />
+          <Route exact path="/blogpost" component={Auth(BlogPostPage, false)} />
 
           <Route
             exact
