@@ -56,6 +56,7 @@ function NavBar() {
           <LeftMenu mode="inline" />
           <RightMenu mode="inline" />
         </Drawer>
+
       </div>
     </div>
   );

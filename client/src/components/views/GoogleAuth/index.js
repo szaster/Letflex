@@ -1,8 +1,10 @@
 import React from "react";
 import "./style.css";
 import { Button, Icon, Segment, Grid } from "semantic-ui-react";
+
 class GoogleAuth extends React.Component {
   render() {
+    // const { isAuthenticated, user } = this.props.auth;
     return (
       <div>
         <Grid className="googleBtnWrapper" centered>
