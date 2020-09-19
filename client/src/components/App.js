@@ -10,11 +10,8 @@ import AboutPage from "./views/AboutPage/AboutPage.js";
 import HomePage from "./views/HomePage/HomePage.js";
 // import Nav from './commons/Nav.js';
 import SearchPage from "./views/SearchPage/SearchPage.js";
-<<<<<<< HEAD
 import BlogPostPage from "./views/BlogPostPage/BlogPostPage.js";
 import "./App.css";
-=======
->>>>>>> d9190e2d0ff3f165c846a8dc2b6c41f87a50462e
 
 import "./App.css";
 import RightMenu from "../components/views/NavBar/Sections/RightMenu";
@@ -29,41 +26,6 @@ import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 
-<<<<<<< HEAD
-function App() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NavBar />
-      {/* <Nav /> */}
-      <div className="appBackground">
-        <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/about" component={Auth(AboutPage, false)} />
-          <Route exact path="/blogs" component={Auth(BlogPage, false)} />
-          <Route exact path="/blogpost" component={Auth(BlogPostPage, false)} />
-
-          <Route
-            exact
-            path="/moviedetails"
-            component={Auth(MovieDetail, false)}
-          />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-
-          <Route exact path="/search" component={Auth(SearchPage, false)} />
-          <Route
-            exact
-            path="/movie/:movieId"
-            component={Auth(MovieDetail, null)}
-          />
-          <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
-        </Switch>
-      </div>
-      <Footer />
-    </Suspense>
-  );
-=======
 import { fetchUser } from "../_actions/authActions";
 
 class App extends React.Component {
@@ -105,7 +67,6 @@ function mapStateToProps(state) {
   return {
     auth: state.auth,
   };
->>>>>>> d9190e2d0ff3f165c846a8dc2b6c41f87a50462e
 }
 
 function mapDispatchToProps(dispatch) {

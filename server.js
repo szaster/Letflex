@@ -1,9 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-<<<<<<< HEAD
-// const passport = require("./passportAuth/passport");
-=======
 
 const passport = require("./config/passport");
 const cookieSession = require("cookie-session");
@@ -11,7 +8,6 @@ const path = require("path");
 const configureAuthentication = require("./config/passport");
 
 //const passport = require("./passportAuth/passport");
->>>>>>> d9190e2d0ff3f165c846a8dc2b6c41f87a50462e
 //const dbConnection = require("./db"); // loads our connection to the mongo database
 //const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -29,25 +25,14 @@ app.use(
     keys: ["Old McDonald had a farm"],
   })
 );
-<<<<<<< HEAD
-// app.use(passport.initialize());
-// app.use(passport.session());
-=======
-
 
 app.use(passport.initialize());
 app.use(passport.session());
->>>>>>> d9190e2d0ff3f165c846a8dc2b6c41f87a50462e
-
 
 app.use("/api/auth", routes.auth);
-<<<<<<< HEAD
 // app.use("/api/user", routes.user);
 app.use("/api/favorite", routes.favorite);
 app.use("/api/blogPost", routes.blogPost);
-=======
-app.use("/api/user", routes.user);
->>>>>>> d9190e2d0ff3f165c846a8dc2b6c41f87a50462e
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
