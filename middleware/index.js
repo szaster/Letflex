@@ -1,9 +1,9 @@
 function ensureAuth(req, res, next) {
   const user = req.session.user;
-  if (user) {
+  if (req.user) {
     return next();
   } else {
-    res.redirect("/");
+    res.status(401).send();
   }
 }
 

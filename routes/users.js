@@ -1,8 +1,14 @@
-// const express = require('express');
-// const router = express.Router();
+const express = require("express");
+const ensureAuth = require("../middleware");
+const router = express.Router();
+
 // const { User } = require("../models/User");
 
-// const { auth } = require("../middleware/auth");
+router.get("/", [ensureAuth], (req, res) => {
+  res.status(200).json({
+    user: req.user,
+  });
+});
 
 // //=================================
 // //             User
@@ -68,4 +74,4 @@
 //     });
 // });
 
-// module.exports = router;
+module.exports = router;

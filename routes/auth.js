@@ -7,27 +7,21 @@ const ensureAuth = require("../middleware");
 
 router.get(
   "/google",
-  passport.authenticate(
-    "google",
-    {
-      scope: ["email", "profile"],
-    },
-    function (req, res) {
-      res.redirect("/");
-    }
-  )
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email",
+    ],
+  })
 );
 
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    scope: ["email", "profile"],
-  }),
-  function (req, res) {
-    req.session.user = req.user;
-    res.redirect("/");
-  }
-);
+router.get("/google/callback", passport.authenticate("google"), function (
+  req,
+  res
+) {
+  req.session.user = req.user;
+  res.redirect("/");
+});
 
 router.get("/logout", function (req, res) {
   req.logout();

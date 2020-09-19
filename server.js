@@ -2,8 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const passport = require("./config/passport");
-const cookieParser = require("cookie-parser");
-const session = require("express-session");
+const cookieSession = require("cookie-session");
 const path = require("path");
 const configureAuthentication = require("./config/passport");
 
@@ -13,13 +12,11 @@ const PORT = process.env.PORT || 5000;
 // Define middleware here
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(
-  session({
-    secret: "Old McDonald had a farm",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true },
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: ["Old McDonald had a farm"],
   })
 );
 
@@ -31,7 +28,7 @@ app.use(passport.session());
 app.use(express.static("client/build"));
 
 app.use("/api/auth", routes.auth);
-// app.use("/api/user", routes.user);
+app.use("/api/user", routes.user);
 // app.use("/api/favorite", routes.favorite);
 
 // index.html for all page routes    html or routing and naviagtion
