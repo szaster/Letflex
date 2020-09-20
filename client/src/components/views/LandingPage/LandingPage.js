@@ -14,38 +14,38 @@ function LandingPage() {
 				{/* Nav */}
 				<Banner />
 				<Row
-					title='Netflix Originals'
+					title='NETFLIX ORIGINALS'
 					fetchUrl={requests.fetchUpComing}
 					isLargeRow
 				/>
-				<Row title='Trending Now' fetchUrl={requests.fetchTrending} />
+				<Row title='TRENDING NOW' fetchUrl={requests.fetchTrending} />
 				<Row title='Top Rated' fetchUrl={requests.fetchTopRated} />
 				<Row
-					title='Popular Movies'
+					title='POPULAR MOVIES'
 					fetchUrl={requests.fetchPopularMovies}
 				/>
 				<Row
-					title='Popular TV Shows'
+					title='POPULAR TV SHOWS'
 					fetchUrl={requests.fetchPopularTVShows}
 				/>
 				<Row
-					title='TV Shows'
+					title='TV SHOWS'
 					fetchUrl={requests.fetchTVShows}
 				/>
 				<Row
-					title='Comedy Movies'
+					title='COMEDY MOVIES'
 					fetchUrl={requests.fetchComedyMovies}
 				/>
 				<Row
-					title='Horror Movies'
+					title='HORROR MOVIES'
 					fetchUrl={requests.fetchHorrorMovies}
 				/>
 				<Row
-					title='Romance Movies'
+					title='ROMANCE MOVIES'
 					fetchUrl={requests.fetchRomanceMovies}
 				/>
 				<Row
-					title='Documentaries'
+					title='DOCUMENTARIES'
 					fetchUrl={requests.fetchDocumentaries}
 				/>
 			</div>
