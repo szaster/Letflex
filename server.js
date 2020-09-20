@@ -30,8 +30,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api/auth", routes.auth);
-// app.use("/api/user", routes.user);
-app.use("/api/favorite", routes.favorite);
+app.use("/api/user", routes.user);
+// app.use("/api/favorite", routes.favorite);
 app.use("/api/blogPost", routes.blogPost);
 
 // Serve up static assets (usually on heroku)
