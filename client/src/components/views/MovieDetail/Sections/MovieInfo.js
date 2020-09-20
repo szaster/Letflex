@@ -10,7 +10,7 @@ function MovieInfo(props) {
 
   // });
   return (
-    <Segment inverted>
+    <Segment inverted size="massive">
       <Item>
         <Item.Content>
           <Item.Header as="h3" style={{ color: "white" }}>
