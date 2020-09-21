@@ -40,11 +40,9 @@ class App extends React.Component {
           {this.props.auth.isAuthenticated ? (
             <Switch>
               <Route exact path="/" component={LandingPage} />
-              <Route exact path="/login" component={LoginPage} />
-              <Route exact path="/register" component={RegisterPage} />
               <Route exact path="/about" component={AboutPage} />
               <Route exact path="/blogs" component={BlogPage} />
-              <Route exact path="/moviedetails" component={MovieDetail} />
+              {/* <Route exact path="/moviedetails" component={MovieDetail} /> */}
               <Route exact path="/search" component={SearchPage} />
               <Route exact path="/movie/:movieId" component={MovieDetail} />
               <Route exact path="/favorite" component={FavoritePage} />
@@ -72,38 +70,5 @@ function mapDispatchToProps(dispatch) {
     fetchUser: () => dispatch(fetchUser()),
   };
 }
-// function App() {
-// return (
-//     <Suspense fallback={<div>Loading...</div>}>
-//       {/* <Nav /> */}
-//       <div className="appBackground">
-//         <Switch>
-//           <Route exact path="/" component={Auth(HomePage, null)} />
-//           <Route exact path="/about" component={Auth(AboutPage, false)} />
-//           {/* <NavBar /> */}
-//           <Route exact path="/landing" component={Auth(LandingPage, null)} />
-//           <Route exact path="/login" component={Auth(LoginPage, false)} />
-//           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-
-//           <Route exact path="/blogs" component={Auth(BlogPage, false)} />
-
-//           <Route
-//             exact
-//             path="/moviedetails"
-//             component={Auth(MovieDetail, false)}
-//           />
-//           <Route exact path="/login" component={Auth(LoginPage, false)} />
-
-//           <Route exact path="/search" component={Auth(SearchPage, false)} />
-//           <Route
-//             exact
-//             path="/movie/:movieId"
-//             component={Auth(MovieDetail, null)}
-//           />
-//           <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
-//         </Switch>
-//       </div>
-//       <Footer />
-//     </Suspense>
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

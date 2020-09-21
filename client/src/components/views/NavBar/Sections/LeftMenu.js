@@ -30,7 +30,7 @@ function LeftMenu(props) {
         <Menu.Item as="a" href="/">
           <img class="ui small image" src="../logo.png" alt="logo"></img>
         </Menu.Item>
-        <Menu.Item key="mail" as="a" href="/landing">
+        <Menu.Item key="mail" as="a" href="/">
           Home
         </Menu.Item>
         <Menu.Item key="mail" as="a" href="/blogs">
