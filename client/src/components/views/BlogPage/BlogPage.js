@@ -30,7 +30,7 @@ function Blog() {
           {blogPosts.map((post) => {
             return (
               <Grid.Column>
-                {post.title} {post.author}
+                {post.title} {post.category} {post.body} {post.author}
               </Grid.Column>
             );
           })}

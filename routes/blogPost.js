@@ -15,14 +15,14 @@ router.get("/getBlogPosts", (req, res) => {
 router.get("/newBlogPosts", (req, res) => {
   const blog = new BlogPost({
     author: req.user,
-    title: "My First Blog",
-    type: "geneal",
-    body: "Bloging is Fun",
+    title: "The World's Highest-Paid Author of 2019",
+    category: "Authors",
+    body: "J.K. Rowling ($92 million)",
   });
 
   blog.save((err, blogpost) => {
     if (err) {
-      return res.end({
+      return res.send({
         success: false,
         message: "Error: Server error.",
       });

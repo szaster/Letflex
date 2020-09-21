@@ -15,17 +15,10 @@ const blogPostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    type: {
-      general: {
-        type: String,
-      },
-      movieBlog: {
-        type: String,
-      },
-      authorBlog: {
-        type: String,
-      },
+    category: {
+      type: String,
     },
+
     body: {
       type: String,
     },
