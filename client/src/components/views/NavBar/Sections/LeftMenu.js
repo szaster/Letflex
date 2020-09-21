@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Input, Segment, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 const SubMenu = Menu.SubMenu;
@@ -18,7 +18,6 @@ function LeftMenu(props) {
       history.replace(path);
     }
   };
-
   return (
     <Segment style={{ backgroundColor: "black" }}>
       <Menu
@@ -36,12 +35,10 @@ function LeftMenu(props) {
         <Menu.Item key="mail" as="a" href="/blogs">
           Blogs
         </Menu.Item>
-        <Menu.Item key="mail" as="a" href="/mylist">
-          My List
+        <Menu.Item key="mail" as="a" href="/favorite">
+          My Favorites
         </Menu.Item>
-        <Menu.Item key="mail" as="a" href="/moviedetails">
-          Movie Details
-        </Menu.Item>
+
         <Menu.Item>
           <Input
             className="icon"
@@ -49,6 +46,9 @@ function LeftMenu(props) {
             placeholder="Search..."
             onKeyDown={handleSearchSubmit}
           />
+        </Menu.Item>
+        <Menu.Item key="mail" as="a" href="api/auth/logout">
+          Logout
         </Menu.Item>
       </Menu>
     </Segment>

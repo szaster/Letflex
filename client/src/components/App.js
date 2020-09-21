@@ -40,7 +40,8 @@ class App extends React.Component {
           {this.props.auth.isAuthenticated ? (
             <Switch>
               <Route exact path="/" component={LandingPage} />
-              <Route exact path="/about" component={AboutPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/register" component={RegisterPage} />
               <Route exact path="/blogs" component={BlogPage} />
               {/* <Route exact path="/moviedetails" component={MovieDetail} /> */}
               <Route exact path="/search" component={SearchPage} />
@@ -50,6 +51,7 @@ class App extends React.Component {
           ) : (
             <Switch>
               <Route exact path="/" component={HomePage} />
+              <Route exact path="/about" component={AboutPage} />
             </Switch>
           )}
         </div>
