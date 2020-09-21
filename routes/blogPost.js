@@ -12,4 +12,25 @@ router.get("/getBlogPosts", (req, res) => {
   });
 });
 
+router.get("/newBlogPosts", (req, res) => {
+  const blog = new BlogPost({
+    author: req.user,
+    title: "My First Blog",
+    type: "geneal",
+    body: "Bloging is Fun",
+  });
+
+  blog.save((err, blogpost) => {
+    if (err) {
+      return res.end({
+        success: false,
+        message: "Error: Server error.",
+      });
+    }
+    return res.send({
+      success: true,
+      message: "done.",
+    });
+  });
+});
 module.exports = router;

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const blogPostSchema = mongoose.Schema(
+const blogPostSchema = new mongoose.Schema(
   {
     author: {
       type: Schema.Types.ObjectId,

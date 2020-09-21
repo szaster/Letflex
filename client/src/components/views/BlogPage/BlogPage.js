@@ -1,4 +1,5 @@
-import React from "react";
+import { use } from "passport";
+import React, { useEffect, useState } from "react";
 import {
   Header,
   Grid,
@@ -9,20 +10,16 @@ import {
 } from "semantic-ui-react";
 import NavBar from "../NavBar/NavBar";
 function Blog() {
-  var blogPosts = [
-    {
-      author: "lIZ",
-      title: "Blog Title",
-    },
-    {
-      author: "Ross",
-      title: "Blog Title 2",
-    },
-    {
-      author: "Anthony",
-      title: "Blog Title 3",
-    },
-  ];
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/blogPost/getBlogPosts")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setBlogPosts(res.blogPosts);
+      });
+  });
   return (
     <div className="jumbotron">
       <Grid padded>

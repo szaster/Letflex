@@ -45,6 +45,7 @@ class App extends React.Component {
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
               <Route exact path="/blogs" component={BlogPage} />
+              <Route exact path="/blogspost" component={BlogPostPage} />
               <Route exact path="/moviedetails" component={MovieDetail} />
               <Route exact path="/search" component={SearchPage} />
               <Route exact path="/movie/:movieId" component={MovieDetail} />
