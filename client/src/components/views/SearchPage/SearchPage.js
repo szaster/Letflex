@@ -10,6 +10,8 @@ import {
 } from "../../Config";
 
 import GridCard from "../../commons/GridCards";
+import MainNavbar from "../NavBar/MainNavbar";
+
 const { Title } = Typography;
 
 function SearchPage() {
@@ -89,6 +91,7 @@ function SearchPage() {
 
   return (
     <div style={{ width: "100%", margin: "0" }}>
+      <MainNavbar />
       <div style={{ width: "85%", margin: "1rem auto" }}>
         <Title level={2}> Movies by latest </Title>
         <hr />

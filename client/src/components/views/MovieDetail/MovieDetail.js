@@ -8,7 +8,7 @@ import LikeDislikes from "./Sections/LikeDislikes";
 import { API_URL, API_KEY, requests } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
-import NavBar from "../NavBar/NavBar";
+import MainNavbar from "../NavBar/MainNavbar";
 import Favorite from "./Sections/Favorite";
 import { Grid, Button, Modal, Embed } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -93,12 +93,14 @@ function MovieDetailPage(props) {
 			.catch((error) => console.error("Error:", error));
 	};
 
+
 	const updateComment = (newComment) => {
 		setCommentLists(CommentLists.concat(newComment));
 	};
 
 	return (
-		<div style={{ padding: "3rem" }}>
+		<div style={{ paddingTop: "4rem" }}>
+     <MainNavbar />
 			<NavBar />
 			{/* Header */}
 			<header
@@ -148,16 +150,17 @@ function MovieDetailPage(props) {
 				</Embed>
 			</div>
 			{/* Body */}
-			<div style={{ margin: "1rem 4rem" }}>
-				<Grid divided='vertically' stackable>
-					<Grid.Row columns={2}>
-						<Grid.Column>
-							{/* Movie Info */}
-							{!LoadingForMovie ? (
-								<MovieInfo movie={Movie} />
-							) : (
-								<div>loading...</div>
-							)}
+			<div style={{ margin: "1rem auto", marginRight: "3rem" }}>
+        <Grid divided="vertically" stackable>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              {/* Movie Info */}
+              {!LoadingForMovie ? (
+                <MovieInfo movie={Movie} />
+              ) : (
+                <div>loading...</div>
+              )}
+
 
 							{/* Actors Grid*/}
 							<Button onClick={toggleActorView}>
