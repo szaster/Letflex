@@ -1,32 +1,25 @@
 import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-// pages for this product
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
-// import NavBar from "./views/NavBar/NavBar";
 import HomePage from "./views/HomePage/HomePage.js";
-// import Nav from './commons/Nav.js';
 import SearchPage from "./views/SearchPage/SearchPage.js";
 import BlogPostPage from "./views/BlogPostPage/BlogPostPage.js";
 import "./App.css";
 
 import "./App.css";
-import RightMenu from "../components/views/NavBar/Sections/RightMenu";
 import Footer from "./views/Footer/Footer";
-
 import BlogPage from "./views/BlogPage/BlogPage";
+import MovieDetail from "./views/MovieDetail/MovieDetail";
+import FavoritePage from "./views/FavoritePage/FavoritePage";
+import { fetchUser } from "../_actions/authActions";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
-
-import MovieDetail from "./views/MovieDetail/MovieDetail";
-import FavoritePage from "./views/FavoritePage/FavoritePage";
-
-import { fetchUser } from "../_actions/authActions";
 
 class App extends React.Component {
   componentDidMount() {

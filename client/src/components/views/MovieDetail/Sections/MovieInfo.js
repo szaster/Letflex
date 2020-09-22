@@ -4,8 +4,11 @@ import Favorite from "./Favorite";
 import LikeDislikes from "./LikeDislikes";
 
 function MovieInfo(props) {
-  const { movie } = props;
+  //const [casts, setCasts] = useState([]);
+  const { movie, credit } = props;
+  // const castList = casts.slice(0, 4).map((c, i) => {
 
+  // });
   return (
     <Segment inverted size="massive">
       <Item>
@@ -33,7 +36,7 @@ function MovieInfo(props) {
           </Item.Description>
           <Divider />
           <Item.Extra>
-            <Label color="grey">Release Date: {movie.release_date}</Label>
+            <Label style={{color: 'rgb(244, 193, 15)'}} color="grey">Release Date: { movie.release_date}</Label>
             <Label color="grey">Revenue: {movie.revenue}</Label>
             <Label color="grey">Runtime: {movie.runtime}</Label>
             <Label color="grey">Vote Average: {movie.vote_average}</Label>

@@ -8,7 +8,7 @@ import {
   Button,
   Segment,
 } from "semantic-ui-react";
-import NavBar from "../NavBar/NavBar";
+
 function Blog() {
   const [blogPosts, setBlogPosts] = useState([]);
 
