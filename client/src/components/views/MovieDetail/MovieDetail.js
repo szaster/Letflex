@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Banner from "../../commons/Banner";
 import Row from "../../commons/Row";
 import "../../commons/Row.css";
 import Comments from "./Sections/Comments";
@@ -14,7 +13,7 @@ import {
 } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
-import NavBar from "../NavBar/NavBar";
+import MainNavbar from "../NavBar/MainNavbar";
 import Favorite from "./Sections/Favorite";
 import { Grid, Button } from "semantic-ui-react";
 // import ReactPlayer from "react-player";
@@ -91,8 +90,8 @@ function MovieDetailPage(props) {
   };
 
   return (
-    <div style={{ padding: "3rem" }}>
-      <NavBar />
+    <div style={{ paddingTop: "4rem" }}>
+      <MainNavbar />
       {/* <VideoPlayer /> */}
       {/* Header */}
       <header
@@ -112,15 +111,15 @@ function MovieDetailPage(props) {
             <button className="banner_button">Play</button>
             <button className="banner_button">Watch Trailer</button>
           </div>
-          <h1 style={{ color: "white" }} className="banner_descriptionD">
+          <h2 style={{ color: "white" }} className="banner_descriptionD">
             {Movie?.overview}
-          </h1>
+          </h2>
         </div>
         <div className="banner-fadeBottom" />
       </header>
 
       {/* Body */}
-      <div style={{ margin: "1rem 4rem" }}>
+      <div style={{ margin: "1rem auto", marginRight: "3rem" }}>
         <Grid divided="vertically" stackable>
           <Grid.Row columns={2}>
             <Grid.Column>
