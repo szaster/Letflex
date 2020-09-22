@@ -16,9 +16,12 @@ passport.use(
         const user = new User({
           id: profile.id,
           displayName: profile.displayName,
+          image: profile.photos[0].value,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
         });
-        const result = await user.save();
-        return done(null, { id: user.id });
+        await user.save();
+        return done(null, { id: user.id, firstName: user.firstName });
       }
       return done(null, existingUser);
     }
