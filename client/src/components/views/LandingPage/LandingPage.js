@@ -19,7 +19,7 @@ function LandingPage() {
 					isLargeRow
 				/>
 				<Row title='TRENDING NOW' fetchUrl={requests.fetchTrending} />
-				<Row title='Top Rated' fetchUrl={requests.fetchTopRated} />
+				<Row title='TOP RATED' fetchUrl={requests.fetchTopRated} />
 				<Row
 					title='POPULAR MOVIES'
 					fetchUrl={requests.fetchPopularMovies}
