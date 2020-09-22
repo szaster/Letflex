@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Row from "../../commons/Row";
 import Banner from "../../commons/Banner";
 import { requests } from "../../Config";
-import NavBar from "../NavBar/NavBar";
+import MainNavBar from "../NavBar/MainNavbar";
 //import { Row } from "semantic-ui-react";
 
 function LandingPage() {

@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Header,
-  Grid,
-  Comment,
-  Form,
-  Button,
-  Segment,
-} from "semantic-ui-react";
-import NavBar from "../NavBar/NavBar";
+import { Header, Comment, Form, Button, Segment } from "semantic-ui-react";
+import MainNavbar from "../NavBar/MainNavbar";
+
 function Blog() {
   var comments = [
     {
@@ -18,7 +12,7 @@ function Blog() {
   ];
   return (
     <div style={{ padding: "5rem" }}>
-      <NavBar />
+      <MainNavbar />
       {/* <Grid>
         <Grid.Row> */}
       <Segment>
