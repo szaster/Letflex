@@ -3,6 +3,7 @@ import axios from "../axios";
 import { requests } from "../Config";
 //import { Button, Segment } from "semantic-ui-react";
 import "./Banner.css";
+import { Modal, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer'
@@ -48,7 +49,10 @@ function Banner() {
 	})
 	.catch((error) => console.log(error));
 	}
-	}
+  }
+  
+  const [open, setOpen] = React.useState(false);
+
   return (
     <header
       className="banner"
@@ -66,10 +70,27 @@ function Banner() {
               <button className="banner_button">Play</button>
             </Link>
             <Link>
-              <button onClick={() => handleClick(movie)} className="banner_button">
-                Watch Trailer
-              </button>
-			  {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+              <Modal
+                basic
+                closeIcon
+                centered
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={
+                  <button
+                    className="banner_button"
+                    onClick={() => handleClick(movie)}
+                  >
+                    Watch Trailer
+                  </button>
+                }
+                style={{ width: "55%" }}
+              >
+                <Header style={{ justifyContent: "center" }}>
+                  {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+                </Header>
+              </Modal>
             </Link>
           </div>
         <h1 style={{color: "white"}} className="banner_description">{truncate(movie?.overview, 150)}</h1>
