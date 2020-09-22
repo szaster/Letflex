@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Banner from "../../commons/Banner";
 import Row from "../../commons/Row";
+import Credits from "../../commons/Credits";
 import "../../commons/Row.css";
 import Comments from "./Sections/Comments";
 import LikeDislikes from "./Sections/LikeDislikes";
-import {
-  API_URL,
-  API_KEY,
-  IMAGE_BASE_URL,
-  IMAGE_SIZE,
-  requests,
-} from "../../Config";
+import { API_URL, API_KEY, requests } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
-import NavBar from "../NavBar/NavBar";
+import MainNavbar from "../NavBar/MainNavbar";
 import Favorite from "./Sections/Favorite";
-import { Grid, Button } from "semantic-ui-react";
-// import ReactPlayer from "react-player";
+import { Grid, Button, Modal, Embed } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+//import ReactPlayer from "react-player";
+//import VideoPlayer from "../../commons/VideoPlayer";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
+const youtubeUrl = "https://www.youtube.com/watch?v=";
 
 function MovieDetailPage(props) {
   useEffect(() => {
@@ -35,6 +32,7 @@ function MovieDetailPage(props) {
     }
     fetchData();
   }, []);
+  const [isOpen, setIsOpen] = useState(false);
   const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -60,6 +58,10 @@ function MovieDetailPage(props) {
       }
     });
   }, []);
+
+  const playVideo = () => {
+    setActorToggle(!ActorToggle);
+  };
 
   const toggleActorView = () => {
     setActorToggle(!ActorToggle);
@@ -91,11 +93,15 @@ function MovieDetailPage(props) {
   };
 
   return (
-    <div style={{ padding: "3rem" }}>
-      <NavBar />
-      {/* <VideoPlayer /> */}
+    <div style={{ paddingTop: "4rem" }}>
+      <MainNavbar />
       {/* Header */}
       <header
+        onClick={playVideo.movieId}
+        show={isOpen}
+        onHide={() => {
+          setIsOpen(false);
+        }}
         className="banner"
         style={{
           color: "white",
@@ -109,8 +115,14 @@ function MovieDetailPage(props) {
             {Movie?.title || Movie?.name || Movie?.original_name}
           </h1>
           <div className="banner_buttons">
-            <button className="banner_button">Play</button>
-            <button className="banner_button">Watch Trailer</button>
+            <Link>
+              <button className="banner_button">Play</button>
+            </Link>
+            <Link>
+              <button onClick={() => setIsOpen(true)} className="banner_button">
+                Watch Trailer
+              </button>
+            </Link>
           </div>
           <h1 style={{ color: "white" }} className="banner_descriptionD">
             {Movie?.overview}
@@ -118,9 +130,17 @@ function MovieDetailPage(props) {
         </div>
         <div className="banner-fadeBottom" />
       </header>
-
+      <div style={{ height: "500px", width: "800px", position: "flex" }}>
+        <Embed id="O6Xo21L0ybE" source="youtube">
+          <Modal>
+            <Modal.Header>Select a Photo</Modal.Header>
+            <Modal.Content video></Modal.Content>
+            <Modal.Actions></Modal.Actions>
+          </Modal>
+        </Embed>
+      </div>
       {/* Body */}
-      <div style={{ margin: "1rem 4rem" }}>
+      <div style={{ margin: "1rem auto", marginRight: "3rem" }}>
         <Grid divided="vertically" stackable>
           <Grid.Row columns={2}>
             <Grid.Column>
@@ -172,8 +192,12 @@ function MovieDetailPage(props) {
           />
         </div>
       </div>
+      <Credits
+        title="CASTS"
+        fetchUrl={`/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US&page=1`}
+      />
       <Row
-        title="Similar Movies"
+        title="SIMILAR MOVIES"
         fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
       />
     </div>
