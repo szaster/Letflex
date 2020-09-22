@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Segment, Menu } from "semantic-ui-react";
+import { Input, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 function MainNavbar(props) {
@@ -47,15 +47,7 @@ function MainNavbar(props) {
       <Menu.Item key="mail" as="a" href="api/auth/logout">
         Logout
       </Menu.Item>
-      <Menu.Item
-        inactive
-        key="mail"
-        as="a"
-        href="api/auth/logout"
-        position="right"
-      >
-        Welcome
-      </Menu.Item>
+      <Menu.Item position="right">Welcome {}</Menu.Item>
     </Menu>
   );
 }
