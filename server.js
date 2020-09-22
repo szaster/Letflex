@@ -2,15 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex");
+
 const passport = require("./config/passport");
 const cookieSession = require("cookie-session");
 const path = require("path");
-const configureAuthentication = require("./config/passport");
-
-//const passport = require("./passportAuth/passport");
-//const dbConnection = require("./db"); // loads our connection to the mongo database
-//const cookieParser = require("cookie-parser");
-const session = require("express-session");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -46,6 +43,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+<<<<<<< HEAD
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
   useUnifiedTopology: true,
@@ -53,6 +51,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
   force: true,
 });
 
+=======
+>>>>>>> 9d931f799e8ac90774da7ff87f12e459b860a8f6
 // Start the API server
 app.listen(PORT, function (err) {
   if (err) throw err;

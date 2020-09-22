@@ -7,7 +7,9 @@ const UserGoogle = mongoose.model("UserGoogle", {
     givenName: String,
   },
   displayName: String,
-  photo: String,
+  image: String,
+  firstName: String,
+  lastName: String,
 });
 
 module.exports = UserGoogle;
