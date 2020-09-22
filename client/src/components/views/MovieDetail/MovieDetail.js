@@ -9,7 +9,6 @@ import { API_URL, API_KEY, requests } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
-import NavBar from '../../views/NavBar/'
 import Favorite from "./Sections/Favorite";
 import { Grid, Button, Modal, Embed } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -132,7 +131,7 @@ function MovieDetailPage(props) {
         <div className="banner-fadeBottom" />
       </header>
       <div style={{ height: "500px", width: "800px", position: "flex" }}>
-        <Embed id="O6Xo21L0ybE" source="youtube">
+        <Embed id="O6Xo21L0ybE" source="https://www.youtube.com/watch?v=aETz_dRDEys">
           <Modal>
             <Modal.Header>Select a Photo</Modal.Header>
             <Modal.Content video></Modal.Content>
@@ -195,7 +194,7 @@ function MovieDetailPage(props) {
       </div>
       <Credits
         title="CASTS"
-        fetchUrl={`/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US&page=1`}
+        fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
       />
       <Row
         title="SIMILAR MOVIES"
