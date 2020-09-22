@@ -27,12 +27,11 @@ function Row({ title, fetchUrl, isLargeRow }) {
         {movies && movies.map((movie, index) => (
            <Link to={`/movie/${movie.id}`}>
           <img
-            // giving each movie an ID
+            // giving each movie an IDs
             key={index}
             className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
             src={`${base_url}${ movie.poster_path }`}
             alt={movie.name}
-            
           />
           </Link>
           
