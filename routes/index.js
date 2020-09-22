@@ -1,4 +1,4 @@
-const user = require("./users");
+const user = require("./user");
 // const favorite = require("./favorite");
 const auth = require("./auth");
 
