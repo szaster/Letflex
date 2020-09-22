@@ -11,15 +11,15 @@ import {
   Header,
 } from "semantic-ui-react";
 import "./AboutPage.css";
-import RightMenu from "../NavBar/Sections/RightMenu";
+import IntroNavbar from "../NavBar/IntroNavbar";
 
 function About() {
   return (
     <div>
-      <RightMenu />
+      <IntroNavbar />
       <Grid centered className="bgAbout" padded>
         <Header size="large" style={{ color: "white", margin: "auto" }}>
-          Watch & Relax with
+          Watch & Relax with LETFLEX!
         </Header>
         <Grid.Row>
           <Segment inverted padded style={{ width: "70%" }} size="large">

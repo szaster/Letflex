@@ -4,7 +4,7 @@ import axios from "axios";
 import "./favorite.css";
 import { useSelector } from "react-redux";
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../Config";
-import Navbar from "../NavBar/NavBar";
+import MainNavbar from "../NavBar/MainNavbar";
 
 const { Title } = Typography;
 
@@ -80,7 +80,7 @@ function FavoritePage() {
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
-      <Navbar />
+      <MainNavbar />
       <Title level={2}> Favorite Movies By Me </Title>
       <hr />
       {user.userData && !user.userData.isAuth ? (
