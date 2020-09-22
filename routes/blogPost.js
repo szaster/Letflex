@@ -13,8 +13,9 @@ router.get("/getBlogPosts", (req, res) => {
 });
 
 router.get("/newBlogPosts", (req, res) => {
+  console.log(req.user);
   const blog = new BlogPost({
-    author: req.user,
+    author: req.user.displayName,
     title: "The World's Highest-Paid Author of 2019",
     category: "Authors",
     body: "J.K. Rowling ($92 million)",

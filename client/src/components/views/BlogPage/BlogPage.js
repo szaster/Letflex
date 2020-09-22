@@ -19,7 +19,15 @@ function Blog() {
         console.log(res);
         setBlogPosts(res.blogPosts);
       });
-  });
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/blogPost/newBlogPosts")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+      });
+  }, []);
   return (
     <div className="jumbotron">
       <Grid padded>

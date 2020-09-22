@@ -18,7 +18,7 @@ passport.use(
           displayName: profile.displayName,
         });
         const result = await user.save();
-        return done(null, { id: user.id });
+        return done(null, { id: user.id, name: user.displayName });
       }
       return done(null, existingUser);
     }
