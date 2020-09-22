@@ -9,6 +9,7 @@ import { API_URL, API_KEY, requests } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
+import NavBar from '../../views/NavBar/'
 import Favorite from "./Sections/Favorite";
 import { Grid, Button, Modal, Embed } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -93,37 +94,64 @@ function MovieDetailPage(props) {
 			.catch((error) => console.error("Error:", error));
 	};
 
-  return (
-    <div style={{ paddingTop: "4rem" }}>
-      <MainNavbar />
-      {/* <VideoPlayer /> */}
-      {/* Header */}
-      <header
-        className="banner"
-        style={{
-          color: "white",
-          backgroundSize: "cover",
-          backgroundImage: `url("${base_url}${Movie?.backdrop_path}")`,
-          backgroundPosition: "center center",
-        }}
-      >
-        <div className="banner_contents">
-          <h1 className="banner_title">
-            {Movie?.title || Movie?.name || Movie?.original_name}
-          </h1>
-          <div className="banner_buttons">
-            <button className="banner_button">Play</button>
-            <button className="banner_button">Watch Trailer</button>
-          </div>
-          <h2 style={{ color: "white" }} className="banner_descriptionD">
-            {Movie?.overview}
-          </h2>
-        </div>
-        <div className="banner-fadeBottom" />
-      </header>
 
-      {/* Body */}
-      <div style={{ margin: "1rem auto", marginRight: "3rem" }}>
+	const updateComment = (newComment) => {
+		setCommentLists(CommentLists.concat(newComment));
+	};
+
+	return (
+		<div style={{ paddingTop: "4rem" }}>
+     <MainNavbar />
+			<NavBar />
+			{/* Header */}
+			<header
+				onClick={playVideo.movieId}
+				show={isOpen}
+				onHide={() => {
+					setIsOpen(false);
+				}}
+				className='banner'
+				style={{
+					color: "white",
+					backgroundSize: "cover",
+					backgroundImage: `url("${base_url}${Movie?.backdrop_path}")`,
+					backgroundPosition: "center center",
+				}}>
+				<div className='banner_contents'>
+					<h1 className='banner_title'>
+						{Movie?.title || Movie?.name || Movie?.original_name}
+					</h1>
+					<div className='banner_buttons'>
+						<Link>
+							<button className='banner_button'>Play</button>
+						</Link>
+						<Link>
+							<button
+								onClick={() => setIsOpen(true)}
+								className='banner_button'>
+								Watch Trailer
+							</button>
+						</Link>
+					</div>
+					<h1
+						style={{ color: "white" }}
+						className='banner_descriptionD'>
+						{Movie?.overview}
+					</h1>
+				</div>
+				<div className='banner-fadeBottom' />
+			</header>
+			<div style={{ height: "500px", width: "800px", position: "flex" }}>
+				<Embed id='O6Xo21L0ybE' source='youtube'>
+					<Modal>
+						<Modal.Header>Select a Photo</Modal.Header>
+						<Modal.Content video></Modal.Content>
+						<Modal.Actions></Modal.Actions>
+					</Modal>
+				</Embed>
+			</div>
+			{/* Body */}
+			<div style={{ margin: "1rem auto", marginRight: "3rem" }}>
         <Grid divided="vertically" stackable>
           <Grid.Row columns={2}>
             <Grid.Column>
