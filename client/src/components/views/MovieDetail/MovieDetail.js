@@ -10,10 +10,10 @@ import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
 import Favorite from "./Sections/Favorite";
-import { Grid, Button, Modal, Embed } from "semantic-ui-react";
+import { Grid, Button, Modal, Embed, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import YouTube from 'react-youtube';
-import movieTrailer from 'movie-trailer'
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
 //import ReactPlayer from "react-player";
 //import VideoPlayer from "../../commons/VideoPlayer";
 
@@ -21,7 +21,7 @@ const base_url = "https://image.tmdb.org/t/p/original/";
 //const youtubeUrl = "https://www.youtube.com/watch?v=";
 
 function MovieDetailPage(props) {
-	const [trailerUrl, setTrailerUrl] = useState('');
+  const [trailerUrl, setTrailerUrl] = useState("");
   useEffect(() => {
     async function fetchData() {
       // pick random movie for
@@ -95,25 +95,27 @@ function MovieDetailPage(props) {
   };
 
   const opts = {
-	  height: '500',
-	  width: '800',
-	  playerVars: {
-		  autoplay: 1,
-	  },
+    height: "500",
+    width: "800",
+    playerVars: {
+      autoplay: 1,
+    },
   };
   const handleClick = (Movie) => {
-	if (trailerUrl) {
-	setTrailerUrl('');
-	} else {
-	movieTrailer(Movie?.title || Movie?.name || Movie?.original_name)
-	.then(url => {
-	const urlParams = new URLSearchParams(new URL(url).search);
-	setTrailerUrl(urlParams.get('v'));
-	})
-	.catch((error) => console.log(error));
-	}
-	}
-	
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(Movie?.title || Movie?.name || Movie?.original_name)
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+
+  const [open, setOpen] = React.useState(false);
+
   return (
     <div style={{ paddingTop: "4rem" }}>
       <MainNavbar />
@@ -136,10 +138,27 @@ function MovieDetailPage(props) {
               <button className="banner_button">Play</button>
             </Link>
             <Link>
-              <button onClick={() => handleClick(Movie)} className="banner_button">
-                Watch Trailer
-              </button>
-			  {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+              <Modal
+                basic
+                closeIcon
+                centered
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={
+                  <button
+                    className="banner_button"
+                    onClick={() => handleClick(Movie)}
+                  >
+                    Watch Trailer
+                  </button>
+                }
+                style={{ width: "55%" }}
+              >
+                <Header style={{ justifyContent: "center" }}>
+                  {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+                </Header>
+              </Modal>
             </Link>
           </div>
           <h1 style={{ color: "white" }} className="banner_descriptionD">
