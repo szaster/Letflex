@@ -20,6 +20,9 @@ const commentSchema = mongoose.Schema(
     content: {
       type: String,
     },
+    // upvotes: { type: Number, default: 0 },
+
+    // downvotes: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
