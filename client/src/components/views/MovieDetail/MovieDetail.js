@@ -35,7 +35,6 @@ function MovieDetailPage(props) {
     }
     fetchData();
   }, []);
-  const [isOpen, setIsOpen] = useState(false);
   const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -122,11 +121,6 @@ function MovieDetailPage(props) {
       <MainNavbar />
       {/* Header */}
       <header
-        onClick={playVideo.movieId}
-        show={isOpen}
-        onHide={() => {
-          setIsOpen(false);
-        }}
         className="banner"
         style={{
           color: "white",
