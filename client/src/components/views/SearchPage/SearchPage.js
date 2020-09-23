@@ -92,7 +92,7 @@ function SearchPage() {
   return (
     <div style={{ width: "100%", margin: "0" }}>
       <MainNavbar />
-      <div style={{ width: "85%", margin: "1rem auto" }}>
+      <div style={{ width: "65%", margin: "1rem auto" }}>
         <Title level={2}> Movies by latest </Title>
         <hr />
         <Row gutter={[16, 16]}>

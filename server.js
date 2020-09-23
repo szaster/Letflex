@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  force: true,
+});
 
 const passport = require("./config/passport");
 const cookieSession = require("cookie-session");
@@ -43,16 +47,13 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-<<<<<<< HEAD
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  force: true,
-});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true,
+//   force: true,
+// });
 
-=======
->>>>>>> 9d931f799e8ac90774da7ff87f12e459b860a8f6
 // Start the API server
 app.listen(PORT, function (err) {
   if (err) throw err;
