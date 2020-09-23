@@ -1,25 +1,35 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const commentSchema = mongoose.Schema({
-    writer: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }, 
-    postId: {
-        type: String,
+const commentSchema = mongoose.Schema(
+  {
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "UserGoogle",
+      required: [true, "Reference to author is required"],
     },
-    responseTo: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+    postId: {
+      type: String,
+    },
+    // responseTo: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "UserGoogle",
+    // },
+    movieId: {
+      type: String,
+      required: [true, "Reference to movie is required"],
     },
     content: {
-        type: String
-    }
+      type: String,
+      required: [true, "Comment cannot be empty"],
+    },
+    // upvotes: { type: Number, default: 0 },
 
-}, { timestamps: true })
+    // downvotes: { type: Number, default: 0 },
+  },
+  { timestamps: true }
+);
 
+const Comment = mongoose.model("Comment", commentSchema);
 
-const Comment = mongoose.model('Comment', commentSchema);
-
-module.exports = { Comment }
+module.exports = { Comment };

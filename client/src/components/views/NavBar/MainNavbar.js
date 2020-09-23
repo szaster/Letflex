@@ -36,6 +36,9 @@ function MainNavbar(props) {
       <Menu.Item key="mail" as="a" href="/favorite">
         My Favorites
       </Menu.Item>
+      <Menu.Item key="mail" as="a" href="/about">
+        About Us
+      </Menu.Item>
 
       <Menu.Item>
         <Input

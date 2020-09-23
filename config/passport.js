@@ -20,8 +20,8 @@ passport.use(
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
         });
-        const result = await user.save();
-        return done(null, { id: user.id, name: user.displayName });
+        await user.save();
+        return done(null, { id: user.id, name: user.firstName });
       }
       return done(null, existingUser);
     }
