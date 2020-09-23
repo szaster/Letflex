@@ -6,6 +6,7 @@ const commentSchema = mongoose.Schema(
     author: {
       type: Schema.Types.ObjectId,
       ref: "UserGoogle",
+      required: [true, "Reference to author is required"],
     },
     postId: {
       type: String,
@@ -16,9 +17,11 @@ const commentSchema = mongoose.Schema(
     // },
     movieId: {
       type: String,
+      required: [true, "Reference to movie is required"],
     },
     content: {
       type: String,
+      required: [true, "Comment cannot be empty"],
     },
     // upvotes: { type: Number, default: 0 },
 
