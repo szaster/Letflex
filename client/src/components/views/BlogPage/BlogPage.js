@@ -8,7 +8,10 @@ import {
   Button,
   Segment,
   Card,
+  Input,
+  Divider,
 } from "semantic-ui-react";
+import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
 
 function Blog() {
@@ -57,10 +60,13 @@ function Blog() {
   };
 
   return (
-    <div className="jumbotron">
+    <div className="blog">
       <MainNavbar />
-      <Grid centered paded>
-        <Header size="large" style={{ color: "white", margin: "auto" }}>
+      <Grid centered paded className="bgBlog">
+        <Header
+          size="large"
+          style={{ color: "white", margin: "auto", marginTop: "3rem" }}
+        >
           {" "}
           Blogs{" "}
         </Header>
@@ -68,28 +74,48 @@ function Blog() {
       <Grid.Row centered>
         <Form>
           <Grid.Row>
-            <input
+            <Input
               onChange={(e) => setNewPostTitle(e.target.value)}
               placeholder="blog title"
-            ></input>
-            <Button inverted color="red" onClick={handlePostSubmit}>
+              style={{ minWidth: 400, marginBottom: "1rem" }}
+            ></Input>
+            <Button
+              Secondary
+              basic
+              inverted
+              color="red"
+              style={{ marginBottom: "0.9rem" }}
+              onClick={handlePostSubmit}
+            >
               Post
             </Button>
           </Grid.Row>
-          <textArea
-            onChange={(e) => setNewPostBody(e.target.value)}
-            placeholder="Write your blog here"
-            style={{ minHeight: 100 }}
-          />
+          <Grid.Row>
+            <textArea
+              onChange={(e) => setNewPostBody(e.target.value)}
+              placeholder="Write your blog here"
+              style={{ minWidth: 400, marginBottom: "1.5rem" }}
+            />
+          </Grid.Row>
         </Form>
+        <Divider />
       </Grid.Row>
-      <Grid columns={4} padded>
+      <Grid
+        columns={2}
+        paded
+        style={{ marginLeft: "9rem", marginRight: "9rem" }}
+      >
         <Grid.Row>
           {blogPosts.map((post) => {
             return (
               <Grid.Column>
-                <Card>
-                  <Card.Content>
+                <Card
+                  style={{
+                    minWidth: 600,
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  <Card.Content style={{ textAlign: "center" }}>
                     <Card.Header>{post.title}</Card.Header>
                     <Card.Description>{post.body}</Card.Description>
                     <Card.Meta>
