@@ -46,7 +46,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
 // Start the API server
 app.listen(PORT, function (err) {
   if (err) throw err;
