@@ -32,12 +32,6 @@ router.post("/", [ensureAuth], async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message }).send();
   }
-  //     Comment.find({ _id: comment._id })
-  //       .populate("author")
-  //       .exec((err, result) => {
-  //         if (err) return res.json({ success: false, err });
-  //         return res.status(200).json({ success: true, result });
-  //       });
 });
 
 module.exports = router;
