@@ -9,6 +9,7 @@ import {
   Segment,
   Card,
 } from "semantic-ui-react";
+import MainNavbar from "../NavBar/MainNavbar";
 
 function Blog() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -57,20 +58,32 @@ function Blog() {
 
   return (
     <div className="jumbotron">
+      <MainNavbar />
+      <Grid centered paded>
+        <Header size="large" style={{ color: "white", margin: "auto" }}>
+          {" "}
+          Blogs{" "}
+        </Header>
+      </Grid>
       <Grid.Row centered>
-        <input
-          onChange={(e) => setNewPostTitle(e.target.value)}
-          placeholder="Title"
-        ></input>
-        <textarea onChange={(e) => setNewPostBody(e.target.value)}>
-          Write Blog Post Here
-        </textarea>
-        <button onClick={handlePostSubmit}>Post</button>
+        <Form>
+          <Grid.Row>
+            <input
+              onChange={(e) => setNewPostTitle(e.target.value)}
+              placeholder="blog title"
+            ></input>
+            <Button inverted color="red" onClick={handlePostSubmit}>
+              Post
+            </Button>
+          </Grid.Row>
+          <textArea
+            onChange={(e) => setNewPostBody(e.target.value)}
+            placeholder="Write your blog here"
+            style={{ minHeight: 100 }}
+          />
+        </Form>
       </Grid.Row>
       <Grid columns={4} padded>
-        <Grid.Row centered>
-          <Header> Blogs </Header>
-        </Grid.Row>
         <Grid.Row>
           {blogPosts.map((post) => {
             return (
