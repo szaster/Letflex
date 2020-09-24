@@ -16,11 +16,16 @@ router.get("/", [ensureAuth], (req, res) => {
   //   res.status(501).send();
 });
 
-router.post("/", async (req, res) => {
+router.post("/", [ensureAuth], async (req, res) => {
   try {
-    const comment = new Comment(req.body);
-    const result = await comment.save();
-    console.log(result);
+    const { id } = req.user;
+    const { movieId, content } = req.body;
+    const comment = new Comment({
+      movieId,
+      content,
+      author: id,
+    });
+    await comment.save();
     res.status(200).send();
   } catch (error) {
     res.status(400).json({ message: error.message }).send();

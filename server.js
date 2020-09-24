@@ -48,16 +48,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-<<<<<<< HEAD
-// Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
-//   useUnifiedTopology: true,
-//   useNewUrlParser: true,
-//   force: true,
-// });
-
-=======
->>>>>>> 51201b2b643ad5cf41e7aea5b5ae302169b80993
 // Start the API server
 app.listen(PORT, function (err) {
   if (err) throw err;

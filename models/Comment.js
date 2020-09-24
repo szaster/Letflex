@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const commentSchema = mongoose.Schema(
   {
     author: {
-      type: Schema.Types.ObjectId,
-      ref: "UserGoogle",
+      type: String,
       required: [true, "Reference to author is required"],
     },
     postId: {
@@ -21,7 +20,7 @@ const commentSchema = mongoose.Schema(
     },
     content: {
       type: String,
-      required: [true, "Comment cannot be empty"],
+      required: [true, "Content of a comment cannot be empty"],
     },
     // upvotes: { type: Number, default: 0 },
 
