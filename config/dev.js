@@ -1,3 +1,3 @@
 module.exports = {
-    mongoURI: 'mongodb+srv://<letflex>:<letflex123>@cluster0-suj1c.mongodb.net/<dbname>?retryWrites=true&w=majority'
+    mongoURI: 'mongodb+srv://paschal1234:paschal1234@cluster1.suj1c.mongodb.net/letflex?retryWrites=true&w=majority'
 }
