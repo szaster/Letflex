@@ -14,7 +14,7 @@ const cookieSession = require("cookie-session");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: false }));
@@ -46,14 +46,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
-// Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
-//   useUnifiedTopology: true,
-//   useNewUrlParser: true,
-//   force: true,
-// });
-
 // Start the API server
 app.listen(PORT, function (err) {
   if (err) throw err;
