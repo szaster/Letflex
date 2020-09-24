@@ -36,7 +36,6 @@ app.use("/api/comment", routes.comment);
 
 // app.use("/api/favorite", routes.favorite);
 app.use("/api/blogPost", routes.blogPost);
-// app.use("/api/favorite", routes.favorite);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
