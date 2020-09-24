@@ -3,10 +3,20 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true,
+//
+// });
+
+let uri = "mongodb://localhost/letflex";
+if (process.env.NODE_ENV === "production") {
+  uri = process.env.MONGODB_URI;
+}
+
+mongoose.connect(uri, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  force: true,
 });
 
 const passport = require("./config/passport");
