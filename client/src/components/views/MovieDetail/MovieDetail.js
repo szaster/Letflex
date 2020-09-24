@@ -8,8 +8,8 @@ import { API_URL, API_KEY, requests } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
-import Favorite from "./Sections/Favorite";
-import { Grid, Button, Modal, Embed, Segment, Header } from "semantic-ui-react";
+// import Favorite from "./Sections/Favorite";
+import { Grid, Button, Modal, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
@@ -46,20 +46,20 @@ function MovieDetailPage(props) {
     movieId: movieId,
   };
 
-  useEffect(() => {
-    let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-    fetchDetailInfo(endpointForMovieInfo);
+  // useEffect(() => {
+  //   let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+  //   fetchDetailInfo(endpointForMovieInfo);
 
-    axios.post("/api/comment/getComments", movieVariable).then((response) => {
-      console.log(response);
-      if (response.data.success) {
-        console.log("response.data.comments", response.data.comments);
-        setCommentLists(response.data.comments);
-      } else {
-        alert("Failed to get comments Info");
-      }
-    });
-  }, []);
+  //   axios.post("/api/comment/getComments", movieVariable).then((response) => {
+  //     console.log(response);
+  //     if (response.data.success) {
+  //       console.log("response.data.comments", response.data.comments);
+  //       setCommentLists(response.data.comments);
+  //     } else {
+  //       alert("Failed to get comments Info");
+  //     }
+  //   });
+  // }, []);
 
   const playVideo = () => {
     setActorToggle(!ActorToggle);
