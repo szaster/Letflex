@@ -5,15 +5,17 @@ const router = express.Router();
 
 // const { User } = require("../models/User");
 
-router.get("/", [ensureAuth], (req, res) => {
-  Comment.find({ _id: comment._id })
-    .populate("author")
-    .sort({ createdAt: -1 })
-    .then((comments) => res.json(comments));
-  res.status(501).send();
-  //
-  //   const { id } = req.user;
-  //   res.status(501).send();
+router.get("/", [ensureAuth], async (req, res) => {
+  try {
+    const { movieId } = req.query;
+    const data = await Comment.find({ movieId });
+    //.populate("author")
+    //.sort({ createdAt: -1 })
+    //.then((comments) => );
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json({ message: error.message }).send();
+  }
 });
 
 router.post("/", [ensureAuth], async (req, res) => {
