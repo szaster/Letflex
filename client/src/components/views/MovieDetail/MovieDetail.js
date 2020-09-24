@@ -10,15 +10,18 @@ import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
 import Favorite from "./Sections/Favorite";
-import { Grid, Button, Modal, Embed } from "semantic-ui-react";
+import { Grid, Button, Modal, Embed, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
 //import ReactPlayer from "react-player";
 //import VideoPlayer from "../../commons/VideoPlayer";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
-const youtubeUrl = "https://www.youtube.com/watch?v=";
+//const youtubeUrl = "https://www.youtube.com/watch?v=";
 
 function MovieDetailPage(props) {
+  const [trailerUrl, setTrailerUrl] = useState("");
   useEffect(() => {
     async function fetchData() {
       // pick random movie for
@@ -32,7 +35,6 @@ function MovieDetailPage(props) {
     }
     fetchData();
   }, []);
-  const [isOpen, setIsOpen] = useState(false);
   const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -92,16 +94,33 @@ function MovieDetailPage(props) {
     setCommentLists(CommentLists.concat(newComment));
   };
 
+  const opts = {
+    height: "500",
+    width: "800",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+  const handleClick = (Movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(Movie?.title || Movie?.name || Movie?.original_name)
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+
+  const [open, setOpen] = React.useState(false);
+
   return (
     <div style={{ paddingTop: "4rem" }}>
       <MainNavbar />
       {/* Header */}
       <header
-        onClick={playVideo.movieId}
-        show={isOpen}
-        onHide={() => {
-          setIsOpen(false);
-        }}
         className="banner"
         style={{
           color: "white",
@@ -119,9 +138,27 @@ function MovieDetailPage(props) {
               <button className="banner_button">Play</button>
             </Link>
             <Link>
-              <button onClick={() => setIsOpen(true)} className="banner_button">
-                Watch Trailer
-              </button>
+              <Modal
+                basic
+                closeIcon
+                centered
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={
+                  <button
+                    className="banner_button"
+                    onClick={() => handleClick(Movie)}
+                  >
+                    Watch Trailer
+                  </button>
+                }
+                style={{ width: "55%" }}
+              >
+                <Header style={{ justifyContent: "center" }}>
+                  {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+                </Header>
+              </Modal>
             </Link>
           </div>
           <h1 style={{ color: "white" }} className="banner_descriptionD">
@@ -130,15 +167,6 @@ function MovieDetailPage(props) {
         </div>
         <div className="banner-fadeBottom" />
       </header>
-      <div style={{ height: "500px", width: "800px", position: "flex" }}>
-        <Embed id="O6Xo21L0ybE" source="youtube">
-          <Modal>
-            <Modal.Header>Select a Photo</Modal.Header>
-            <Modal.Content video></Modal.Content>
-            <Modal.Actions></Modal.Actions>
-          </Modal>
-        </Embed>
-      </div>
       {/* Body */}
       <div style={{ margin: "1rem auto", marginRight: "3rem" }}>
         <Grid divided="vertically" stackable>
@@ -194,7 +222,7 @@ function MovieDetailPage(props) {
       </div>
       <Credits
         title="CASTS"
-        fetchUrl={`/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US&page=1`}
+        fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
       />
       <Row
         title="SIMILAR MOVIES"
