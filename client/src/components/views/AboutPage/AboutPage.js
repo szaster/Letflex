@@ -9,6 +9,8 @@ import {
   Segment,
   Divider,
   Header,
+  Link,
+  Menu,
 } from "semantic-ui-react";
 import "./AboutPage.css";
 import IntroNavbar from "../NavBar/IntroNavbar";
@@ -18,9 +20,63 @@ function About() {
     <div>
       <IntroNavbar />
       <Grid centered className="bgAbout" padded>
-        <Header size="large" style={{ color: "white", margin: "auto" }}>
-          Watch & Relax with LETFLEX!
-        </Header>
+        <br />
+        <Transition
+          transitionOnMount="true"
+          animation="fly right"
+          duration="2000"
+        >
+          <Header
+            classname="letflex"
+            style={{
+              color: "#E50914",
+              fontSize: "3.5rem",
+              fontFamily: "Roboto",
+              fontWeight: "bold",
+              textShadow: "2px 2px 2px darkslategray",
+            }}
+          >
+            Netflix
+          </Header>
+        </Transition>
+        <Transition
+          transitionOnMount="true"
+          animation="fly down"
+          duration="2000"
+        >
+          <Header
+            classname="letflex"
+            style={{
+              color: "#E50914",
+              fontSize: "3.5rem",
+              fontFamily: "Roboto",
+
+              fontWeight: "bold",
+              textShadow: "2px 2px 2px darkslategray",
+            }}
+          >
+            or
+          </Header>
+        </Transition>
+        <Transition
+          transitionOnMount="true"
+          animation="fly left"
+          duration="2000"
+        >
+          <Header
+            classname="letflex"
+            style={{
+              color: "#E50914",
+              fontSize: "3.5rem",
+              fontFamily: "Roboto",
+
+              fontWeight: "bold",
+              textShadow: "2px 2px 2px darkslategray",
+            }}
+          >
+            Letflex?
+          </Header>
+        </Transition>
         <Grid.Row>
           <Segment inverted padded style={{ width: "70%" }} size="large">
             <p>
@@ -95,8 +151,19 @@ function About() {
                 <Rating icon="star" defaultRating={5} maxRating={5} disabled />
               </Card.Content>
               <Card.Content className="socialAbout">
-                View More: <Icon name="github" size="big" />
-                <Icon name="linkedin" color="blue" size="big" />
+                View More:{" "}
+                <Menu.Item
+                  target="_blank"
+                  href="https://github.com/paschalihenacho"
+                >
+                  <Icon name="github" size="big" inverted />
+                </Menu.Item>
+                <Menu.Item
+                  target="_blank"
+                  href="https://www.linkedin.com/in/paschal-ihenacho/"
+                >
+                  <Icon name="linkedin" color="blue" size="big" />
+                </Menu.Item>
               </Card.Content>
             </Card>
             <Card
@@ -139,8 +206,16 @@ function About() {
                 <Rating icon="star" defaultRating={5} maxRating={5} disabled />
               </Card.Content>
               <Card.Content className="socialAbout">
-                View More: <Icon name="github" size="big" />
-                <Icon name="linkedin" color="blue" size="big" />
+                View More:{" "}
+                <Menu.Item target="_blank" href="https://github.com/Creyes17e">
+                  <Icon name="github" size="big" inverted />
+                </Menu.Item>
+                <Menu.Item
+                  target="_blank"
+                  href="https://www.linkedin.com/in/carina-reyes-21b6701a2/"
+                >
+                  <Icon name="linkedin" color="blue" size="big" />
+                </Menu.Item>
               </Card.Content>
             </Card>
             <Card
@@ -182,8 +257,19 @@ function About() {
                 <Rating icon="star" defaultRating={5} maxRating={5} disabled />
               </Card.Content>
               <Card.Content className="socialAbout">
-                View More: <Icon name="github" size="big" />
-                <Icon name="linkedin" color="blue" size="big" />
+                View More:{" "}
+                <Menu.Item
+                  target="_blank"
+                  href="https://github.com/szasterhttps://github.com/szaster"
+                >
+                  <Icon name="github" size="big" inverted />
+                </Menu.Item>
+                <Menu.Item
+                  target="_blank"
+                  href="https://www.linkedin.com/in/svitlana-zaster-77a9a06b/"
+                >
+                  <Icon name="linkedin" color="blue" size="big" />
+                </Menu.Item>
               </Card.Content>
             </Card>
             <Card
@@ -231,8 +317,16 @@ function About() {
                 <Rating icon="star" defaultRating={5} maxRating={5} disabled />
               </Card.Content>
               <Card.Content className="socialAbout">
-                View More: <Icon name="github" size="big" />
-                <Icon name="linkedin" color="blue" size="big" />
+                View More:{" "}
+                <Menu.Item target="_blank" href="https://github.com/lisasosa">
+                  <Icon name="github" size="big" inverted />
+                </Menu.Item>
+                <Menu.Item
+                  target="_blank"
+                  href="https://www.linkedin.com/in/elizabeth-sosa-43977a58/"
+                >
+                  <Icon name="linkedin" color="blue" size="big" />
+                </Menu.Item>
               </Card.Content>
             </Card>
           </Card.Group>
