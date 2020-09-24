@@ -3,7 +3,6 @@ import axios from "axios";
 import Row from "../../commons/Row";
 import Credits from "../../commons/Credits";
 import "../../commons/Row.css";
-import Comments from "./Sections/Comments";
 import LikeDislikes from "./Sections/LikeDislikes";
 import { API_URL, API_KEY, requests } from "../../Config";
 import GridCards from "../../commons/GridCards";
@@ -14,6 +13,7 @@ import { Grid, Button, Modal, Embed, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+import MovieComments from "../MovieComments";
 //import ReactPlayer from "react-player";
 //import VideoPlayer from "../../commons/VideoPlayer";
 
@@ -202,12 +202,7 @@ function MovieDetailPage(props) {
             </Grid.Column>
             <Grid.Column>
               {/* Comments */}
-              <Comments
-                movieTitle={Movie.original_title}
-                CommentLists={CommentLists}
-                postId={movieId}
-                refreshFunction={updateComment}
-              />
+              <MovieComments movieId={movieId} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
