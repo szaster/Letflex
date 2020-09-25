@@ -4,7 +4,7 @@ import Row from "../../commons/Row";
 // import Credits from "../../commons/Credits";
 import "../../commons/Row.css";
 import LikeDislikes from "./Sections/LikeDislikes";
-import { API_URL, API_KEY, requests, fetchCasts,} from "../../Config";
+import { API_URL, API_KEY, requests, fetchCasts } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
@@ -24,8 +24,8 @@ const base_url = "https://image.tmdb.org/t/p/original/";
 function MovieDetailPage(props, match, title, c) {
   const [trailerUrl, setTrailerUrl] = useState("");
 
-   const movieId = props.match.params.movieId;
-   let params = match.params;
+  const movieId = props.match.params.movieId;
+  let params = match.params;
   // const movieId = props.match.params.creditId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -119,7 +119,9 @@ function MovieDetailPage(props, match, title, c) {
   };
 
   const [open, setOpen] = React.useState(false);
-  function refreshPage(){window.parent.location = window.parent.location.href; }
+  function refreshPage() {
+    window.parent.location = window.parent.location.href;
+  }
   return (
     <div style={{ paddingTop: "4rem" }}>
       <MainNavbar />
@@ -185,7 +187,7 @@ function MovieDetailPage(props, match, title, c) {
             </Grid.Column>
             <Grid.Column>
               {/* Comments */}
-              <MovieComments movieId={"abcd"} />
+              <MovieComments movieId={movieId} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -199,37 +201,37 @@ function MovieDetailPage(props, match, title, c) {
         </div>
       </div>
       <div>
-      <h2 className="row">Casts</h2>
-      <div className="row_posters">
-      {Casts.map((c, i) => (
-      <div className="col-md-2 text-center" key={i}>
-        <Link exact to={`/credits/${c.id}`}>
-        <img
-          className="img-fluid rounded-circle mx-auto d-block"
-          src={c.img}
-          // alt={c.name}
-        ></img>
-        <p className="font  -weight-bold text-center">{c.name}</p>
-        <p
-          className="font-weight-light text-center"
-          style={{ color: "#fff" }}
-        >
-          {`Character: ${c.character}`}
-        </p>
-        </Link>
+        <h2 className="row">Casts</h2>
+        <div className="row_posters">
+          {Casts.map((c, i) => (
+            <div className="col-md-2 text-center" key={i}>
+              <Link exact to={`/credits/${c.id}`}>
+                <img
+                  className="img-fluid rounded-circle mx-auto d-block"
+                  src={c.img}
+                  // alt={c.name}
+                ></img>
+                <p className="font  -weight-bold text-center">{c.name}</p>
+                <p
+                  className="font-weight-light text-center"
+                  style={{ color: "#fff" }}
+                >
+                  {`Character: ${c.character}`}
+                </p>
+              </Link>
+            </div>
+          ))}
+          ;
+        </div>
       </div>
-    
-      ))};
-      </div>
-      </div>
-      <Link onClick={() => refreshPage()}
-      fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}>
-      <Row
-      
-        title="SIMILAR MOVIES"
-        fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
-        
-      />
+      <Link
+        onClick={() => refreshPage()}
+        fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}
+      >
+        <Row
+          title="SIMILAR MOVIES"
+          fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
+        />
       </Link>
     </div>
   );

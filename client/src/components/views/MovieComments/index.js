@@ -1,7 +1,7 @@
 import React from "react";
 import Comments from "./Comments";
 import { connect } from "react-redux";
-import { loadComments } from "../../../_actions/comments";
+import { loadComments, postComment } from "../../../_actions/comments";
 
 class MovieComments extends React.Component {
   componentDidMount() {
@@ -11,7 +11,14 @@ class MovieComments extends React.Component {
   componentWillUnmount() {}
 
   render() {
-    return <Comments comments={this.props.comments.data} />;
+    return (
+      <Comments
+        comments={this.props.comments.data}
+        postComment={(content) =>
+          this.props.postComment({ content, movieId: this.props.movieId })
+        }
+      />
+    );
   }
 }
 
@@ -24,6 +31,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     loadComments: (movieId) => dispatch(loadComments(movieId)),
+    postComment: (commentData) => dispatch(postComment(commentData)),
   };
 }
 

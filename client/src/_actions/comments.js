@@ -15,3 +15,15 @@ async function loadCommentsAndSetIfSuccess(dispatch, movieId) {
 }
 export const loadComments = (movieId) => (dispatch) =>
   loadCommentsAndSetIfSuccess(dispatch, movieId);
+
+async function postCommentAndSetIfSuccess(dispatch, commentData) {
+  try {
+    const comments = await axios.post(`/api/comment`, commentData);
+    //dispatch(setComments({ data: commentData, movieId }));
+    console.log("comments data", commentData);
+  } catch (e) {
+    console.log(e);
+  }
+}
+export const postComment = (commentData) => (dispatch) =>
+  postCommentAndSetIfSuccess(dispatch, commentData);
