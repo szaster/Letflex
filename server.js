@@ -35,6 +35,7 @@ app.use("/api/user", routes.user);
 app.use("/api/comment", routes.comment);
 
 // app.use("/api/favorite", routes.favorite);
+app.use("/api/comment", routes.comment);
 app.use("/api/blogPost", routes.blogPost);
 
 // Serve up static assets (usually on heroku)

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import { Input, Typography, } from 'antd';
 //import axios from 'axios';
 //import { useSelector } from 'react-redux';
@@ -21,6 +21,21 @@ import {
 // const { Title } = Typography;
 
 function Comments(props) {
+  console.log(props.CommentLists);
+  // const [comments, setComments] = useState([]);
+
+  // var fetchComments = () => {
+  //   fetch(`/api/comments/getComments/${movieId}`)
+  //     .then((resp) => resp.json())
+  //     .then((respJson) => {
+  //       console.log(respJson);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   fetchComments();
+  // });
+
   // const user = useSelector(state => state.user)
   // const [Comment, setComment] = useState("")
 
