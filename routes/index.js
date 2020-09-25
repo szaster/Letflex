@@ -3,7 +3,7 @@ const user = require("./user");
 const comment = require("./comment");
 const auth = require("./auth");
 const blogPost = require("./blogPost");
-const comment = require("./commentsNew");
+const commentsNew = require("./commentsNew");
 
 // module.exports = { user, favorite, auth, blogPost };
 module.exports = { auth, blogPost, user, comment };
