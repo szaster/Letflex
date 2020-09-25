@@ -206,14 +206,14 @@ function MovieDetailPage(props, match, title) {
       <h2 className="row">Casts</h2>
       <div className="row_posters">
       {Casts.map((c, i) => (
-      <div className="col-md-3 text-center" key={i}>
+      <div className="col-md-2 text-center" key={i}>
         <Link to={`/credits/${c.id}`}>
         <img
           className="img-fluid rounded-circle mx-auto d-block"
           src={c.img}
           alt={c.name}
         ></img>
-        {/* <p className="font      -weight-bold text-center">{c.name}</p> */}
+        <p className="font  -weight-bold text-center">{c.name}</p>
         <p
           className="font-weight-light text-center"
           style={{ color: "#5a606b" }}
