@@ -1,18 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { Typography, Row, Button } from "antd";
-import {
-  API_URL,
-  API_KEY,
-  IMAGE_BASE_URL,
-  IMAGE_SIZE,
-  POSTER_SIZE,
-} from "../../Config";
-
-import GridCard from "../../commons/GridCards";
+import { Card, Divider, Header } from "semantic-ui-react";
+import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../Config";
 import MainNavbar from "../NavBar/MainNavbar";
-
-const { Title } = Typography;
 
 function SearchPage() {
   const buttonRef = useRef(null);
@@ -20,7 +10,6 @@ function SearchPage() {
   let q = new URLSearchParams(location.search).get("q");
   const [Query, setQuery] = useState(q);
   const [Movies, setMovies] = useState([]);
-  const [MainMovieImage, setMainMovieImage] = useState(null);
   const [Loading, setLoading] = useState(true);
   const [CurrentPage, setCurrentPage] = useState(0);
 
@@ -31,7 +20,6 @@ function SearchPage() {
   }
 
   useEffect(() => {
-    // https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
     const endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${Query}`;
     fetchMovies(endpoint);
   }, [Query]);
@@ -47,11 +35,7 @@ function SearchPage() {
     fetch(endpoint)
       .then((result) => result.json())
       .then((result) => {
-        // console.log(result)
-        // console.log('Movies',...Movies)
-        // console.log('result',...result.results)
         setMovies([...Movies, ...result.results]);
-
         setCurrentPage(result.page);
       }, setLoading(false))
       .catch((error) => console.error("Error:", error));
@@ -83,43 +67,50 @@ function SearchPage() {
     );
     const windowBottom = windowHeight + window.pageYOffset;
     if (windowBottom >= docHeight - 1) {
-      // loadMoreItems()
       console.log("clicked");
       buttonRef.current.click();
     }
   };
 
   return (
-    <div style={{ width: "100%", margin: "0" }}>
+    <div style={{ margin: "7rem" }}>
       <MainNavbar />
-      <div style={{ width: "65%", margin: "1rem auto" }}>
-        <Title level={2}> Movies by latest </Title>
-        <hr />
-        <Row gutter={[16, 16]}>
-          {Movies &&
-            Movies.map((movie, index) => (
-              <React.Fragment key={index}>
-                <GridCard
-                  image={
-                    movie.poster_path
-                      ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-                      : null
-                  }
-                  movieId={movie.id}
-                  movieName={movie.original_title}
-                />
-              </React.Fragment>
-            ))}
-        </Row>
 
-        {Loading && <div>Loading...</div>}
+      <Header size="huge" style={{ color: "white" }}>
+        {" "}
+        Results for "{Query}"
+      </Header>
+      <Divider />
+      <Card.Group columns={4} stackable centered>
+        {Movies &&
+          Movies.map((movie, index) => (
+            <React.Fragment key={index}>
+              <Card
+                style={{
+                  backgroundColor: "black",
+                  margin: "1rem",
+                }}
+                image={
+                  movie.poster_path ? (
+                    `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                  ) : (
+                    <img src="https://via.placeholder.com/450" />
+                  )
+                }
+                movieId={movie.id}
+                movieName={movie.original_title}
+              />
+            </React.Fragment>
+          ))}
+      </Card.Group>
 
-        <br />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button ref={buttonRef} className="loadMore" onClick={loadMoreItems}>
-            Load More
-          </button>
-        </div>
+      {Loading && <div>Loading...</div>}
+
+      <br />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button ref={buttonRef} className="loadMore" onClick={loadMoreItems}>
+          Load More
+        </button>
       </div>
     </div>
   );
