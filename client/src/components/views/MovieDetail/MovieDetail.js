@@ -21,7 +21,7 @@ import ReactDOM from "react-dom";
 const base_url = "https://image.tmdb.org/t/p/original/";
 //const youtubeUrl = "https://www.youtube.com/watch?v=";
 
-function MovieDetailPage(props, match, title) {
+function MovieDetailPage(props, match, title, c) {
   const [trailerUrl, setTrailerUrl] = useState("");
 
    const movieId = props.match.params.movieId;
@@ -203,7 +203,7 @@ function MovieDetailPage(props, match, title) {
           />
         </div>
       </div>
-      
+      <div>
       <h2 className="row">Casts</h2>
       <div className="row_posters">
       {Casts.map((c, i) => (
@@ -226,14 +226,16 @@ function MovieDetailPage(props, match, title) {
     
       ))};
       </div>
-      
-      <Link onClick={() => refreshPage()}> </Link>
+      </div>
+      <Link onClick={() => refreshPage()}
+      fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}>
       <Row
       
         title="SIMILAR MOVIES"
         fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
+        
       />
-     
+      </Link>
     </div>
   );
 }
