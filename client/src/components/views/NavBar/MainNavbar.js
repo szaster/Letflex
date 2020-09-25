@@ -41,7 +41,7 @@ function MainNavbar(props) {
         <Input
           className="icon"
           icon="search"
-          placeholder="Search..."
+          placeholder="Search Movies"
           onKeyDown={handleSearchSubmit}
         />
       </Menu.Item>
