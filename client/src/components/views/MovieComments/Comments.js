@@ -23,7 +23,13 @@ import {
 function formatDate(date) {
   const d = new Date(date);
   const formattedDate =
-    d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
+    d.toLocaleTimeString() +
+    "-" +
+    d.getDate() +
+    "-" +
+    (d.getMonth() + 1) +
+    "-" +
+    d.getFullYear();
   return formattedDate;
 }
 
