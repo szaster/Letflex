@@ -13,6 +13,7 @@ import {
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
+import CKEditor from 'ckeditor4-react';
 
 function Blog() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -97,12 +98,14 @@ function Blog() {
             </Button>
           </Grid.Row>
           <Grid.Row>
-            <textArea
+          {/* <CKEditor */}
+             <textArea
               onChange={(e) => setNewPostBody(e.target.value)}
               placeholder="Write your blog here"
               value={newPostBody}
               style={{ minWidth: 400, marginBottom: "1.5rem" }}
             />
+            {/* /> */}
           </Grid.Row>
         </Form>
         <Divider />

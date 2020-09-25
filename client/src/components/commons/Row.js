@@ -18,6 +18,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
     fetchData();
   }, [fetchUrl]);
+  
 
   return (
     <div>
@@ -25,8 +26,9 @@ function Row({ title, fetchUrl, isLargeRow }) {
       <div className="row_posters">
         {/* several row_poster(s) */}
         {movies && movies.map((movie, index) => (
-           <Link to={`/movie/${movie.id}`}>
+           <Link exact to={`/movie/${movie.id}`}>
           <img
+          
             // giving each movie an IDs
             key={index}
             className={`row_poster ${isLargeRow && 'row_posterLarge'}`}
