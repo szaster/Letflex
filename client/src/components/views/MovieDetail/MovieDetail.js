@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Row from "../../commons/Row";
-import Credits from "../../commons/Credits";
+// import Credits from "../../commons/Credits";
 import "../../commons/Row.css";
 import Comments from "./Sections/Comments";
 import LikeDislikes from "./Sections/LikeDislikes";
-import { API_URL, API_KEY, requests } from "../../Config";
+import { API_URL, API_KEY, requests, fetchCasts,} from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
@@ -20,8 +20,29 @@ import movieTrailer from "movie-trailer";
 const base_url = "https://image.tmdb.org/t/p/original/";
 //const youtubeUrl = "https://www.youtube.com/watch?v=";
 
-function MovieDetailPage(props) {
+function MovieDetailPage(props, match, title) {
   const [trailerUrl, setTrailerUrl] = useState("");
+
+   const movieId = props.match.params.movieId;
+   let params = match.params;
+  // const movieId = props.match.params.creditId;
+  const [Movie, setMovie] = useState([]);
+  const [Casts, setCasts] = useState([]);
+  const [CommentLists, setCommentLists] = useState([]);
+  const [LoadingForMovie, setLoadingForMovie] = useState(true);
+  const [LoadingForCasts, setLoadingForCasts] = useState(true);
+  const movieVariable = {
+    movieId: movieId,
+  };
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      setCasts(await fetchCasts(movieId));
+    };
+
+    fetchAPI();
+  }, [movieId]);
+
   useEffect(() => {
     async function fetchData() {
       // pick random movie for
@@ -35,16 +56,6 @@ function MovieDetailPage(props) {
     }
     fetchData();
   }, []);
-  const movieId = props.match.params.movieId;
-  const [Movie, setMovie] = useState([]);
-  const [Casts, setCasts] = useState([]);
-  const [CommentLists, setCommentLists] = useState([]);
-  const [LoadingForMovie, setLoadingForMovie] = useState(true);
-  const [LoadingForCasts, setLoadingForCasts] = useState(true);
-  const [ActorToggle, setActorToggle] = useState(false);
-  const movieVariable = {
-    movieId: movieId,
-  };
 
   useEffect(() => {
     let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
@@ -60,14 +71,6 @@ function MovieDetailPage(props) {
       }
     });
   }, []);
-
-  const playVideo = () => {
-    setActorToggle(!ActorToggle);
-  };
-
-  const toggleActorView = () => {
-    setActorToggle(!ActorToggle);
-  };
 
   const fetchDetailInfo = (endpoint) => {
     fetch(endpoint)
@@ -178,27 +181,6 @@ function MovieDetailPage(props) {
               ) : (
                 <div>loading...</div>
               )}
-
-              {/* Actors Grid*/}
-              <Button onClick={toggleActorView}>Toggle Actor View </Button>
-              {ActorToggle && (
-                <Row gutter={[16, 16]}>
-                  {!LoadingForCasts ? (
-                    Casts.map(
-                      (cast, index) =>
-                        cast.profile_path && (
-                          <GridCards
-                            actor
-                            image={cast.profile_path}
-                            characterName={cast.characterName}
-                          />
-                        )
-                    )
-                  ) : (
-                    <div>loading...</div>
-                  )}
-                </Row>
-              )}
             </Grid.Column>
             <Grid.Column>
               {/* Comments */}
@@ -220,10 +202,29 @@ function MovieDetailPage(props) {
           />
         </div>
       </div>
-      <Credits
-        title="CASTS"
-        fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
-      />
+      
+      <h2 className="row">Casts</h2>
+      <div className="row_posters">
+      {Casts.map((c, i) => (
+      <div className="col-md-3 text-center" key={i}>
+        <Link to={`/credits/${c.id}`}>
+        <img
+          className="img-fluid rounded-circle mx-auto d-block"
+          src={c.img}
+          alt={c.name}
+        ></img>
+        {/* <p className="font      -weight-bold text-center">{c.name}</p> */}
+        <p
+          className="font-weight-light text-center"
+          style={{ color: "#5a606b" }}
+        >
+          {`Character: ${c.character}`}
+        </p>
+        </Link>
+      </div>
+    
+      ))};
+      </div>
       <Row
         title="SIMILAR MOVIES"
         fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
