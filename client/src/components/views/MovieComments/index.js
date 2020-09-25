@@ -14,9 +14,9 @@ class MovieComments extends React.Component {
     return (
       <Comments
         comments={this.props.comments.data}
-        postComment={(content) =>
-          this.props.postComment({ content, movieId: this.props.movieId })
-        }
+        postComment={(content) => {
+          this.props.postComment({ content, movieId: this.props.movieId });
+        }}
       />
     );
   }

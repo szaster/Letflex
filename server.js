@@ -3,18 +3,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
-//   useUnifiedTopology: true,
-//   useNewUrlParser: true,
-//
-// });
-
-let uri = "mongodb://localhost/letflex";
-if (process.env.NODE_ENV === "production") {
-  uri = process.env.MONGODB_URI;
-}
-
-mongoose.connect(uri, {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
