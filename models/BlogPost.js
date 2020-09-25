@@ -6,7 +6,7 @@ const blogPostSchema = new mongoose.Schema(
   {
     author: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "UserGoogle",
     },
     postId: {
       type: String,
