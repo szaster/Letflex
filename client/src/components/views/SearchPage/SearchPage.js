@@ -3,7 +3,9 @@ import { useLocation } from "react-router-dom";
 import { Card, Divider, Header } from "semantic-ui-react";
 import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../Config";
 import MainNavbar from "../NavBar/MainNavbar";
+import { Link } from "react-router-dom";
 
+const base_url = "https://image.tmdb.org/t/p/original/";
 function SearchPage() {
   const buttonRef = useRef(null);
   const location = useLocation();
@@ -84,22 +86,27 @@ function SearchPage() {
       <Card.Group columns={4} stackable centered>
         {Movies &&
           Movies.map((movie, index) => (
-            <React.Fragment key={index}>
+            <React.Fragment >
+               <Link to={`/movie/${movie.id}`}>
               <Card
+              key={index}
                 style={{
                   backgroundColor: "black",
                   margin: "1rem",
                 }}
                 image={
                   movie.poster_path ? (
-                    `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                     `${base_url}${ movie.poster_path || "https://via.placeholder.com/450" }`
                   ) : (
-                    <img src="https://via.placeholder.com/450" />
+                    <img 
+                    src={`${base_url}${ movie.poster_path || "https://via.placeholder.com/450" }`} 
+                    alt={movie.name}/>
                   )
                 }
                 movieId={movie.id}
                 movieName={movie.original_title}
               />
+              </Link>
             </React.Fragment>
           ))}
       </Card.Group>
