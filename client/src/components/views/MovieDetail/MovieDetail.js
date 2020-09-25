@@ -14,6 +14,7 @@ import { Grid, Button, Modal, Embed, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+import ReactDOM from "react-dom";
 //import ReactPlayer from "react-player";
 //import VideoPlayer from "../../commons/VideoPlayer";
 
@@ -118,7 +119,7 @@ function MovieDetailPage(props, match, title) {
   };
 
   const [open, setOpen] = React.useState(false);
-
+  function refreshPage(){window.parent.location = window.parent.location.href; }
   return (
     <div style={{ paddingTop: "4rem" }}>
       <MainNavbar />
@@ -207,7 +208,7 @@ function MovieDetailPage(props, match, title) {
       <div className="row_posters">
       {Casts.map((c, i) => (
       <div className="col-md-2 text-center" key={i}>
-        <Link to={`/credits/${c.id}`}>
+        <Link exact to={`/credits/${c.id}`}>
         <img
           className="img-fluid rounded-circle mx-auto d-block"
           src={c.img}
@@ -225,10 +226,14 @@ function MovieDetailPage(props, match, title) {
     
       ))};
       </div>
+      
+      <Link onClick={() => refreshPage()}> </Link>
       <Row
+      
         title="SIMILAR MOVIES"
         fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
       />
+     
     </div>
   );
 }
