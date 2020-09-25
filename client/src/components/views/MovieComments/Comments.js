@@ -20,8 +20,15 @@ import {
 // const { TextArea } = Input;
 // const { Title } = Typography;
 
+function formatDate(date) {
+  const d = new Date(date);
+  const formattedDate =
+    d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
+  return formattedDate;
+}
+
 function Comments(props) {
-  console.log(props.CommentLists);
+  console.log("Comments props", props);
   // const [comments, setComments] = useState([]);
 
   // var fetchComments = () => {
@@ -71,12 +78,28 @@ function Comments(props) {
   return (
     <div>
       <Segment inverted>
-        <Comment.Group threaded>
+        {/* <Comment.Group threaded> */}
+        <Comment.Group>
           <Header as="h3" dividing style={{ color: "white" }}>
             Comments
           </Header>
-
-          <Comment>
+          {props.comments.map((comment) => (
+            <Comment>
+              <Comment.Avatar as="a" src={comment.author.image} />
+              <Comment.Content>
+                <Comment.Author as="a" style={{ color: "white" }}>
+                  {comment.author.displayName}
+                </Comment.Author>
+                <Comment.Metadata style={{ color: "white" }}>
+                  <span>{formatDate(comment.createdAt)}</span>
+                </Comment.Metadata>
+                <Comment.Text style={{ color: "white" }}>
+                  {comment.content}
+                </Comment.Text>
+              </Comment.Content>
+            </Comment>
+          ))}
+          {/* <Comment>
             <Comment.Avatar
               as="a"
               src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"
@@ -95,8 +118,8 @@ function Comments(props) {
                 Reply
               </Comment.Actions>
             </Comment.Content>
-          </Comment>
-
+          </Comment> */}
+          {/* 
           <Comment>
             <Comment.Avatar
               as="a"
@@ -162,8 +185,8 @@ function Comments(props) {
                 Reply
               </Comment.Actions>
             </Comment.Content>
-          </Comment>
-
+          </Comment> */}
+          {/* 
           <Form reply>
             <Form.TextArea />
             <Button
@@ -172,7 +195,7 @@ function Comments(props) {
               icon="edit"
               primary
             />
-          </Form>
+          </Form> */}
         </Comment.Group>
       </Segment>
     </div>

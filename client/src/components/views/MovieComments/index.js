@@ -11,8 +11,7 @@ class MovieComments extends React.Component {
   componentWillUnmount() {}
 
   render() {
-    console.log("Props of MovieComment", this.props);
-    return <Comments />;
+    return <Comments comments={this.props.comments.data} />;
   }
 }
 
