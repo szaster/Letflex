@@ -211,12 +211,12 @@ function MovieDetailPage(props, match, title) {
         <img
           className="img-fluid rounded-circle mx-auto d-block"
           src={c.img}
-          alt={c.name}
+          // alt={c.name}
         ></img>
         <p className="font  -weight-bold text-center">{c.name}</p>
         <p
           className="font-weight-light text-center"
-          style={{ color: "#5a606b" }}
+          style={{ color: "#fff" }}
         >
           {`Character: ${c.character}`}
         </p>
