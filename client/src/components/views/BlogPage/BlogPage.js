@@ -57,6 +57,8 @@ function Blog() {
     })
       .then((res) => res.json())
       .then((res) => {
+        setNewPostBody("");
+        setNewPostTitle("");
         fetchPosts();
       });
   };
@@ -78,6 +80,7 @@ function Blog() {
         <Form>
           <Grid.Row>
             <Input
+              value={newPostTitle}
               onChange={(e) => setNewPostTitle(e.target.value)}
               placeholder="blog title"
               style={{ minWidth: 400, marginBottom: "1rem" }}
@@ -97,6 +100,7 @@ function Blog() {
             <textArea
               onChange={(e) => setNewPostBody(e.target.value)}
               placeholder="Write your blog here"
+              value={newPostBody}
               style={{ minWidth: 400, marginBottom: "1.5rem" }}
             />
           </Grid.Row>
