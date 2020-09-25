@@ -202,7 +202,7 @@ function MovieDetailPage(props) {
             </Grid.Column>
             <Grid.Column>
               {/* Comments */}
-              <MovieComments movieId={movieId} />
+              <MovieComments movieId={"abcd"} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
