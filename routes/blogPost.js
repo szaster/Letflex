@@ -15,6 +15,16 @@ router.get("/getBlogPosts", (req, res) => {
   });
 });
 
+router.delete("/deleteBlogPost/:id", (req, res) => {
+  BlogPost.findByIdAndDelete(req.params.id, function (err) {
+    if (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
+    res.status(200).json({ success: true });
+  });
+});
+
 router.post("/newBlogPosts", (req, res) => {
   // console.log(req.user);
   // console.log(req.body);

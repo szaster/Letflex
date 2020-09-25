@@ -19,24 +19,30 @@ function Blog() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setNewPostBody] = useState("");
 
-  useEffect(() => {
+  var fetchPosts = () => {
     fetch("/api/blogPost/getBlogPosts")
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
         setBlogPosts(res.blogPosts);
       });
+  };
+  useEffect(() => {
+    fetchPosts();
   }, []);
 
-  useEffect(() => {
-    // fetch("/api/blogPost/newBlogPosts", {
-    //   method: "POST",
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
-  }, []);
+  var handlePostDelete = (postID) => {
+    fetch(`/api/blogPost/deleteBlogPost/${postID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        fetchPosts();
+      });
+  };
 
   var handlePostSubmit = (e) => {
     fetch("/api/blogPost/newBlogPosts", {
@@ -51,13 +57,11 @@ function Blog() {
     })
       .then((res) => res.json())
       .then((res) => {
-        fetch("/api/blogPost/getBlogPosts")
-          .then((res) => res.json())
-          .then((res) => {
-            setBlogPosts(res.blogPosts);
-          });
+        fetchPosts();
       });
   };
+
+  var handlePostEdit = (postID) => {};
 
   return (
     <div className="blog">
@@ -67,8 +71,7 @@ function Blog() {
           size="large"
           style={{ color: "white", margin: "auto", marginTop: "3rem" }}
         >
-          {" "}
-          Blogs{" "}
+          Blogs
         </Header>
       </Grid>
       <Grid.Row centered>
@@ -102,7 +105,7 @@ function Blog() {
       </Grid.Row>
       <Grid
         columns={2}
-        paded
+        padded
         style={{ marginLeft: "9rem", marginRight: "9rem" }}
       >
         <Grid.Row>
@@ -121,6 +124,16 @@ function Blog() {
                     <Card.Meta>
                       <span>{post.author}</span>
                       <span>{post.category}</span>
+                      <span>
+                        <button onClick={(e) => handlePostDelete(post._id)}>
+                          Delete
+                        </button>
+                      </span>
+                      <span>
+                        <button onClick={(e) => handlePostEdit(post._id)}>
+                          Edit
+                        </button>
+                      </span>
                     </Card.Meta>
                   </Card.Content>
                 </Card>
