@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const commentSchema = mongoose.Schema(
   {
     author: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "UserGoogle",
       required: [true, "Reference to author is required"],
     },
     postId: {

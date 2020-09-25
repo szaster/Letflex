@@ -9,16 +9,11 @@ import SearchPage from "./views/SearchPage/SearchPage.js";
 import BlogPostPage from "./views/BlogPostPage/BlogPostPage.js";
 import "./App.css";
 
-import "./App.css";
 import Footer from "./views/Footer/Footer";
 import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 import { fetchUser } from "../_actions/authActions";
-
-//null   Anyone Can go inside
-//true   only logged in user can go inside
-//false  logged in user can't go inside
 
 class App extends React.Component {
   componentDidMount() {
