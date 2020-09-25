@@ -32,6 +32,8 @@ app.use(passport.session());
 
 app.use("/api/auth", routes.auth);
 app.use("/api/user", routes.user);
+app.use("/api/comment", routes.comment);
+
 // app.use("/api/favorite", routes.favorite);
 app.use("/api/comment", routes.comment);
 app.use("/api/blogPost", routes.blogPost);
@@ -40,9 +42,7 @@ app.use("/api/blogPost", routes.blogPost);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
-  // app.use("/api/favorite", routes.favorite);
-
-  // index.html for all page routes    html or routing and naviagtion
+  // index.html for all page routes   html or routing and naviagtion
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Input, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import Welcome from "../Welcome";
@@ -45,9 +45,7 @@ function MainNavbar(props) {
           onKeyDown={handleSearchSubmit}
         />
       </Menu.Item>
-      <Menu.Item key="mail" as="a" href="api/auth/logout">
-        Logout
-      </Menu.Item>
+
       <Menu.Item position="right">
         <Welcome />
       </Menu.Item>

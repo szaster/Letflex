@@ -2,8 +2,7 @@ import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./views/LandingPage/LandingPage.js";
-import LoginPage from "./views/LoginPage/LoginPage.js";
-import RegisterPage from "./views/RegisterPage/RegisterPage.js";
+
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import HomePage from "./views/HomePage/HomePage.js";
 import SearchPage from "./views/SearchPage/SearchPage.js";
@@ -30,16 +29,14 @@ class App extends React.Component {
   render() {
     return (
       <Suspense fallback={<div>Loading...</div>}>
-        {/* <NavBar /> */}
         <div className="appBackground">
           {this.props.auth.isAuthenticated ? (
             <Switch>
               <Route exact path="/" component={LandingPage} />
-              <Route exact path="/login" component={LoginPage} />
-              <Route exact path="/register" component={RegisterPage} />
               <Route exact path="/blogs" component={BlogPage} />
               <Route exact path="/blogspost" component={BlogPostPage} />
-              {/*<Route exact path="/moviedetails" component={MovieDetail} />*/}
+              <Route exact path="/about" component={AboutPage} />
+              {/* <Route exact path="/moviedetails" component={MovieDetail} /> */}
               <Route exact path="/search" component={SearchPage} />
               <Route exact path="/movie/:movieId" component={MovieDetail} />
               <Route exact path="/favorite" component={FavoritePage} />
