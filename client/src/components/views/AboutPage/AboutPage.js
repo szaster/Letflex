@@ -9,7 +9,6 @@ import {
   Segment,
   Divider,
   Header,
-  Link,
   Menu,
 } from "semantic-ui-react";
 import "./AboutPage.css";
@@ -27,7 +26,7 @@ function About() {
           duration="2000"
         >
           <Header
-            classname="letflex"
+            className="letflex"
             style={{
               color: "#E50914",
               fontSize: "3.5rem",

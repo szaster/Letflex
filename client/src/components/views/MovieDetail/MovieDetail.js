@@ -3,18 +3,18 @@ import axios from "axios";
 import Row from "../../commons/Row";
 // import Credits from "../../commons/Credits";
 import "../../commons/Row.css";
-import Comments from "./Sections/Comments";
 import LikeDislikes from "./Sections/LikeDislikes";
-import { API_URL, API_KEY, requests, fetchCasts,} from "../../Config";
+import { API_URL, API_KEY, requests, fetchCasts } from "../../Config";
 import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
-import Favorite from "./Sections/Favorite";
-import { Grid, Button, Modal, Embed, Segment, Header } from "semantic-ui-react";
+// import Favorite from "./Sections/Favorite";
+import { Grid, Button, Modal, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import ReactDOM from "react-dom";
+import MovieComments from "../MovieComments";
 //import ReactPlayer from "react-player";
 //import VideoPlayer from "../../commons/VideoPlayer";
 
@@ -24,8 +24,8 @@ const base_url = "https://image.tmdb.org/t/p/original/";
 function MovieDetailPage(props, match, title, c) {
   const [trailerUrl, setTrailerUrl] = useState("");
 
-   const movieId = props.match.params.movieId;
-   let params = match.params;
+  const movieId = props.match.params.movieId;
+  let params = match.params;
   // const movieId = props.match.params.creditId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -119,7 +119,9 @@ function MovieDetailPage(props, match, title, c) {
   };
 
   const [open, setOpen] = React.useState(false);
-  function refreshPage(){window.parent.location = window.parent.location.href; }
+  function refreshPage() {
+    window.parent.location = window.parent.location.href;
+  }
   return (
     <div style={{ paddingTop: "4rem" }}>
       <MainNavbar />
@@ -185,12 +187,7 @@ function MovieDetailPage(props, match, title, c) {
             </Grid.Column>
             <Grid.Column>
               {/* Comments */}
-              <Comments
-                movieTitle={Movie.original_title}
-                CommentLists={CommentLists}
-                postId={movieId}
-                refreshFunction={updateComment}
-              />
+              <MovieComments movieId={movieId} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -204,37 +201,37 @@ function MovieDetailPage(props, match, title, c) {
         </div>
       </div>
       <div>
-      <h2 className="row">Casts</h2>
-      <div className="row_posters">
-      {Casts.map((c, i) => (
-      <div className="col-md-2 text-center" key={i}>
-        <Link exact to={`/credits/${c.id}`}>
-        <img
-          className="img-fluid rounded-circle mx-auto d-block"
-          src={c.img}
-          // alt={c.name}
-        ></img>
-        <p className="font  -weight-bold text-center">{c.name}</p>
-        <p
-          className="font-weight-light text-center"
-          style={{ color: "#fff" }}
-        >
-          {`Character: ${c.character}`}
-        </p>
-        </Link>
+        <h2 className="row">Casts</h2>
+        <div className="row_posters">
+          {Casts.map((c, i) => (
+            <div className="col-md-2 text-center" key={i}>
+              <Link exact to={`/credits/${c.id}`}>
+                <img
+                  className="img-fluid rounded-circle mx-auto d-block"
+                  src={c.img}
+                  // alt={c.name}
+                ></img>
+                <p className="font  -weight-bold text-center">{c.name}</p>
+                <p
+                  className="font-weight-light text-center"
+                  style={{ color: "#fff" }}
+                >
+                  {`Character: ${c.character}`}
+                </p>
+              </Link>
+            </div>
+          ))}
+          ;
+        </div>
       </div>
-    
-      ))};
-      </div>
-      </div>
-      <Link onClick={() => refreshPage()}
-      fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}>
-      <Row
-      
-        title="SIMILAR MOVIES"
-        fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
-        
-      />
+      <Link
+        onClick={() => refreshPage()}
+        fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}
+      >
+        <Row
+          title="SIMILAR MOVIES"
+          fetchUrl={`/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`}
+        />
       </Link>
     </div>
   );
