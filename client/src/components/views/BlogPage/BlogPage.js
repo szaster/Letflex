@@ -1,5 +1,6 @@
 import { use } from "passport";
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import {
   Header,
   Grid,
@@ -10,12 +11,22 @@ import {
   Card,
   Input,
   Divider,
+  Image,
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
-import CKEditor from 'ckeditor4-react';
+import CKEditor from "ckeditor4-react";
 
-function Blog() {
+import { connect } from "react-redux";
+
+function formatDate(date) {
+  const d = new Date(date);
+  const formattedDate = `${d.toLocaleDateString()}    ${d.toLocaleTimeString()}`;
+
+  return formattedDate;
+}
+
+function BlogPage(props) {
   const [blogPosts, setBlogPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setNewPostBody] = useState("");
@@ -58,9 +69,9 @@ function Blog() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setNewPostBody("");
-        setNewPostTitle("");
         fetchPosts();
+        setNewPostTitle("");
+        setNewPostBody("");
       });
   };
 
@@ -86,6 +97,7 @@ function Blog() {
               placeholder="blog title"
               style={{ minWidth: 400, marginBottom: "1rem" }}
             ></Input>
+
             <Button
               Secondary
               basic
@@ -97,18 +109,16 @@ function Blog() {
               Post
             </Button>
           </Grid.Row>
+
           <Grid.Row>
-          {/* <CKEditor */}
-             <textArea
+            <textarea
+              value={newPostBody}
               onChange={(e) => setNewPostBody(e.target.value)}
               placeholder="Write your blog here"
-              value={newPostBody}
               style={{ minWidth: 400, marginBottom: "1.5rem" }}
-            />
-            {/* /> */}
+            ></textarea>
           </Grid.Row>
         </Form>
-        <Divider />
       </Grid.Row>
       <Grid
         columns={2}
@@ -126,20 +136,35 @@ function Blog() {
                   }}
                 >
                   <Card.Content style={{ textAlign: "center" }}>
+                    <span>
+                      <Image
+                        src={post.author.image}
+                        size="mini"
+                        floated="left"
+                      />
+                    </span>
                     <Card.Header>{post.title}</Card.Header>
                     <Card.Description>{post.body}</Card.Description>
-                    <Card.Meta>
-                      <span>{post.author}</span>
-                      <span>{post.category}</span>
-                      <span>
-                        <button onClick={(e) => handlePostDelete(post._id)}>
-                          Delete
-                        </button>
+                    <Card.Meta floated="left">
+                      <span>Posted by: {post.author.displayName}</span>
+                      <span style={{ textAlign: "right" }}>
+                        On{" "}
+                        {moment(post.createdAt)
+                          .startOf("ms")
+                          .fromNow(post.createdAt)}{" "}
+                        ago
                       </span>
                       <span>
-                        <button onClick={(e) => handlePostEdit(post._id)}>
-                          Edit
-                        </button>
+                        {props.user.id == post.author.id && (
+                          <Form.Button
+                            basic
+                            color="black"
+                            content="black"
+                            onClick={(e) => handlePostDelete(post._id)}
+                          >
+                            Delete blog
+                          </Form.Button>
+                        )}
                       </span>
                     </Card.Meta>
                   </Card.Content>
@@ -152,5 +177,13 @@ function Blog() {
     </div>
   );
 }
+// Function that maps full Redux store (state) to the props of
+// Welcome component
+function mapStatesToProps(state) {
+  return {
+    user: state.auth.user,
+  };
+}
 
-export default Blog;
+// Connecting component to redux state
+export default connect(mapStatesToProps)(BlogPage);

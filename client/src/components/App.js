@@ -6,7 +6,6 @@ import LandingPage from "./views/LandingPage/LandingPage.js";
 import AboutPage from "./views/AboutPage/AboutPage.js";
 import HomePage from "./views/HomePage/HomePage.js";
 import SearchPage from "./views/SearchPage/SearchPage.js";
-import BlogPostPage from "./views/BlogPostPage/BlogPostPage.js";
 import "./App.css";
 
 import Footer from "./views/Footer/Footer";
@@ -29,9 +28,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={LandingPage} />
               <Route exact path="/blogs" component={BlogPage} />
-              <Route exact path="/blogspost" component={BlogPostPage} />
               <Route exact path="/about" component={AboutPage} />
-              {/* <Route exact path="/moviedetails" component={MovieDetail} /> */}
               <Route exact path="/search" component={SearchPage} />
               <Route exact path="/movie/:movieId" component={MovieDetail} />
               <Route exact path="/favorite" component={FavoritePage} />
