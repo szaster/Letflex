@@ -3,11 +3,22 @@ import React, { useEffect, useState } from "react";
 
 import Row from "../../commons/Row";
 import Banner from "../../commons/Banner";
-import { requests } from "../../Config";
+import { API_URL, API_KEY, requests, fetchPersons } from "../../Config";
 import MainNavbar from "../NavBar/MainNavbar";
-//import { Row } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
+
+  const [persons, setPersons] = useState([]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      setPersons(await fetchPersons());
+    };
+
+    fetchAPI();
+  }, []);
+
   return (
     <div className="">
       <MainNavbar />
@@ -28,7 +39,30 @@ function LandingPage() {
         <Row title="HORROR MOVIES" fetchUrl={requests.fetchHorrorMovies} />
         <Row title="ROMANCE MOVIES" fetchUrl={requests.fetchRomanceMovies} />
         <Row title="DOCUMENTARIES" fetchUrl={requests.fetchDocumentaries} />
+        <div>
+        <h2 className="row">Trending People</h2>
+        <div className="row_posters">
+        {persons.map((p, i) => (
+      <div className="col-md-3 text-center" key={i}>
+        <Link exact to={`/credits/${p.id}`}>
+        <img
+          className="img-fluid rounded-circle mx-auto d-block"
+          src={p.profileImg}
+          alt={p.name}
+        />
+        <p className="font-weight-bold text-center">{p.name}</p>
+        <p
+          className="font-weight-light text-center"
+          style={{ color: "#5a606b" }}
+        >
+          Trending for {p.known}
+        </p>
+        </Link>
       </div>
+  ))}
+  </div>
+      </div>
+    </div>
     </div>
   );
 }
