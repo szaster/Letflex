@@ -9,7 +9,7 @@ class Welcome extends React.Component {
       <span>
         <Image
           floated="left"
-          avatar="true"
+          avatar
           src={this.props.user.image}
           style={{ margin: ".5rem auto" }}
         />
