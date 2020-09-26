@@ -4,18 +4,14 @@ import moment from "moment";
 import {
   Header,
   Grid,
-  Comment,
   Form,
   Button,
-  Segment,
   Card,
   Input,
-  Divider,
   Image,
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
-import CKEditor from "ckeditor4-react";
 
 import { connect } from "react-redux";
 
@@ -74,8 +70,6 @@ function BlogPage(props) {
         setNewPostBody("");
       });
   };
-
-  var handlePostEdit = (postID) => {};
 
   return (
     <div className="blog">
@@ -148,7 +142,6 @@ function BlogPage(props) {
                     <Card.Meta floated="left">
                       <span>Posted by: {post.author.displayName}</span>
                       <span style={{ textAlign: "right" }}>
-                        On{" "}
                         {moment(post.createdAt)
                           .startOf("ms")
                           .fromNow(post.createdAt)}{" "}
@@ -177,8 +170,7 @@ function BlogPage(props) {
     </div>
   );
 }
-// Function that maps full Redux store (state) to the props of
-// Welcome component
+
 function mapStatesToProps(state) {
   return {
     user: state.auth.user,
