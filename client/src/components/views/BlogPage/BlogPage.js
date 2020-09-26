@@ -1,5 +1,6 @@
 import { use } from "passport";
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import {
   Header,
   Grid,
@@ -147,7 +148,11 @@ function BlogPage(props) {
                     <Card.Meta floated="left">
                       <span>Posted by: {post.author.displayName}</span>
                       <span style={{ textAlign: "right" }}>
-                        On {formatDate(post.createdAt)}
+                        On{" "}
+                        {moment(post.createdAt)
+                          .startOf("ms")
+                          .fromNow(post.createdAt)}{" "}
+                        ago
                       </span>
                       <span>
                         {props.user.id == post.author.id && (

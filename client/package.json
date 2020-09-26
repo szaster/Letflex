@@ -9,7 +9,7 @@
     "axios": "^0.18.0",
     "ckeditor4-react": "^1.2.0",
     "formik": "^1.5.8",
-    "moment": "^2.27.0",
+    "moment": "^2.29.0",
     "movie-trailer": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
