@@ -35,6 +35,7 @@
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.4",
+    "connect-mongo": "^3.2.0",
     "movie-trailer": "^2.0.6",
     "npm": "^6.14.8",
     "passport": "^0.4.1",

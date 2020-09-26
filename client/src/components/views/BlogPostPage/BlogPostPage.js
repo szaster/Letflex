@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Grid, Comment, Form, Button } from "semantic-ui-react";
+import CKEditor from 'ckeditor4-react';
 
 function Blog() {
   var comments = [

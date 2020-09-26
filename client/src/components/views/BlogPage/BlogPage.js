@@ -13,6 +13,7 @@ import {
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
+import CKEditor from "ckeditor4-react";
 
 import { connect } from "react-redux";
 

@@ -6,7 +6,6 @@ const routes = require("./routes");
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/letflex", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  force: true,
 });
 
 const passport = require("./config/passport");
@@ -35,7 +34,7 @@ app.use("/api/user", routes.user);
 app.use("/api/comment", routes.comment);
 
 // app.use("/api/favorite", routes.favorite);
-app.use("/api/comment", routes.comment);
+// app.use("/api/comment", routes.comment);
 app.use("/api/blogPost", routes.blogPost);
 
 // Serve up static assets (usually on heroku)
