@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Comment, Form, Header, Segment } from "semantic-ui-react";
-import moment from 'moment'
+import moment from "moment";
 
 function formatDate(date) {
   const d = new Date(date);
@@ -12,7 +12,6 @@ function formatDate(date) {
     (d.getMonth() + 1) +
     "-" +
     d.getFullYear();
-    
 
   return formattedDate;
 }
@@ -44,7 +43,12 @@ class Comments extends React.Component {
                   {comment.author.displayName}
                 </Comment.Author>
                 <Comment.Metadata style={{ color: "white" }}>
-                  <span>{moment(comment.createdAt).startOf('ms').fromNow(comment.createdAt)} ago</span>
+                  <span>
+                    {moment(comment.createdAt)
+                      .startOf("ms")
+                      .fromNow(comment.createdAt)}{" "}
+                    ago
+                  </span>
                 </Comment.Metadata>
                 <Comment.Text style={{ color: "white" }}>
                   {comment.content}

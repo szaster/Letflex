@@ -11,14 +11,13 @@ const blogPostSchema = new mongoose.Schema(
     postId: {
       type: String,
     },
+    avatar: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,
     },
-    category: {
-      type: String,
-    },
-
     body: {
       type: String,
     },

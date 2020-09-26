@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Row from "../../commons/Row";
-// import Credits from "../../commons/Credits";
 import "../../commons/Row.css";
-import LikeDislikes from "./Sections/LikeDislikes";
+// import LikeDislikes from "./Sections/LikeDislikes";
 import { API_URL, API_KEY, requests, fetchCasts } from "../../Config";
-import GridCards from "../../commons/GridCards";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
-// import Favorite from "./Sections/Favorite";
-import { Grid, Button, Modal, Header } from "semantic-ui-react";
+import { Grid, Modal, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import ReactDOM from "react-dom";
 import MovieComments from "../MovieComments";
-//import ReactPlayer from "react-player";
-//import VideoPlayer from "../../commons/VideoPlayer";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
-//const youtubeUrl = "https://www.youtube.com/watch?v=";
 
-function MovieDetailPage(props, match, title, c) {
+function MovieDetailPage(props, c) {
   const [trailerUrl, setTrailerUrl] = useState("");
 
   const movieId = props.match.params.movieId;
-  let params = match.params;
-  // const movieId = props.match.params.creditId;
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
   const [CommentLists, setCommentLists] = useState([]);
   const [LoadingForMovie, setLoadingForMovie] = useState(true);
-  const [LoadingForCasts, setLoadingForCasts] = useState(true);
   const movieVariable = {
     movieId: movieId,
   };
@@ -63,9 +53,7 @@ function MovieDetailPage(props, match, title, c) {
     fetchDetailInfo(endpointForMovieInfo);
 
     axios.post("/api/comment/getComments", movieVariable).then((response) => {
-      console.log(response);
       if (response.data.success) {
-        console.log("response.data.comments", response.data.comments);
         setCommentLists(response.data.comments);
       } else {
         alert("Failed to get comments Info");
@@ -77,25 +65,10 @@ function MovieDetailPage(props, match, title, c) {
     fetch(endpoint)
       .then((result) => result.json())
       .then((result) => {
-        console.log(result);
         setMovie(result);
         setLoadingForMovie(false);
-
-        let endpointForCasts = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
-        fetch(endpointForCasts)
-          .then((result) => result.json())
-          .then((result) => {
-            console.log(result);
-            setCasts(result.cast);
-          });
-
-        setLoadingForCasts(false);
       })
       .catch((error) => console.error("Error:", error));
-  };
-
-  const updateComment = (newComment) => {
-    setCommentLists(CommentLists.concat(newComment));
   };
 
   const opts = {
@@ -114,11 +87,12 @@ function MovieDetailPage(props, match, title, c) {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.error("Error:", error));
     }
   };
 
   const [open, setOpen] = React.useState(false);
+
   function refreshPage() {
     window.parent.location = window.parent.location.href;
   }
@@ -191,14 +165,14 @@ function MovieDetailPage(props, match, title, c) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-
+        {/* 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <LikeDislikes
             video
             videoId={movieId}
             userId={localStorage.getItem("userId")}
           />
-        </div>
+        </div> */}
       </div>
       <div>
         <h2 className="row">Casts</h2>
@@ -209,8 +183,9 @@ function MovieDetailPage(props, match, title, c) {
                 <img
                   className="img-fluid rounded-circle mx-auto d-block"
                   src={c.img}
-                  // alt={c.name}
-                ></img>
+                  alt="cast image"
+                />
+
                 <p className="font  -weight-bold text-center">{c.name}</p>
                 <p
                   className="font-weight-light text-center"
@@ -224,9 +199,10 @@ function MovieDetailPage(props, match, title, c) {
           ;
         </div>
       </div>
+
       <Link
-        onClick={() => refreshPage()}
         fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}
+        onClick={() => refreshPage()}
       >
         <Row
           title="SIMILAR MOVIES"

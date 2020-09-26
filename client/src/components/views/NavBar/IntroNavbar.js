@@ -19,7 +19,7 @@ class IntroNavbar extends Component {
           active={activeItem === "intro"}
           onClick={this.handleItemClick}
         >
-          <img class="ui small image" src="../logo.png" alt="logo"></img>
+          <img className="ui small image" src="../logo.png" alt="logo"></img>
         </Menu.Item>
         <Menu.Item
           as={Link}
