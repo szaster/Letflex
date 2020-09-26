@@ -2,6 +2,13 @@ import React from "react";
 import { Input, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import Welcome from "../Welcome";
+// const { Media } = createMedia({
+//   breakpoints: {
+//     mobile: 0,
+//     tablet: 768,
+//     computer: 1024,
+//   },
+// });
 
 function MainNavbar(props) {
   let history = useHistory();
@@ -17,24 +24,26 @@ function MainNavbar(props) {
       history.replace(path);
     }
   };
+
   return (
     <Menu
+      stackable
       inverted
       fixed={"top"}
       style={{ backgroundColor: "black" }}
       mode={props.mode}
     >
       <Menu.Item as="a" href="/">
-        <img class="ui small image" src="../logo.png" alt="logo"></img>
+        <img className="ui small image" src="../logo.png" alt="logo"></img>
       </Menu.Item>
-      <Menu.Item key="mail" as="a" href="/">
+      <Menu.Item as="a" href="/">
         Home
       </Menu.Item>
-      <Menu.Item key="mail" as="a" href="/blogs">
+      <Menu.Item as="a" href="/blogs">
         Blogs
       </Menu.Item>
-      <Menu.Item key="mail" as="a" href="/favorite">
-        My Favorites
+      <Menu.Item as="a" href="/favorite">
+        My List
       </Menu.Item>
 
       <Menu.Item>
