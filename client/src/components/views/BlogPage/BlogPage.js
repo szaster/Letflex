@@ -14,7 +14,9 @@ import {
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
 
-function Blog() {
+import { connect } from "react-redux";
+
+function BlogPage(props) {
   const [blogPosts, setBlogPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setNewPostBody] = useState("");
@@ -57,9 +59,9 @@ function Blog() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setNewPostBody("");
-        setNewPostTitle("");
         fetchPosts();
+        setNewPostTitle("");
+        setNewPostBody("");
       });
   };
 
@@ -85,6 +87,7 @@ function Blog() {
               placeholder="blog title"
               style={{ minWidth: 400, marginBottom: "1rem" }}
             ></Input>
+
             <Button
               Secondary
               basic
@@ -96,16 +99,16 @@ function Blog() {
               Post
             </Button>
           </Grid.Row>
+
           <Grid.Row>
-            <textArea
+            <textarea
+              value={newPostBody}
               onChange={(e) => setNewPostBody(e.target.value)}
               placeholder="Write your blog here"
-              value={newPostBody}
               style={{ minWidth: 400, marginBottom: "1.5rem" }}
-            />
+            ></textarea>
           </Grid.Row>
         </Form>
-        <Divider />
       </Grid.Row>
       <Grid
         columns={2}
@@ -126,17 +129,18 @@ function Blog() {
                     <Card.Header>{post.title}</Card.Header>
                     <Card.Description>{post.body}</Card.Description>
                     <Card.Meta>
-                      <span>{post.author}</span>
-                      <span>{post.category}</span>
+                      <span>{post.author.displayName}</span>
                       <span>
-                        <button onClick={(e) => handlePostDelete(post._id)}>
-                          Delete
-                        </button>
-                      </span>
-                      <span>
-                        <button onClick={(e) => handlePostEdit(post._id)}>
-                          Edit
-                        </button>
+                        {props.user.id == post.author.id && (
+                          <Form.Button
+                            basic
+                            color="black"
+                            content="black"
+                            onClick={(e) => handlePostDelete(post._id)}
+                          >
+                            Delete blog
+                          </Form.Button>
+                        )}
                       </span>
                     </Card.Meta>
                   </Card.Content>
@@ -149,5 +153,13 @@ function Blog() {
     </div>
   );
 }
+// Function that maps full Redux store (state) to the props of
+// Welcome component
+function mapStatesToProps(state) {
+  return {
+    user: state.auth.user,
+  };
+}
 
-export default Blog;
+// Connecting component to redux state
+export default connect(mapStatesToProps)(BlogPage);
