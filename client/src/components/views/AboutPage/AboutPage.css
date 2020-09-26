@@ -1,6 +1,7 @@
 .bgAbout {
   padding-top: 6rem !important;
   padding-bottom: 5rem !important;
+  background-color: #111;
 }
 .imageAbout {
   border: 8px solid transparent;

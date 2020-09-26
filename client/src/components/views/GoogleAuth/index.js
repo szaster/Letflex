@@ -8,7 +8,7 @@ class GoogleAuth extends React.Component {
     return (
       <div>
         <Grid className="googleBtnWrapper" centered>
-          <Segment inverted size="massive" padded>
+          <Segment style={{ backgroundColor: "black" }} size="massive" padded>
             <Button
               as="a"
               href="/api/auth/google"

@@ -1,27 +1,10 @@
 import React from "react";
-import { Image, Label, Dropdown, Divider, Item } from "semantic-ui-react";
+import { Image, Dropdown, Item } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 
 class Welcome extends React.Component {
   render() {
-    //     const trigger = [
-    // {
-    //   key:"Welcome",
-    //   text:{"Welcome," + "  " + this.props.user.firstName},
-    //   image:{floated="left", avatar="true", src={this.props.user.image}}
-    // }
-
-    //     ]
-
-    // const options = [
-    // {
-    //   key:"Welcome",
-    //   text:{"Welcome," + "  " + this.props.user.firstName},
-    //   image:{floated="left", avatar="true", src={this.props.user.image},
-    // },
-
-    //     ]
     const trigger = (
       <span>
         <Image
@@ -30,7 +13,6 @@ class Welcome extends React.Component {
           src={this.props.user.image}
           style={{ margin: ".5rem auto" }}
         />
-
         <Item>{"Welcome," + " " + this.props.user.firstName}</Item>
       </span>
     );
@@ -53,12 +35,6 @@ class Welcome extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-
-      // <Label style={{ backgroundColor: "black" }} image size="large">
-      //
-      //   <Label.Detail>Welcome,</Label.Detail>
-      //   {"  " + this.props.user.firstName}
-      // </Label>
     );
   }
 }

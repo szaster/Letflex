@@ -77,7 +77,11 @@ function About() {
           </Header>
         </Transition>
         <Grid.Row>
-          <Segment inverted padded style={{ width: "70%" }} size="large">
+          <Segment
+            padded
+            style={{ width: "70%", backgroundColor: "black" }}
+            size="large"
+          >
             <p>
               Our Netflix clone app will allow users to sign up in the app or
               login directly via their google account plus features!
@@ -111,7 +115,7 @@ function About() {
             <Card
               className="our-team"
               style={{
-                backgroundColor: "rgb(34, 34, 34,0.856)",
+                backgroundColor: "black",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -168,7 +172,7 @@ function About() {
             <Card
               fluid
               style={{
-                backgroundColor: "rgb(34, 34, 34,0.856)",
+                backgroundColor: "black",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -219,7 +223,7 @@ function About() {
             </Card>
             <Card
               style={{
-                backgroundColor: "rgb(34, 34, 34,0.856)",
+                backgroundColor: "black",
                 color: "white",
                 width: "auto",
                 padding: "1rem",
@@ -257,10 +261,7 @@ function About() {
               </Card.Content>
               <Card.Content className="socialAbout">
                 View More:{" "}
-                <Menu.Item
-                  target="_blank"
-                  href="https://github.com/szasterhttps://github.com/szaster"
-                >
+                <Menu.Item target="_blank" href="https://github.com/szaster">
                   <Icon name="github" size="big" inverted />
                 </Menu.Item>
                 <Menu.Item
@@ -274,7 +275,7 @@ function About() {
             <Card
               className="our-team"
               style={{
-                backgroundColor: "rgb(34, 34, 34,0.856)",
+                backgroundColor: "black",
                 color: "white",
                 width: "auto",
                 padding: "1rem",

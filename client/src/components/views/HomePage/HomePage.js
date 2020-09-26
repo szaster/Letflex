@@ -9,7 +9,7 @@ function HomePage() {
     <div>
       <IntroNavbar />
       <Grid centered>
-        <Container className="bgHome">
+        <Container fluid className="bgHome">
           <GoogleAuth />
         </Container>
       </Grid>
