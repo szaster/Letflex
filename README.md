@@ -2,32 +2,38 @@
 
 ## Live Site:
 
-[Letflex](www.netflix.com)
-
+[Letflex](https://letflex.herokuapp.com/)
 
 ## Description
 
-Our Netflix clone app will allow users to sign up in the app or login directly via their google account. The user will then have the option to search films, shows, etc. using the name or keywords. The app will then display relevant results. It will also contain a filter option, where you can search content based on genre. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watch-list. Our app will also have a rate and review feature, where the user can comment on a specific video and other users can view and comment on it, reactions will also be incorporated.
+Our Netflix clone app will allow users to login directly via their google account. The user will then have the option to search films and shows using the name or keywords. The app will then display relevant results. User will be able to watch movie trailers. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watch-list. This application has a review feature where the user can comment on a specific movie.
+
+## Future development
+
+Add a filter option, where you can search content based on genre. Our app will also have a rate and review feature, reactions will also be incorporated.
 
 ## GIF/Image
 
-<!-- ![site image](./public/assets/img/introimg.JPG)
-![site image](./public/assets/img/dashboardimg.JPG)
-![site image](./public/assets/img/addimg.JPG)
-![site image](./public/assets/img/publicimg.JPG) -->
+![site image](./client/src/assets/images/landing.png)
+![site image](./client/src/assets/images/trailer.png)
+
+<!--![site image]()
+![site image]()
+![site image]() -->
 
 ## Table of Contents
 
 - [Letflex](#letflex)
-  - [Live Site](#live-site)
+  - [Live Site:](#live-site)
   - [Description](#description)
+  - [Future development](#future-development)
   - [GIF/Image](#gifimage)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Tech Stack](#tech-stack)
   - [Usage](#usage)
   - [Collaborators](#collaborators)
-  - [Future-Development](#future-development)
+  - [Future-Development](#future-development-1)
   - [Credits](#credits)
   - [License](#license)
   - [Tests](#tests)
@@ -56,13 +62,11 @@ Run the application with a command npm start in a terminal.
 - [Carina](https://github.com/Creyes17e)
 - [Paschal](https://github.com/paschalihenacho)
 - [Svitlana](https://github.com/szaster)
+- [Elizabeth](https://github.com/lisasosa)
 
 ## Future-Development
 
-
-
 ## Credits
-
 
 ## License
 
@@ -79,3 +83,6 @@ If you have any questions you can reach us by clicking below.
 - [Carina](https://github.com/Creyes17e)
 - [Paschal](https://github.com/paschalihenacho)
 - [Svitlana](https://github.com/szaster)
+- [Elizabeth](https://github.com/lisasosa)
+
+You also can file an [issue](https://github.com/paschalihenacho/Letflex/issues) if you find a bug.

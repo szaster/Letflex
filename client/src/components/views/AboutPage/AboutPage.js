@@ -261,10 +261,7 @@ function About() {
               </Card.Content>
               <Card.Content className="socialAbout">
                 View More:{" "}
-                <Menu.Item
-                  target="_blank"
-                  href="https://github.com/szasterhttps://github.com/szaster"
-                >
+                <Menu.Item target="_blank" href="https://github.com/szaster">
                   <Icon name="github" size="big" inverted />
                 </Menu.Item>
                 <Menu.Item
