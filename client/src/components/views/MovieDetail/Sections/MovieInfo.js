@@ -1,20 +1,20 @@
 import React from "react";
-import { Segment, Label, Item, Divider, Icon } from "semantic-ui-react";
+import { Segment, Label, Item, Divider } from "semantic-ui-react";
 import Favorite from "./Favorite";
 import LikeDislikes from "./LikeDislikes";
 
 function MovieInfo(props) {
-  //const [casts, setCasts] = useState([]);
-  const { movie, credit } = props;
-  // const castList = casts.slice(0, 4).map((c, i) => {
+  const { movie } = props;
 
-  // });
   return (
     <Segment inverted size="massive">
       <Item>
         <Item.Content>
-          <Item.Header as="h3" style={{ color: "white" }}>
-            More Details..
+          <Item.Header
+            as="h1"
+            style={{ color: "yellow ", textAlign: "center" }}
+          >
+            {movie.title}
           </Item.Header>
           <div>
             <Favorite />
@@ -23,26 +23,72 @@ function MovieInfo(props) {
           <div>
             <LikeDislikes />
           </div>
-          <Item.Description as="h4" style={{ color: "white" }}>
-            Title: {movie.title}
-          </Item.Description>
-          <Divider />
-          <Item.Description as="h4" style={{ color: "white" }}>
-            Actors:
-          </Item.Description>
-          <Divider />
-          <Item.Description as="h4" style={{ color: "white" }}>
-            Crew:
-          </Item.Description>
           <Divider />
           <Item.Extra>
-            <Label style={{color: 'rgb(244, 193, 15)'}} color="grey">Release Date: { movie.release_date}</Label>
-            <Label color="grey">Revenue: {movie.revenue}</Label>
-            <Label color="grey">Runtime: {movie.runtime}</Label>
-            <Label color="grey">Vote Average: {movie.vote_average}</Label>
-            <Label color="grey">Vote Count: {movie.vote_count}</Label>
-            <Label color="grey">Status: {movie.status}</Label>
-            <Label color="grey">Popularity: {movie.popularity}</Label>
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Release Date:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.release_date}
+              </Label.Detail>
+            </Label>
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Revenue:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.revenue}
+              </Label.Detail>
+            </Label>
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Runtime:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.runtime}
+              </Label.Detail>
+            </Label>
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Vote Average:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.vote_average}
+              </Label.Detail>
+            </Label>
+            <Divider />
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Vote Count:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.vote_count}
+              </Label.Detail>
+            </Label>
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Status:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.status}
+              </Label.Detail>
+            </Label>
+            <Label
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+            >
+              Popularity:
+              <Label.Detail style={{ color: "yellow" }}>
+                {movie.popularity}
+              </Label.Detail>
+            </Label>
           </Item.Extra>
         </Item.Content>
       </Item>
