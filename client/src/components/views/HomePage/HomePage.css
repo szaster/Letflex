@@ -1,8 +1,8 @@
 .bgHome {
   background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/70731dc8-8977-4ed7-9a0a-421f510aea00/d285670e-5522-41a2-a61c-22efd7fb2e6e/US-en-20200914-popsignuptwoweeks-perspective_alpha_website_small.jpg");
-  background-size: cover;
   background-repeat: no-repeat;
-  height: 50rem;
-  width: 130rem !important;
+  background-size: cover;
+  background-position: center;
+  height: 60rem;
   opacity: 0.8;
 }
