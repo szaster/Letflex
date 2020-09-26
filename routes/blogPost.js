@@ -30,8 +30,9 @@ router.post("/newBlogPosts", [ensureAuth], (req, res) => {
   const blog = new BlogPost({
     author: req.user,
     title: req.body.title,
-    category: "category",
     body: req.body.body,
+    date: req.createdAt,
+    avatar: req.user.avatar,
   });
 
   blog.save((err, blogpost) => {

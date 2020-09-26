@@ -10,12 +10,20 @@ import {
   Card,
   Input,
   Divider,
+  Image,
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
 import CKEditor from "ckeditor4-react";
 
 import { connect } from "react-redux";
+
+function formatDate(date) {
+  const d = new Date(date);
+  const formattedDate = `${d.toLocaleDateString()}    ${d.toLocaleTimeString()}`;
+
+  return formattedDate;
+}
 
 function BlogPage(props) {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -127,10 +135,20 @@ function BlogPage(props) {
                   }}
                 >
                   <Card.Content style={{ textAlign: "center" }}>
+                    <span>
+                      <Image
+                        src={post.author.image}
+                        size="mini"
+                        floated="left"
+                      />
+                    </span>
                     <Card.Header>{post.title}</Card.Header>
                     <Card.Description>{post.body}</Card.Description>
-                    <Card.Meta>
-                      <span>{post.author.displayName}</span>
+                    <Card.Meta floated="left">
+                      <span>Posted by: {post.author.displayName}</span>
+                      <span style={{ textAlign: "right" }}>
+                        On {formatDate(post.createdAt)}
+                      </span>
                       <span>
                         {props.user.id == post.author.id && (
                           <Form.Button
