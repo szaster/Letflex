@@ -14,7 +14,7 @@ export const IMAGE_SIZE = "w1280";
 
 export const fetchPersons = async () => {
   try {
-      const { data } = await axios.get(personUrl, {
+      const { data } = await axios.get(personsUrl, {
           params: {
               api_key: apiKey
           }
@@ -29,6 +29,35 @@ export const fetchPersons = async () => {
       return modifiedData;
   } catch (error) { }
 }
+
+export const fetchPerson = async (id) => {
+    try {
+        const { data } = await axios.get(`${personUrl}/${id}`, {
+            params: {
+                api_key: apiKey,
+                language: 'en-US'
+            }
+        })
+        const modifiedData = data['results'].map((p) => ({
+            birthday: p['birthday'],
+            known_for_department: p['known_for_department'],
+            deathday: p['deathday'],
+            id: p['id'],
+            popularity: p['popularity'],
+            name: p['name'],
+            also_known_as: p['also_known_as'],
+            gender: p['gender'],
+            place_of_birth: p['place_of_birth'],
+            biography: p['biography'],
+            profileImg: 'https://image.tmdb.org/t/p/w200' + p['profile_path'],
+            known: p['known_for_department'],
+            adult: p['adult'],
+            imdb_id: p['imdb_id'],
+            homepage: p['homepage']
+        }))
+        return modifiedData;
+    } catch (error) { }
+  }
 
 export const fetchCasts = async (id) => {
   try {
@@ -53,37 +82,10 @@ export const POSTER_SIZE = "w500";
 
 const apiKey = 'a4999a28333d1147dbac0d104526337a';
 const url = 'https://api.themoviedb.org/3';
-const nowPlayingUrl = `${url}/movie/now_playing`;
-const topratedUrl = `${url}/movie/top_rated`;
 const movieUrl = `${url}/movie`;
-const genreUrl = `${url}/genre/movie/list`;
 const moviesUrl = `${url}/discover/movie`;
-const personUrl = `${url}/trending/person/week`;
-
-export const fetchMovieByGenre = async (genre_id) => {
-  try {
-      const { data } = await axios.get(moviesUrl, {
-          params: {
-              api_key: apiKey,
-              language: 'en_US',
-              page: 1,
-              with_genres: genre_id
-          }
-      })
-      const posterUrl = 'https://image.tmdb.org/t/p/original/';
-      const modifiedData = data['results'].map((m) => ({
-          id: m['id'],
-          backPoster: posterUrl + m['backdrop_path'],
-          popularity: m['popularith'],
-          title: m['title'],
-          poster: posterUrl + m['poster_path'],
-          overview: m['overview'],
-          rating: m['vote_average'],
-      }))
-
-      return modifiedData;
-  } catch (error) { }
-}
+const personsUrl = `${url}/trending/person/week`;
+const personUrl = `${url}/person`;
 
 
 
@@ -99,12 +101,4 @@ export const requests = {
   fetchHorrorMovies: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
   fetchRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
   fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
-  //fetchMovieVideos: `/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
-  //similarMovies: `/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
 };
-
-//https://api.themoviedb.org/3/movie/696374/videos?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
-//https://api.themoviedb.org/3/movie/696374?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
-//https://api.themoviedb.org/3/trending/all/day?api_key=844dba0bfd8f3a4f3799f6130ef9e335
-//https://api.themoviedb.org/3/tv/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US
-//https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=en-US

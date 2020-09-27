@@ -6,15 +6,13 @@ import {
   Grid,
   Form,
   Button,
-  Card,
-  Image,
   Segment,
   Divider,
   Item,
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
-// import CKEditor from "ckeditor4-react";
+
 
 import { connect } from "react-redux";
 
@@ -74,8 +72,6 @@ function BlogPage(props) {
       });
   };
 
-  var handlePostEdit = (postID) => {};
-
   return (
     <div className="blog">
       <MainNavbar />
@@ -130,6 +126,7 @@ function BlogPage(props) {
                         circular
                       />
 
+
                       <Item.Content verticalAlign="middle">
                         <Item.Header style={{ color: "white" }}>
                           {post.title}
@@ -167,14 +164,13 @@ function BlogPage(props) {
                 );
               })}
             </Segment>
-          </Grid.Column>
+          </Grid.Column>            
         </Grid.Row>
       </Grid>
     </div>
   );
 }
-// Function that maps full Redux store (state) to the props of
-// Welcome component
+
 function mapStatesToProps(state) {
   return {
     user: state.auth.user,

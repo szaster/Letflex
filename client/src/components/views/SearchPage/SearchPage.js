@@ -5,7 +5,6 @@ import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../Config";
 import MainNavbar from "../NavBar/MainNavbar";
 import { Link } from "react-router-dom";
 
-const base_url = "https://image.tmdb.org/t/p/original/";
 function SearchPage() {
   const buttonRef = useRef(null);
   const location = useLocation();
@@ -101,7 +100,7 @@ function SearchPage() {
                       <img
                         src="https://i.pinimg.com/236x/f1/37/96/f13796528b0ffdafa519ccc8a172fc90--famous-movie-posters-cat-movie.jpg"
                         style={{ height: "31rem" }}
-                        alt="cat placeholder image"
+                        alt="cat-placeholder-image"
                       />
                     )
                   }
