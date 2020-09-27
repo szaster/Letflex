@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Tooltip, Icon } from "antd";
 import Axios from "axios";
 import { useSelector } from "react-redux";
-import { Label } from "semantic-ui-react";
+import { Label, Icon } from "semantic-ui-react";
 
 function LikeDislikes(props) {
   const user = useSelector((state) => state.user);
@@ -124,24 +123,24 @@ function LikeDislikes(props) {
   return (
     <Label ribbon="right" color="grey">
       <span key="comment-basic-like">
-        <Tooltip title="Like">
-          <Icon
-            type="like"
-            theme={LikeAction === "liked" ? "filled" : "outlined"}
-            onClick={onLike}
-          />
-        </Tooltip>
+        <Icon
+          type="like"
+          name="thumbs up"
+          // theme={LikeAction === "liked" ? "filled" : "outlined"}
+          onClick={onLike}
+        />
+
         <span style={{ paddingLeft: "8px", cursor: "auto" }}>{Likes}</span>
       </span>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <span key="comment-basic-dislike">
-        <Tooltip title="Dislike">
-          <Icon
-            type="dislike"
-            theme={DislikeAction === "disliked" ? "filled" : "outlined"}
-            onClick={onDisLike}
-          />
-        </Tooltip>
+        <Icon
+          type="dislike"
+          name="thumbs down"
+          // theme={DislikeAction === "disliked" ? "filled" : "outlined"}
+          onClick={onDisLike}
+        />
+
         <span style={{ paddingLeft: "8px", cursor: "auto" }}>{Dislikes}</span>
       </span>
     </Label>

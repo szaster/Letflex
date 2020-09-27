@@ -16,13 +16,9 @@ function MovieInfo(props) {
           >
             {movie.title}
           </Item.Header>
-          <div>
-            <Favorite />
-          </div>
+          <Favorite />
           <br />
-          <div>
-            <LikeDislikes />
-          </div>
+          <LikeDislikes />
           <Divider />
           <Item.Extra>
             <Label

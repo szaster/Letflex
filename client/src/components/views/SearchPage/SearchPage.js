@@ -100,7 +100,7 @@ function SearchPage() {
                       <img
                         src="https://i.pinimg.com/236x/f1/37/96/f13796528b0ffdafa519ccc8a172fc90--famous-movie-posters-cat-movie.jpg"
                         style={{ height: "31rem" }}
-                        alt="cat-placeholder-image"
+                        alt="cat-placeholder"
                       />
                     )
                   }
