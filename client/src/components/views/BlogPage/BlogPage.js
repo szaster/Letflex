@@ -13,7 +13,6 @@ import {
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
 
-
 import { connect } from "react-redux";
 
 // function formatDate(date) {
@@ -80,8 +79,8 @@ function BlogPage(props) {
         Movie Review Blogs
       </Header>
       <Divider inverted />
-      <Grid stackable divided="vertically">
-        <Grid.Row columns={2}>
+      <Grid stackable columns={2}>
+        <Grid.Row>
           <Grid.Column width={6}>
             <Segment inverted compact>
               <Header>Ready to critique? Let's begin!</Header>
@@ -115,7 +114,7 @@ function BlogPage(props) {
           </Grid.Column>
 
           <Grid.Column width={10}>
-            <Segment inverted compact>
+            <Segment inverted>
               {blogPosts.map((post) => {
                 return (
                   <Item.Group relaxed>
@@ -125,7 +124,6 @@ function BlogPage(props) {
                         size="small"
                         circular
                       />
-
 
                       <Item.Content verticalAlign="middle">
                         <Item.Header style={{ color: "white" }}>
@@ -164,7 +162,7 @@ function BlogPage(props) {
                 );
               })}
             </Segment>
-          </Grid.Column>            
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
