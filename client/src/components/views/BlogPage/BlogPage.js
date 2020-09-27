@@ -80,7 +80,7 @@ function BlogPage(props) {
   return (
     <div className="blog">
       <MainNavbar />
-      <Grid centered paded className="bgBlog">
+      <Grid centered padded className="bgBlog">
         <Header
           size="large"
           style={{ color: "white", margin: "auto", marginTop: "3rem" }}

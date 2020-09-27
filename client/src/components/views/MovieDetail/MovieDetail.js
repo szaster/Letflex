@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Row from "../../commons/Row";
 import "../../commons/Row.css";
-// import LikeDislikes from "./Sections/LikeDislikes";
 import { API_URL, API_KEY, requests, fetchCasts } from "../../Config";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
@@ -51,14 +50,6 @@ function MovieDetailPage(props, c) {
   useEffect(() => {
     let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     fetchDetailInfo(endpointForMovieInfo);
-
-    axios.post("/api/comment/getComments", movieVariable).then((response) => {
-      if (response.data.success) {
-        setCommentLists(response.data.comments);
-      } else {
-        alert("Failed to get comments Info");
-      }
-    });
   }, []);
 
   const fetchDetailInfo = (endpoint) => {
