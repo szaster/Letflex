@@ -1,10 +1,7 @@
 const express = require("express");
 const ensureAuth = require("../middleware");
 const { Comment } = require("../models/Comment");
-const { UserGoogle } = require("../models/UserGoogle");
 const router = express.Router();
-
-// const { User } = require("../models/User");
 
 router.get("/", [ensureAuth], async (req, res) => {
   try {

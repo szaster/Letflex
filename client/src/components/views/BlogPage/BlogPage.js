@@ -1,4 +1,3 @@
-// import { use } from "passport";
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import {
@@ -15,13 +14,6 @@ import MainNavbar from "../NavBar/MainNavbar";
 
 import { connect } from "react-redux";
 
-// function formatDate(date) {
-//   const d = new Date(date);
-//   const formattedDate = `${d.toLocaleDateString()}    ${d.toLocaleTimeString()}`;
-
-//   return formattedDate;
-// }
-
 function BlogPage(props) {
   const [blogPosts, setBlogPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
@@ -31,7 +23,6 @@ function BlogPage(props) {
     fetch("/api/blogPost/getBlogPosts")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setBlogPosts(res.blogPosts);
       });
   };
@@ -78,10 +69,10 @@ function BlogPage(props) {
       <Header size="huge" textAlign="center" style={{ color: "white" }}>
         Movie Review Blogs
       </Header>
-      <Divider inverted />
+      <Divider />
       <Grid stackable columns={2}>
         <Grid.Row>
-          <Grid.Column width={6}>
+          <Grid.Column mobile={16} tablet={16} computer={6}>
             <Segment inverted compact>
               <Header>Ready to critique? Let's begin!</Header>
               <Form inverted>
@@ -113,12 +104,12 @@ function BlogPage(props) {
             </Segment>
           </Grid.Column>
 
-          <Grid.Column width={10}>
+          <Grid.Column mobile={16} tablet={16} computer={10}>
             <Segment inverted>
               {blogPosts.map((post) => {
                 return (
                   <Item.Group relaxed>
-                    <Item inverted>
+                    <Item>
                       <Item.Image
                         src={post.author.image}
                         size="small"
@@ -141,7 +132,7 @@ function BlogPage(props) {
                             ago
                           </span>
                           <span>
-                            {props.user.id == post.author.id && (
+                            {props.user.id === post.author.id && (
                               <Item.Extra>
                                 <Button
                                   color="red"
