@@ -66,8 +66,9 @@ class Comments extends React.Component {
           <Button
             content="Post comment"
             labelPosition="right"
+            inverted
             icon="edit"
-            primary
+            color="green"
           />
         </Form>
       </Segment>
