@@ -1,82 +1,70 @@
-const express = require('express');
+const express = require("express");
+const ensureAuth = require("../middleware");
 const router = express.Router();
-
-
 const { Favorite } = require("../models/Favorite");
 
-const { auth } = require("../middleware/auth");
-
-//=================================
-//             Subscribe
-//=================================
-
-
-router.post("/favoriteNumber", (req, res) => {
-
-    Favorite.find({ "movieId": req.body.movieId })
-        .exec((err, subscribe) => {
-            if (err) return res.status(400).send(err)
-
-            res.status(200).json({ success: true, subscribeNumber: subscribe.length })
-        })
-
+router.get("/all", [ensureAuth], async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const favorite = await Favorite.find({ user: _id });
+    if (favorite) {
+      res.status(200).json({ favorites: favorite.movies });
+    } else {
+      res.status(200).json({ favorites: [] });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message }).send();
+  }
 });
 
-
-
-router.post("/favorited", (req, res) => {
-
-    Favorite.find({ "movieId": req.body.movieId, "userFrom": req.body.userFrom })
-        .exec((err, subscribe) => {
-            if (err) return res.status(400).send(err)
-
-            let result = false;
-            if (subscribe.length !== 0) {
-                result = true
-            }
-
-            res.status(200).json({ success: true, subcribed: result })
-        })
-
+router.get("/", [ensureAuth], async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { movieId } = req.query;
+    const favorite = await Favorite.findOne({ user: _id });
+    if (favorite) {
+      res
+        .status(200)
+        .json({ isFavorite: favorite.movies.includes(movieId), favNum: 0 });
+    } else {
+      res.status(200).json({ isFavorite: false, favNum: 0 });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message }).send();
+  }
 });
 
-
-
-router.post("/addToFavorite", (req, res) => {
-
-    console.log(req.body)
-
-    const favorite = new Favorite(req.body);
-
-    favorite.save((err, doc) => {
-        if (err) return res.json({ success: false, err })
-        return res.status(200).json({ success: true })
-    })
-
+router.post("/", [ensureAuth], async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { movieId, isFavorite } = req.body;
+    if (isFavorite) {
+      const existingFavorite = await Favorite.findOne({ user: _id });
+      if (!existingFavorite) {
+        const favorite = new Favorite({
+          user: _id,
+          movies: [movieId],
+        });
+        await favorite.save();
+      } else {
+        existingFavorite.movies.push(movieId);
+        await existingFavorite.save();
+      }
+    } else {
+      const existingFavorite = await Favorite.findOne({ user: _id });
+      if (!existingFavorite) {
+        res.status(200).send();
+      } else {
+        existingFavorite.movies = existingFavorite.movies.filter(
+          (movie) => movie !== `${movieId}`
+        );
+        await existingFavorite.save();
+      }
+    }
+    res.status(200).send();
+  } catch (error) {
+    res.status(400).json({ message: error.message }).send();
+  }
 });
-
-
-router.post("/removeFromFavorite", (req, res) => {
-
-
-    Favorite.findOneAndDelete({ movieId: req.body.movieId, userFrom: req.body.userFrom })
-        .exec((err, doc) => {
-            if (err) return res.status(400).json({ success: false, err });
-            res.status(200).json({ success: true, doc })
-        })
-});
-
-
-router.post("/getFavoredMovie", (req, res) => {
-
-    //Need to find all of the Users that I am subscribing to From Subscriber Collection 
-    Favorite.find({ 'userFrom': req.body.userFrom })
-        .exec((err, favorites) => {
-            if (err) return res.status(400).send(err);
-            return res.status(200).json({ success: true, favorites })
-        })
-});
-
-
 
 module.exports = router;

@@ -53,14 +53,6 @@ function MovieDetailPage(props) {
   useEffect(() => {
     let endpointForMovieInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     fetchDetailInfo(endpointForMovieInfo);
-
-    axios.post("/api/comment/getComments", movieVariable).then((response) => {
-      if (response.data.success) {
-        setCommentLists(response.data.comments);
-      } else {
-        alert("Failed to get comments Info");
-      }
-    });
   }, []);
 
   const fetchDetailInfo = (endpoint) => {

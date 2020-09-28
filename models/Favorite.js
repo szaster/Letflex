@@ -3,21 +3,12 @@ const Schema = mongoose.Schema;
 
 const favoriteSchema = mongoose.Schema(
   {
-    userFrom: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: "UserGoogle",
     },
-    movieId: {
-      type: String,
-    },
-    movieTitle: {
-      type: String,
-    },
-    moviePost: {
-      type: String,
-    },
-    movieRunTime: {
-      type: String,
+    movies: {
+      type: [String],
     },
   },
   { timestamps: true }
