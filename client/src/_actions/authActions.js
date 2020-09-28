@@ -10,7 +10,7 @@ async function fetchUserAndSetIfSuccess(dispatch) {
     const user = await axios.get("/api/user");
     dispatch(setUser(user.data));
   } catch (e) {
-    console.log(e);
+    console.error(e.message);
   }
 }
 

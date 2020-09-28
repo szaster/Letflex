@@ -45,7 +45,7 @@ function SearchPage() {
   const loadMoreItems = () => {
     let endpoint = "";
     setLoading(true);
-    console.log("CurrentPage", CurrentPage);
+
     endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${
       CurrentPage + 1
     }&query=${Query}`;
@@ -68,7 +68,6 @@ function SearchPage() {
     );
     const windowBottom = windowHeight + window.pageYOffset;
     if (windowBottom >= docHeight - 1) {
-      console.log("clicked");
       buttonRef.current.click();
     }
   };

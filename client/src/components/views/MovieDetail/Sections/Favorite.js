@@ -5,7 +5,6 @@ import { loadFavorites, toggleFavorite } from "../../../../_actions/favorites";
 
 class Favorite extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.loadFavorite(this.props.movieId);
   }
 

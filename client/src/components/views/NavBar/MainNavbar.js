@@ -5,12 +5,11 @@ import Welcome from "../Welcome";
 
 function MainNavbar(props) {
   let history = useHistory();
-  console.log(useHistory);
 
   var handleSearchSubmit = (e) => {
     if (e.keyCode === 13) {
       // if the key was the "enter" key
-      console.log("value", e.target.value);
+
       let path = `/search?q=${e.target.value}`;
       history.push(path);
       history.push("/empty");
