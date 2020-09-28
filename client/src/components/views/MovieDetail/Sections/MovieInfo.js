@@ -16,17 +16,15 @@ function MovieInfo(props) {
           >
             {movie.title}
           </Item.Header>
-          <div>
-            <Favorite
-              movieId={movie.id}
-              title={movie.title}
-              image={"https://image.tmdb.org/t/p/original" + movie.poster_path}
-            />
-          </div>
+
+          <Favorite
+            movieId={movie.id}
+            title={movie.title}
+            image={"https://image.tmdb.org/t/p/original" + movie.poster_path}
+          />
+
           <br />
-          <div>
-            <LikeDislikes />
-          </div>
+          <LikeDislikes />
           <Divider />
           <Item.Extra>
             <Label
