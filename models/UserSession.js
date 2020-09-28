@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const UserSessionSchema = new mongoose.Schema({
-  userId: {
-    type: Number,
-    default: -1,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-});
+// const UserSessionSchema = new mongoose.Schema({
+//   userId: {
+//     type: Number,
+//     default: -1,
+//   },
+//   createdAt: {
+//     type: Date,
+//     default: Date.now(),
+//   },
+// });
 
-module.exports = mongoose.model("UserSession", UserSessionSchema);
+// module.exports = mongoose.model("UserSession", UserSessionSchema);

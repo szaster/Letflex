@@ -7,8 +7,8 @@ const favoriteSchema = mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "UserGoogle",
     },
-    movieId: {
-      type: String,
+    movies: {
+      type: [String],
     },
   },
   { timestamps: true }
