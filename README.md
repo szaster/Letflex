@@ -16,10 +16,8 @@ Add a filter option, where you can search content based on genre. Our app will a
 
 ![site image](./client/src/assets/images/landing.png)
 ![site image](./client/src/assets/images/trailer.png)
-
-<!--![site image]()
-![site image]()
-![site image]() -->
+![site image](./client/src/assets/images/comment.png)
+![site image](./client/src/assets/images/blog.png)
 
 ## Table of Contents
 
