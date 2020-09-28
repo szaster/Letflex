@@ -83,27 +83,26 @@ function About() {
             size="large"
           >
             <p>
-              Our Netflix clone app will allow users to sign up in the app or
-              login directly via their google account plus features!
+              Our Netflix clone app will allow users to sign in via their google
+              credentials!
             </p>
             <Divider />
             <p>
               The user will have the option to search films, shows, etc. using
-              the name or keywords on our search bar.The app will then display
-              relevant results. It will also contain a filter option, where you
-              can search content based on genre.
+              the name or keywords on our search bar. The app will then display
+              relevant results.
             </p>
             <Divider />
             <p>
-              The user will also be able to manage their profile and watch-list,
-              they can update their name/picture or remove/add content from
-              their watch-list. Our app will come with a rate and review
-              feature, where the user can comment on a specific video and other
-              users can view and comment on it, reactions will also be
-              incorporated.
+              The user will also be able to manage their blog reviews, movie
+              comments, & favorite film additions. They can remove their blog
+              reviews or remove/add content from their favorites list. Our app
+              will come with a rate and review feature, where the user can
+              comment on specific content and other users can view and comment
+              on it, reactions will also be incorporated.
             </p>
             <p>
-              What are you waiting for? Sign up! and start your relaxation and
+              What are you waiting for? Sign in and begin your relaxation and
               binge watching journey with us! <Icon name="tv" />
               <Icon name="film" />
             </p>

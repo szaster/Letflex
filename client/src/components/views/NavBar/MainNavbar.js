@@ -30,6 +30,7 @@ function MainNavbar(props) {
       stackable
       inverted
       fixed={"top"}
+      size="small"
       style={{ backgroundColor: "black" }}
       mode={props.mode}
     >
@@ -42,10 +43,6 @@ function MainNavbar(props) {
       <Menu.Item as="a" href="/blogs">
         Blogs
       </Menu.Item>
-      <Menu.Item as="a" href="/favorite">
-        My List
-      </Menu.Item>
-
       <Menu.Item>
         <Input
           className="icon"
