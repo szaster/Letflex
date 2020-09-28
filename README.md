@@ -51,7 +51,7 @@ Run the application with a command `npm start` in a terminal.
 
 ## Usage
 
-Use the app deployed to Heroku, and/or clone the code on your machine and install and import dependencies with npm install.
+Use the app deployed to Heroku, and/or clone the code on your machine and run npm install to import all dependencies.
 
 Run the application with a command npm start in a terminal.
 
@@ -65,7 +65,9 @@ Run the application with a command npm start in a terminal.
 ## Future-Development
 
 ## Credits
-
+- [Clever Programmer](https://www.cleverprogrammer.com)
+- [John Ahn](https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q/playlists)
+- [WJ Prajumsook](https://www.youtube.com/channel/UCpjmxyGKA1iBRU_k0sSftJA/playlists)
 ## License
 
 License: MIT
