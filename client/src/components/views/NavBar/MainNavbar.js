@@ -2,13 +2,6 @@ import React from "react";
 import { Input, Menu } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import Welcome from "../Welcome";
-// const { Media } = createMedia({
-//   breakpoints: {
-//     mobile: 0,
-//     tablet: 768,
-//     computer: 1024,
-//   },
-// });
 
 function MainNavbar(props) {
   let history = useHistory();

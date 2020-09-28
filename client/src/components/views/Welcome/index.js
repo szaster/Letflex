@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Dropdown, Item } from "semantic-ui-react";
 
 import { connect } from "react-redux";
+import LikeDislikes from "../MovieDetail/Sections/LikeDislikes";
 
 class Welcome extends React.Component {
   render() {
@@ -24,7 +25,9 @@ class Welcome extends React.Component {
             <Dropdown.Item disabled>
               <span>Signed in as {this.props.user.firstName}</span>
             </Dropdown.Item>
-
+            <Dropdown.Item>
+              Enjoyed our app? <LikeDislikes />
+            </Dropdown.Item>
             <Dropdown.Item
               as="a"
               href="api/auth/logout"
