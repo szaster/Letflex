@@ -22,9 +22,6 @@ function MovieInfo(props) {
             title={movie.title}
             image={"https://image.tmdb.org/t/p/original" + movie.poster_path}
           />
-
-          <br />
-          <LikeDislikes />
           <Divider />
           <Item.Extra>
             <Label
