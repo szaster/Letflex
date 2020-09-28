@@ -18,7 +18,6 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
     fetchData();
   }, [fetchUrl]);
-  
 
   return (
     <div>

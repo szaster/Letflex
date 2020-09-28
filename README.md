@@ -8,32 +8,25 @@
 
 Our Netflix clone app will allow users to login directly via their google account. The user will then have the option to search films and shows using the name or keywords. The app will then display relevant results. User will be able to watch movie trailers. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watch-list. This application has a review feature where the user can comment on a specific movie.
 
-## Future development
-
-Add a filter option, where you can search content based on genre. Our app will also have a rate and review feature, reactions will also be incorporated.
-
 ## GIF/Image
 
 ![site image](./client/src/assets/images/landing.png)
 ![site image](./client/src/assets/images/trailer.png)
-
-<!--![site image]()
-![site image]()
-![site image]() -->
+![site image](./client/src/assets/images/comment.png)
+![site image](./client/src/assets/images/blog.png)
 
 ## Table of Contents
 
 - [Letflex](#letflex)
   - [Live Site:](#live-site)
   - [Description](#description)
-  - [Future development](#future-development)
   - [GIF/Image](#gifimage)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Tech Stack](#tech-stack)
   - [Usage](#usage)
   - [Collaborators](#collaborators)
-  - [Future-Development](#future-development-1)
+  - [Future-Development](#future-development)
   - [Credits](#credits)
   - [License](#license)
   - [Tests](#tests)
@@ -53,7 +46,7 @@ Run the application with a command `npm start` in a terminal.
 
 ## Usage
 
-Use the app deployed to Heroku, and/or clone the code on your machine and install and import dependencies with npm install.
+Use the app deployed to Heroku, and/or clone the code on your machine and run npm install to import all dependencies.
 
 Run the application with a command npm start in a terminal.
 
@@ -66,8 +59,12 @@ Run the application with a command npm start in a terminal.
 
 ## Future-Development
 
-## Credits
+Add a filter option, where you can search content based on genre. Our app will also have a rate and review feature, reactions will also be incorporated.
 
+## Credits
+- [Clever Programmer](https://www.cleverprogrammer.com)
+- [John Ahn](https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q/playlists)
+- [WJ Prajumsook](https://www.youtube.com/channel/UCpjmxyGKA1iBRU_k0sSftJA/playlists)
 ## License
 
 License: MIT

@@ -11,7 +11,6 @@ import "./App.css";
 import Footer from "./views/Footer/Footer";
 import BlogPage from "./views/BlogPage/BlogPage";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
-import FavoritePage from "./views/FavoritePage/FavoritePage";
 import { fetchUser } from "../_actions/authActions";
 
 class App extends React.Component {
@@ -31,7 +30,6 @@ class App extends React.Component {
               <Route exact path="/about" component={AboutPage} />
               <Route exact path="/search" component={SearchPage} />
               <Route exact path="/movie/:movieId" component={MovieDetail} />
-              <Route exact path="/favorite" component={FavoritePage} />
             </Switch>
           ) : (
             <Switch>
