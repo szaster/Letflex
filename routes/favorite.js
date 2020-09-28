@@ -3,7 +3,7 @@ const ensureAuth = require("../middleware");
 const router = express.Router();
 const { Favorite } = require("../models/Favorite");
 
-router.get("/all", async (req, res) => {
+router.get("/all", [ensureAuth], async (req, res) => {
   try {
     const { _id } = req.user;
     const favorite = await Favorite.find({ user: _id });
@@ -21,18 +21,20 @@ router.get("/", [ensureAuth], async (req, res) => {
   try {
     const { _id } = req.user;
     const { movieId } = req.query;
-    const favorite = await Favorite.find({ user: _id });
+    const favorite = await Favorite.findOne({ user: _id });
     if (favorite) {
-      res.status(200).json({ isFavorite: favorite.movies.includes(movieId) });
+      res
+        .status(200)
+        .json({ isFavorite: favorite.movies.includes(movieId), favNum: 0 });
     } else {
-      res.status(200).json({ isFavorite: false });
+      res.status(200).json({ isFavorite: false, favNum: 0 });
     }
   } catch (error) {
     res.status(400).json({ message: error.message }).send();
   }
 });
 
-router.put("/", [ensureAuth], async (req, res) => {
+router.post("/", [ensureAuth], async (req, res) => {
   try {
     const { _id } = req.user;
     const { movieId, isFavorite } = req.body;
@@ -54,7 +56,7 @@ router.put("/", [ensureAuth], async (req, res) => {
         res.status(200).send();
       } else {
         existingFavorite.movies = existingFavorite.movies.filter(
-          (movie) => movie !== movieId
+          (movie) => movie !== `${movieId}`
         );
         await existingFavorite.save();
       }

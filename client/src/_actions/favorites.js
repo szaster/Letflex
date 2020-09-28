@@ -4,11 +4,11 @@ import axios from "axios";
 export function setFavorites(favorites) {
   return { type: SET_FAVORITES, payload: favorites };
 }
-///////???//////
+
 async function loadFavoritesAndSetIfSuccess(dispatch, movieId) {
   try {
     const favorite = await axios.get(`/api/favorite?movieId=${movieId}`);
-    dispatch(setFavorites({ data: favorites.data, movieId }));
+    dispatch(setFavorites(favorite.data));
   } catch (e) {
     console.log(e);
   }
@@ -16,7 +16,7 @@ async function loadFavoritesAndSetIfSuccess(dispatch, movieId) {
 export const loadFavorites = (movieId) => (dispatch) =>
   loadFavoritesAndSetIfSuccess(dispatch, movieId);
 
-async function postFavoriteAndReload(dispatch, favoriteData) {
+async function toggleFavoriteAndReload(dispatch, favoriteData) {
   try {
     await axios.post(`/api/favorite`, favoriteData);
     dispatch(loadFavorites(favoriteData.movieId));
@@ -24,5 +24,5 @@ async function postFavoriteAndReload(dispatch, favoriteData) {
     console.log(e);
   }
 }
-export const postComment = (favoriteData) => (dispatch) =>
-  postFavoriteAndReload(dispatch, favoriteData);
+export const toggleFavorite = (favoriteData) => (dispatch) =>
+  toggleFavoriteAndReload(dispatch, favoriteData);
