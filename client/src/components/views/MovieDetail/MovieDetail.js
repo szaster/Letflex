@@ -98,6 +98,7 @@ function MovieDetailPage(props) {
   function refreshPage() {
     window.parent.location = window.parent.location.href;
   }
+
   return (
     <div style={{ paddingTop: "4rem" }}>
       <MainNavbar />
@@ -177,10 +178,9 @@ function MovieDetailPage(props) {
               <a href={"https://www.themoviedb.org/person/6384-keanu-reeves"} >
                 <img
                   className="img-fluid rounded-circle mx-auto d-block"
-                  src={c.img}
+                  src={c.img || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Halle_Berry_%2835954866642%29_%28cropped%29.jpg/1200px-Halle_Berry_%2835954866642%29_%28cropped%29.jpg'}
                   alt="cast image"
                 />
-
                 <p style={{fontWeight: 'bolder', color: 'yellow'}}>{c.name}</p>
                 <p
                   className="font-weight-light text-center"
