@@ -8,10 +8,6 @@
 
 Our Netflix clone app will allow users to login directly via their google account. The user will then have the option to search films and shows using the name or keywords. The app will then display relevant results. User will be able to watch movie trailers. The user will also be able to manage their profile and watch-list, they can update their name/picture or remove/add content from their watch-list. This application has a review feature where the user can comment on a specific movie.
 
-## Future development
-
-Add a filter option, where you can search content based on genre. Our app will also have a rate and review feature, reactions will also be incorporated.
-
 ## GIF/Image
 
 ![site image](./client/src/assets/images/landing.png)
@@ -24,14 +20,13 @@ Add a filter option, where you can search content based on genre. Our app will a
 - [Letflex](#letflex)
   - [Live Site:](#live-site)
   - [Description](#description)
-  - [Future development](#future-development)
   - [GIF/Image](#gifimage)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Tech Stack](#tech-stack)
   - [Usage](#usage)
   - [Collaborators](#collaborators)
-  - [Future-Development](#future-development-1)
+  - [Future-Development](#future-development)
   - [Credits](#credits)
   - [License](#license)
   - [Tests](#tests)
@@ -63,6 +58,8 @@ Run the application with a command npm start in a terminal.
 - [Elizabeth](https://github.com/lisasosa)
 
 ## Future-Development
+
+Add a filter option, where you can search content based on genre. Our app will also have a rate and review feature, reactions will also be incorporated.
 
 ## Credits
 - [Clever Programmer](https://www.cleverprogrammer.com)
