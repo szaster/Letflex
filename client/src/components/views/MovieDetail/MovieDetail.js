@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Row from "../../commons/Row";
 import "../../commons/Row.css";
-import { API_URL, API_KEY, requests, fetchCasts } from "../../Config";
+import { API_URL, API_KEY, requests, fetchCasts} from "../../Config";
 import MovieInfo from "./Sections/MovieInfo";
 import MainNavbar from "../NavBar/MainNavbar";
 import { Grid, Modal, Header } from "semantic-ui-react";
@@ -13,10 +13,13 @@ import MovieComments from "../MovieComments";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-function MovieDetailPage(props, c) {
+function MovieDetailPage(props) {
+
   const [trailerUrl, setTrailerUrl] = useState("");
 
   const movieId = props.match.params.movieId;
+
+
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
   const [CommentLists, setCommentLists] = useState([]);
@@ -156,35 +159,28 @@ function MovieDetailPage(props, c) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        {/* 
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <LikeDislikes
-            video
-            videoId={movieId}
-            userId={localStorage.getItem("userId")}
-          />
-        </div> */}
       </div>
       <div>
         <h2 className="row">Casts</h2>
         <div className="row_posters">
           {Casts.map((c, i) => (
             <div className="col-md-2 text-center" key={i}>
-              <Link exact to={`/credits/${c.id}`}>
+
+              <a href={"https://www.themoviedb.org/person/6384-keanu-reeves"} >
                 <img
                   className="img-fluid rounded-circle mx-auto d-block"
                   src={c.img}
                   alt="cast image"
                 />
 
-                <p className="font  -weight-bold text-center">{c.name}</p>
+                <p style={{fontWeight: 'bolder', color: 'yellow'}}>{c.name}</p>
                 <p
                   className="font-weight-light text-center"
                   style={{ color: "#fff" }}
                 >
                   {`Character: ${c.character}`}
                 </p>
-              </Link>
+              </a>
             </div>
           ))}
           ;
@@ -192,7 +188,6 @@ function MovieDetailPage(props, c) {
       </div>
 
       <Link
-        fetchUrl={`https://image.tmdb.org/t/p/w200${c}profile_path`}
         onClick={() => refreshPage()}
       >
         <Row

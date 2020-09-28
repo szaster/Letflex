@@ -64,12 +64,12 @@ typings/
 
 # Output of 'npm pack'
 *.tgz
-
+.DS_Store
 # Yarn Integrity file
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# .env
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)

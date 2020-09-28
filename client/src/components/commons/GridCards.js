@@ -4,7 +4,7 @@ import { IMAGE_BASE_URL } from '../Config';
 
 function GridCards(props) {
 
-    let { actor, key, image, movieId, movieName, characterName } = props
+    let { actor, key, image, movieId, movieName, characterName} = props
     const POSTER_SIZE = "w154";
 
     if (actor) {

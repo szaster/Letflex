@@ -1,30 +1,26 @@
-import { use } from "passport";
+// import { use } from "passport";
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import {
   Header,
   Grid,
-  Comment,
   Form,
   Button,
   Segment,
-  Card,
-  Input,
   Divider,
-  Image,
+  Item,
 } from "semantic-ui-react";
 import "./BlogPage.css";
 import MainNavbar from "../NavBar/MainNavbar";
-import CKEditor from "ckeditor4-react";
 
 import { connect } from "react-redux";
 
-function formatDate(date) {
-  const d = new Date(date);
-  const formattedDate = `${d.toLocaleDateString()}    ${d.toLocaleTimeString()}`;
+// function formatDate(date) {
+//   const d = new Date(date);
+//   const formattedDate = `${d.toLocaleDateString()}    ${d.toLocaleTimeString()}`;
 
-  return formattedDate;
-}
+//   return formattedDate;
+// }
 
 function BlogPage(props) {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -75,110 +71,104 @@ function BlogPage(props) {
       });
   };
 
-  var handlePostEdit = (postID) => {};
-
   return (
     <div className="blog">
       <MainNavbar />
-      <Grid centered padded className="bgBlog">
-        <Header
-          size="large"
-          style={{ color: "white", margin: "auto", marginTop: "3rem" }}
-        >
-          Blogs
-        </Header>
-      </Grid>
-      <Grid.Row centered>
-        <Form>
-          <Grid.Row>
-            <Input
-              value={newPostTitle}
-              onChange={(e) => setNewPostTitle(e.target.value)}
-              placeholder="blog title"
-              style={{ minWidth: 400, marginBottom: "1rem" }}
-            ></Input>
 
-            <Button
-              Secondary
-              basic
-              inverted
-              color="red"
-              style={{ marginBottom: "0.9rem" }}
-              onClick={handlePostSubmit}
-            >
-              Post
-            </Button>
-          </Grid.Row>
-
-          <Grid.Row>
-            <textarea
-              value={newPostBody}
-              onChange={(e) => setNewPostBody(e.target.value)}
-              placeholder="Write your blog here"
-              style={{ minWidth: 400, marginBottom: "1.5rem" }}
-            ></textarea>
-          </Grid.Row>
-        </Form>
-      </Grid.Row>
-      <Grid
-        columns={2}
-        padded
-        style={{ marginLeft: "9rem", marginRight: "9rem" }}
-      >
+      <Header size="huge" textAlign="center" style={{ color: "white" }}>
+        Movie Review Blogs
+      </Header>
+      <Divider inverted />
+      <Grid stackable columns={2}>
         <Grid.Row>
-          {blogPosts.map((post) => {
-            return (
-              <Grid.Column>
-                <Card
-                  style={{
-                    minWidth: 600,
-                    marginBottom: "1.5rem",
-                  }}
+          <Grid.Column width={6}>
+            <Segment inverted compact>
+              <Header>Ready to critique? Let's begin!</Header>
+              <Form inverted>
+                <Form.Input
+                  fluid
+                  value={newPostTitle}
+                  onChange={(e) => setNewPostTitle(e.target.value)}
+                  placeholder="Movie Title"
+                  style={{ minWidth: 450 }}
+                />
+
+                <Form.TextArea
+                  value={newPostBody}
+                  onChange={(e) => setNewPostBody(e.target.value)}
+                  placeholder="Write your movie review here!"
+                  style={{ minWidth: 450 }}
+                />
+
+                <Button
+                  inverted
+                  color="green"
+                  floated="right"
+                  onClick={handlePostSubmit}
                 >
-                  <Card.Content style={{ textAlign: "center" }}>
-                    <span>
-                      <Image
+                  {" "}
+                  Post
+                </Button>
+              </Form>
+            </Segment>
+          </Grid.Column>
+
+          <Grid.Column width={10}>
+            <Segment inverted>
+              {blogPosts.map((post) => {
+                return (
+                  <Item.Group relaxed>
+                    <Item inverted>
+                      <Item.Image
                         src={post.author.image}
-                        size="mini"
-                        floated="left"
+                        size="small"
+                        circular
                       />
-                    </span>
-                    <Card.Header>{post.title}</Card.Header>
-                    <Card.Description>{post.body}</Card.Description>
-                    <Card.Meta floated="left">
-                      <span>Posted by: {post.author.displayName}</span>
-                      <span style={{ textAlign: "right" }}>
-                        On{" "}
-                        {moment(post.createdAt)
-                          .startOf("ms")
-                          .fromNow(post.createdAt)}{" "}
-                        ago
-                      </span>
-                      <span>
-                        {props.user.id == post.author.id && (
-                          <Form.Button
-                            basic
-                            color="black"
-                            content="black"
-                            onClick={(e) => handlePostDelete(post._id)}
-                          >
-                            Delete blog
-                          </Form.Button>
-                        )}
-                      </span>
-                    </Card.Meta>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-            );
-          })}
+
+                      <Item.Content verticalAlign="middle">
+                        <Item.Header style={{ color: "white" }}>
+                          {post.title}
+                        </Item.Header>
+                        <Item.Description style={{ color: "white" }}>
+                          {post.body}
+                        </Item.Description>
+                        <Item.Meta>
+                          <span style={{ color: "yellow" }}>
+                            Posted by {post.author.displayName}{" "}
+                            {moment(post.createdAt)
+                              .startOf("ms")
+                              .fromNow(post.createdAt)}{" "}
+                            ago
+                          </span>
+                          <span>
+                            {props.user.id == post.author.id && (
+                              <Item.Extra>
+                                <Button
+                                  color="red"
+                                  inverted
+                                  floated="right"
+                                  onClick={(e) => handlePostDelete(post._id)}
+                                >
+                                  Delete Review
+                                </Button>
+                              </Item.Extra>
+                            )}
+                          </span>
+                        </Item.Meta>
+                      </Item.Content>
+                    </Item>
+                    <Divider />
+                  </Item.Group>
+                );
+              })}
+            </Segment>
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
 }
-// Function that maps full Redux store (state) to the props of
-// Welcome component
+
 function mapStatesToProps(state) {
   return {
     user: state.auth.user,
