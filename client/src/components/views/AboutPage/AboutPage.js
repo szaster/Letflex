@@ -158,13 +158,13 @@ function About() {
                   target="_blank"
                   href="https://github.com/paschalihenacho"
                 >
-                  <Icon name="github" size="big" inverted />
+                  <Icon name="github" size="big" link inverted />
                 </Menu.Item>
                 <Menu.Item
                   target="_blank"
                   href="https://www.linkedin.com/in/paschal-ihenacho/"
                 >
-                  <Icon name="linkedin" color="blue" size="big" />
+                  <Icon name="linkedin" color="blue" link size="big" />
                 </Menu.Item>
               </Card.Content>
             </Card>
@@ -210,13 +210,13 @@ function About() {
               <Card.Content className="socialAbout">
                 View More:{" "}
                 <Menu.Item target="_blank" href="https://github.com/Creyes17e">
-                  <Icon name="github" size="big" inverted />
+                  <Icon name="github" size="big" link inverted />
                 </Menu.Item>
                 <Menu.Item
                   target="_blank"
                   href="https://www.linkedin.com/in/carina-reyes-21b6701a2/"
                 >
-                  <Icon name="linkedin" color="blue" size="big" />
+                  <Icon name="linkedin" color="blue" link size="big" />
                 </Menu.Item>
               </Card.Content>
             </Card>
@@ -261,13 +261,13 @@ function About() {
               <Card.Content className="socialAbout">
                 View More:{" "}
                 <Menu.Item target="_blank" href="https://github.com/szaster">
-                  <Icon name="github" size="big" inverted />
+                  <Icon name="github" size="big" link inverted />
                 </Menu.Item>
                 <Menu.Item
                   target="_blank"
                   href="https://www.linkedin.com/in/svitlana-zaster-77a9a06b/"
                 >
-                  <Icon name="linkedin" color="blue" size="big" />
+                  <Icon name="linkedin" color="blue" link size="big" />
                 </Menu.Item>
               </Card.Content>
             </Card>
@@ -318,13 +318,13 @@ function About() {
               <Card.Content className="socialAbout">
                 View More:{" "}
                 <Menu.Item target="_blank" href="https://github.com/lisasosa">
-                  <Icon name="github" size="big" inverted />
+                  <Icon name="github" size="big" inverted link />
                 </Menu.Item>
                 <Menu.Item
                   target="_blank"
                   href="https://www.linkedin.com/in/elizabeth-sosa-43977a58/"
                 >
-                  <Icon name="linkedin" color="blue" size="big" />
+                  <Icon name="linkedin" color="blue" size="big" link />
                 </Menu.Item>
               </Card.Content>
             </Card>
